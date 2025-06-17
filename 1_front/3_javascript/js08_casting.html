@@ -1,0 +1,60 @@
+<!-- 형변환. type을 바꾼다.-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function casting(){
+            //묵시적 형변환
+            //문자열과 숫자의 +연산
+            //문자열 + 숫자 = 문자열
+            //문자열 + 숫자 + 숫자 => 문자열에 숫자 2개가 문자열로 붙음
+            //숫자 + 숫자 + 문자열 => 문자열 => 앞에 있는 두 숫자가 먼저 계산되고 숫자합과 문자열이 붙어 문자열로 됨
+        
+            let val = 7 + 7; //숫자 + 숫자
+            console.log("val: " + val);
+            val = 7 + "7"; // 숫자 + 문자
+            console.log("val: " + val);
+            val = "7" + 7;
+            console.log("val: " + val);
+            val = "7" + 7 + 7;
+            console.log("val: " + val);
+            val = "7" + (7 + 7); // 괄호를 통해 뒷부분 연산에 우선순위를 줄 수 있다.
+            console.log("val: " + val);
+
+            //[명시적 형변환]
+            let str = "10";
+            console.log(str+10);
+
+            str = Number(str); // String 타입의 문자를 숫자로 변환
+            console.log(str+10);
+
+            str = "10개";
+            str = Number(str); // 하나의 객체로 새롭게 만드는 것.
+            console.log(str); // 결과는 NaN. Not a Number. 문자를 포함하고 있는 형식의 데이터를 숫자로 바꾸면
+
+            str = "10.01";
+            str = parseInt(str); // 숫자로 바꿔주는 함수. 기능적으로 바꿀 수 있게 존재하는 것. 앞에 parse라는 게 붙어 있으면 타입을 바꾸는 것으로 인식.
+            console.log(str);
+
+            str = "10.01";
+            str = parseFloat(str);
+            console.log(str);
+
+            let num = 20;
+            //=> String 타입으로 변경.
+            // num = String(num);   내 풀이
+            // console.log(num);    내 풀이
+            console.log(String(num)); // 방법1
+            console.log(num+"")       // 방법2
+        }
+
+    </script>
+</head>
+<body>
+    <h2>형변환</h2>
+    <h3 onclick="casting();">묵시적 형변환(자동형변환) and 명시적 형변환(강제형변환)</h3> <!--묵시적은 암묵적으로, 명시적은 우리가 직접-->
+</body>
+</html>

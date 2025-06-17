@@ -1,0 +1,78 @@
+package com.lv9;
+
+public class condfk {
+
+	public static void main(String[] args) {
+
+		
+		// 자동 형변환 예시
+		int iNum1 = 15;
+		double dNum1 = 3.5;
+		double res = iNum1 + dNum1;
+		// iNum1 + dNum1 => 15 + 3.5
+		// => 15.0(int가 double로 자동 형변환) + 3.5 => 18.5
+		//System.out.println(res);
+		
+		
+		///////////////////////////////////////////////////////
+		
+		// byte와 short 연산에서는 결과 값을 int 타입으로 반환한다!
+		byte bNum1 = 30, bNum2 = 50;
+		//byte res1 = bNum1 + bNum2;	// 오류 발생
+		int res2 = bNum1 + bNum2;	// int 값으로 자동 반환
+		byte res3 = (byte)(bNum1 + bNum2); // 강제 형변환으로 실행
+		
+		short sNum1 = 10, sNum2 = 30;
+		//short res4 = sNum1 + sNum2;	// 오류 발생!
+		int res5 = sNum1 + sNum2;
+		short res6 = (short)(sNum1 + sNum2);
+		
+		
+		/////////////////////////////////////////////////////////////
+		
+		//실수 -> 정수 강제 형변환
+		//=> 소수점 아래 부분은 제거됨.
+		double pi = 3.141592;
+		int intPi = (int)pi;    // 결과 값 3
+		//System.out.println(intPi);
+		
+		float fNum = 9.99f;
+		int fToINum = (int)fNum;	// 결과 값 9
+		//System.out.println(fToINum);
+		
+		/////////////////////////////////////////////////////////////////
+		
+		//문자형 -> 정수형 강제 형변환
+		char ch1 = 'A';				// 'A'의 ASCII 코드 값은 65
+		int chToI1 = (int)ch1;		// 결과 값 65
+		//System.out.println(chToI1);
+		
+		char ch2 = 'a';				// 'a'의 ASCII 코드 값은 97
+		int chToI2 = (int)ch2;		// 결과 값 97
+		//System.out.println(chToI2);
+		
+		char ch3 = '1';				// '1'의 ASCII 코드 값은 49 => '1'은 숫자 1이 아닌 문자 '1'이다!
+		int chToI3 = (int)ch3;		// 결과 값 49
+		//System.out.println(chToI3);
+		
+		/////////////////////////////////////////////////////////////////
+		
+		//데이터 크기가 큰 자료형 -> 작은 자료형 강제 형변환
+		int largeType = 32768;
+		short smallType = (short)largeType;
+		// short의 허용 범위는 -32,768 ~ 32,767
+		// largeType인 32,768을 short로 강제 형변환 시,
+		// short의 허용 범위를 초과하여 오버플로우 발생! => 결과 값 -32,768
+		System.out.println(smallType);
+		
+		
+		// 강제 형변환 선언 방법
+		// 자료형 변수명 = (자료형) 값
+		int num = 20;
+		double dNum = (double)num;	// 강제 형변환
+		
+		char ch = 'B';
+		int iNum = (int)ch;	// 강제 형변환
+	}
+
+}

@@ -1,0 +1,45 @@
+package com.model.service;
+
+import static common.JDBCTemplate.*;
+
+import java.sql.Connection;
+import java.util.List;
+
+import com.model.dao.ProductDao;
+import com.model.dto.Product;
+
+public class ProductService {
+	private ProductDao dao = new ProductDao();
+	
+	public List<Product> selectAll(){
+		Connection con = getConnection();
+		
+		List<Product> res = dao.selectAll(con);
+		
+		close(con);
+		
+		return res;
+	}
+	
+	public Product selectOne(String id) {
+		Connection con = getConnection();
+		
+		Product res = dao.selectOne(con, id);
+		
+		close(con);
+		
+		return res;
+	}
+	
+	public int insert(Product dto) {
+		return 0;
+	}
+	
+	public int update(Product dto) {
+		return 0;
+	}
+	
+	public int delete(String id) {
+		return 0;
+	}
+}

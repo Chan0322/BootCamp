@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .area{
+            width: 300px;
+            height: 100px;
+            border: 2px solid black;
+        }
+    </style>
+    <script>
+        // function accId(){}
+        const accId = ()=>{
+            // document.getElementById("area1").style.backgroundColor="yellow";
+            // document.getElementById("area1").innerHTML += "아이디로 접근 성공!!!<br>";
+            // // 이너HTML이라는 속성으로 값을 넣어주면 해당 글자를 html로 보여준다(HTML 코드를 추가한다).
+            // // = 앞에 +를 붙이면 덮어씌우기 않고 원래 있던 글자에 추가한다.
+            // // innerHTML = innerHTML + "아이디로 접근 성공!!!";
+            var doc = document.getElementById("area1");
+            doc.style.backgroundColor="yellow";
+            doc.innerHTML += "아이디로 접근 성공!!<br>";
+            console.log(doc);
+        }
+
+        function accTagName(){
+            let li1 = document.getElementsByTagName("li")[0]; // 배열[0]. li라는 이름을 가진 태그들을 모두 다 가져오고, 접근한 li 태그들 중 첫번째
+            let li2 = document.getElementsByTagName("li")[1]; // 배열[1] 두번째
+            let li3 = document.getElementsByTagName("li")[2]; // 배열[2] 세번째
+            // 0, 1, 2 인덱스 넘버를 통해 태그들을 리스트(array, 배열 이라고도 부름) 형태로 찾아온다.
+            console.log(li1);
+            console.log(li2);
+            console.log(li3);
+
+            var list = document.getElementsByTagName("li");
+            console.log(list[0]); // [] 안에 인덱스 번호를 부여해 원하는 방에 있는 태그를 꺼내옴.
+            // 배열을 사용하지 않으면 변수를 하나하나 따로따로 만들어야 한다.
+
+            // //찾은 li태그들 첫번째부터 마지막까지 배경색을 변경.
+            // //[1]
+            // list[0].style.backgroundColor="red";
+            // list[1].style.backgroundColor="green";
+            // list[2].style.backgroundColor="blue";
+            // // 이 방법은 심플한 장점. 그러나 사람이 일일히 해야하므로 힘듦.
+
+            //[2] 반복문 for문
+            let tmp = 50;
+            //for(초기식; 조건식; 증감식){반복하며 실행할 코드들;}
+            for(let i=0; i<list.length; i++){
+                console.log("i="+i);
+                list[i].style.backgroundColor = "rgb(130, 200, "+tmp+")";
+                tmp = tmp + 50;
+            } // 위에서 아래로 횟수만큼큼 반복. 흐름을 제어.
+            // let i=0 <= 변수 선언&초기화 <= 초기식
+            // i<list.length <= 조건식
+            // i++ <= 증감식
+            // i가 0이고, 리스트의 길이(3)이다. 0<3 true 이므로 for문 코드 실행. i를 1씩 증가시키며 반복. i<3이 false일때까지 반복.
+            // 더이상 코드를 실행하지 않고 종료.
+        }
+
+        const accName = ()=>{
+            let hobby = document.getElementsByName("hobby");
+            console.log('hobby의 길이: ' + hobby.length);
+
+            let checkItem="";
+            for(let i=0; i<hobby.length; i++){
+                //체크한 체크박스의 value값 확인
+                if(hobby[i].checked == true) { // ==은 같은지 확인하는 것. 같다. JS는 === 3개까지 된다.
+                //i번째 방에 들어있는 input태그에 checked 값이 true랑 같은가? 를 확인하는 조건식.
+                    // 조건이 true일 때! 즉, checked값이 true일 때! 즉 체크된 태그일 때 실행
+                    checkItem += hobby[i].value + " 선택함 <br>"; // + 빼면 여러개 체크해도 하나만 보임.
+                }
+            }
+            document.getElementById("area2").innerHTML = checkItem;
+        }
+
+        function readVal(){
+            var input = document.getElementById("username");
+            // console.log(input.value);
+            if(input.value == ""){//만약 인풋태그에 입력을 하지 않았다면
+                alert("이름을 입력하세요");
+                input.focus();
+            }else{
+                //if문의 조건을 만족하지 않을 때 실행
+                alert(input.value+"님 환영합니다!");
+            }
+        }
+
+        const accQs = ()=>{
+            //css의 선택자  로 탐색(접근)
+            const doc = document.querySelector("#qs"); // 하나만 찾을 때. 하나만 있다는게 확실하거나, 아이디로 찾을 때.
+            console.log(doc);
+
+            const list = document.querySelectorAll("li"); // 전부 다 찾겠다. li태그. 주로 이걸 쓰는게 더 편함. 하나만 있어도 사용 가능.
+            console.log(list);
+        }
+    </script>
+</head>
+<body>
+    <!-- DOM = Document Object Model 문서객체모델 - 우리가 작성해준 HTML 문서를 객체화시켜서 관리한다. 
+    이 과정 덕분에 우리가 원하는 태그를 선택할 수 있다.
+    우리가 작성한 HTML 단순 문서를 객체화 시켜서 관리하고, 거기서 원하는 태그를 찾는다.
+
+    BOM = 브라우저 오브젝트 모델, 구조 - 윈도우 > DOM, BOM, JS
+    -->
+    <h1>HTML태그에 접근하기</h1>
+
+    <h2>id로 접근하기</h2>
+    <div id="area1" class="area"></div>
+    <button onclick="accId();">아이디로 접근</button>
+
+    <h2>태그이름으로 접근하기</h2>
+    <ul>
+        <li>목록1</li>
+        <li>목록2</li>
+        <li>목록3</li>
+        <li>목록4</li>
+        <li>목록5</li>
+        <li>목록6</li>
+        <li>목록7</li>
+        <li>목록8</li>
+        <li>목록9</li>
+        <li>목록10</li>
+        <li>목록11</li>
+        <li>목록12</li>
+    </ul>
+    <button onclick="accTagName();">태그명으로 접근</button>
+
+    <h2>name으로 접근하기</h2>
+    <form> <!--네임속성은 주로 폼태그에서 사용-->
+        <fieldset>
+            <legend>취미</legend>
+            <table>
+                <tr>
+                    <td><input type="checkbox" name="hobby" value="game" id="game"><label for="game">게임</label></td>
+                    <td><input type="checkbox" name="hobby" value="book" id="book"><label for="book">독서</label></td>
+                    <td><input type="checkbox" name="hobby" value="movie" id="movie"><label for="movie">영화보기</label></td>
+                </tr>
+            </table>
+        </fieldset>
+    </form>
+    <div id="area2" class="area"></div>
+    <button onclick="accName();">name으로 접근</button>
+
+    <h2>text박스의 value값 읽어오기</h2>
+    <form>
+        이름 : <input type="text" name="username" id="username"> <br>
+        <input type="button" onclick="readVal();" value="value값 확인">
+    </form>
+
+    <h2>querySelector으로 접근하기</h2>
+    <p id="qs">querySelector로 접근</p>
+    <button onclick="accQs();">qs로 접근</button>
+</body>
+</html>

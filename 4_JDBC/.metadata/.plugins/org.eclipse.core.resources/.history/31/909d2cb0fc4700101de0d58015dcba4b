@@ -1,0 +1,10 @@
+package com.test02.model;
+
+import java.sql.Connection;
+import java.util.List;
+
+public class MyTestDao {
+	public List<MyTestDto> getAll(Connection con){
+		return null;
+	}
+}

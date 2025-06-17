@@ -1,0 +1,41 @@
+<!-- day10 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function createEle(){
+            // 엘리먼트 생성, 텍스트(안넣어도 상관없음), 속성 추가. 
+
+            // 1. 엘리먼트 객체 생성 createElement("tagName")
+            let div = document.createElement("div"); // 매개변수 값으로 태그의 이름 넣으면 됨.
+            // <div></div>
+
+            // 2. 텍스트 생성 createTextNode("text")  입력할 텍스트
+            let txt = document.createTextNode("엘리먼트 생성 메소드");
+            div.appendChild(txt); // div 태그에 자식요소로 텍스트를 추가. div 태그 안에 집어넣겠다.
+            // <div>엘리먼트 생성 메소드</div>
+
+            // 3. 속성 생성 createAttribute("attrName");  속성 이름.
+            let attr = document.createAttribute("style");
+            // style=""
+            attr.nodeValue = "border:2px solid blue"; // 속성의 속성 값
+            // style="border:2px solid blue"
+
+            // 4. 속성 추가 setAttributeNode(Attribute)
+            div.setAttributeNode(attr); // div 태그의 속성 추가
+            // <div style="border:2px solid blue">엘리먼트 생성 메소드</div>
+
+            div.setAttribute("style", "border: 3px solid red");
+
+            // body 추가
+            document.body.appendChild(div);
+        }
+    </script>
+</head>
+<body>
+    <button onclick="createEle();">엘리먼트 생성하기</button> <!--JS에서 태그를 엘리먼트로 만들어서 화면에 띄워보자.-->
+</body>
+</html>

@@ -1,0 +1,35 @@
+package com.test02.model;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+public class MyTestDao {
+	public List<MyTestDto> getAll(Connection con){
+		// 준비
+		Statement stmt = null;
+		ResultSet rs = null;
+		List<MyTestDto> res = new ArrayList<>();
+		String sql = " SELECT * FROM MYTEST ";
+		
+		try {
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(sql);
+			
+			while(rs.next()) {
+				MyTestDto tmp = new MyTestDto();
+				tmp.setMno(rs.getInt(1));
+				tmp.setMname(rs.getString(2));
+				tmp.setNickname(rs.getString(3));
+				res.add(tmp);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("[Error]select 에러");
+		}
+		return res;
+	}
+}

@@ -1,0 +1,60 @@
+<!-- float과 함께 쓸만한 속성 -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        #wrapper{
+            width: 600px;
+            height: 600px;
+            border: 1px dotted red;
+        }
+        #w01{
+            width: 200px;
+            background-color: red;
+            padding: 15px;
+            float: left;
+        }
+        #w02{
+            width: 200px;
+            background-color: gray;
+            padding: 15px;
+            float: right;
+        }
+        #w03{
+            /*clear라는 속성은 float을 적용시킨 태그가 아닌, float을 적용시킨 태그를 따라가는 태그에 적용시킨다.
+            클리어는 float이 붙은 태그를 따라가는 것을 취소하는 것이다.
+            클리어 래프트면 왼쪽에 붙은 태그를 따라가지 않는 것.
+            클리어 라이트면 오른쪽에 붙은 태그르 따라붙지 않게끔 처리하는 것.
+            결국, float이라는 속성으로 태그들을 배치하고, 다른 태그들이 따라오지 않게 하려면 클리어 속성을 이용.
+            both를 입력하면 양쪽 다(왼쪽 오른쪽) 따라가지 않겠다.*/
+            background-color: pink;
+            padding: 15px;
+            clear: both;
+        }
+    </style>
+ </head>
+ <body>
+    <h1>미니언즈</h1>
+
+    <div id="wrapper"> <!--화면에서 테스트하려는 태그들을 감싸두려는 목적. 태그들을 그냥 땅바닥에 두지 말고 포장하자!-->
+        <!-- div 태그들이므로 각자 모두 한줄을 자신의 땅으로 사용한다.
+         w01을 레프트로 붙이고, w02를 라이트로 붙이면 나머지 빈 공간에 다음 요소인 w03이 들어간다. -->
+        <div id="w01">
+            유아만한 키[2]에 알약 같은 둥근 몸매와 노란색 피부, 검은색 머리카락과 갈색 눈, 짧고 가는 팔다리, 3개씩의 손가락과 발가락을 가지고 있다.미니언들은 서로 비슷하게 생겼지만 눈 개수, 체형, 헤어스타일이 조금씩 다르다.
+        </div>
+        <div id="w02">
+            눈 개수는 외눈박이와 두눈박이가 있는데 두눈박이가 외눈박이보다 개체수가 많다.
+        </div>
+        <div id="w03">
+            체형은 키가 작은 체형, 통통한 체형, 키가 큰 체형으로 나눌 수 있다. 키가 작은 체형의 미니언이 가장 많으며, 같은 체형의 미니언들 사이에서도 미묘하게 덩치 차이가 있다. 헤어스타일은 크게 가르마 머리, 짧은 잔디머리, 긴 잔디머리, 가운데만 솟은 머리가 있다. 외눈박이 미니언은 전부 키가 작은 체형이다.
+        </div>
+    </div>
+ </body>
+ </html>

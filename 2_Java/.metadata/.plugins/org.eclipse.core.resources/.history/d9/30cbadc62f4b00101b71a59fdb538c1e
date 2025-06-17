@@ -1,0 +1,22 @@
+package com.lv9;
+
+public class condfk {
+
+	public static void main(String[] args) {
+
+		
+		// 자동 형변환 예시
+		int iNum1 = 15;
+		double dNum1 = 3.5;
+		double res = iNum1 + dNum1;
+		// iNum1 + dNum1 => 15 + 3.5
+		// => 15.0(int가 double로 자동 형변환) + 3.5 => 18.5
+		System.out.println(res);
+		
+		
+		///////////////////////////////////////////////////////
+		
+		byte bNum1;
+	}
+
+}

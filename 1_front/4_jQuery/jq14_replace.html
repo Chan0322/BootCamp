@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function(){
+            $("button:first").click(function(){
+                // alert("button");
+                $("p").replaceWith("<b>replaceWith</b>"); // p태그를 저거로 바꿔라
+            });
+            $("button:last").click(function(){
+                $("<b>replaceAll</b>").replaceAll("p"); // p태그를 저거로 바꿔라
+            });
+        });
+    </script>
+</head>
+<body>
+    <div>
+        <p>DOM 대체</p>
+        <p>DOM 대체</p>
+    </div>
+    <hr>
+    <button>바꾸기(replaceWith)</button>
+    <button>바꾸기(replaceAll)</button>
+</body>
+</html>

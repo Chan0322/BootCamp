@@ -1,0 +1,29 @@
+<!-- day4 -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css"> /*타입 명시를 생략해도 되지만, 쓰는게 좋긴 함.*/
+        div h1{ /*div 태그 아래에 있는 h1 태그 선택. 하위 선택자.*/
+            font-weight: bold; /*h1은 기본적으로 폰트 스타일이 볼드이므로 변하는게 없다. 숫자로 수치 값을 입력해도 된다.
+            볼드는 700에 해당. 100단위로 끊어서 입력하면 된다. 최대가 900? 1000?
+            브라우저 개발자 도구에서 display: block;은 블록 요소라는 뜻*/
+            font-style: italic; /*i 태그와 유사하게 폰트가 기울어짐.*/
+            font-size: 25px;
+            line-height: 500%; /*행 간(행 들간의 간격, 글자 라인의 높이)을 조절할 수 있다. 마진, 패딩 영역이 아닌 컨텐츠 영역이 커짐.*/
+            font-family: "궁서"; /*글꼴 변경*/
+        }
+        /* span{
+            font-weight: bold; /*b 태그도 글자 굵기가 진하게 표시되므로 딱히 변함 없
+        } */
+    </style>
+ </head>
+ <body>
+    <div>
+        <h1>[현대이지웰] Java 풀스택 개발자 아카데미</h1>
+    </div>
+    <!-- <b>test 1234 abcd</b> -->
+ </body>
+ </html>

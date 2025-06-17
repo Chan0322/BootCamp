@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 300px;
+            height: 300px;
+            vertical-align: middle; /*중심축을 맞춰 양옆 a태그와 맞춤.*/
+        }
+        a{
+            font-size: 30px;
+            text-decoration: none; /*밑줄 없앰.*/
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            // document.querySelectorAll("a")[0].onclick=()=>{alert("Asdf");} // onload 밖에 있다면 아직 아래 a태그를 읽기 전이라 실행 불가.
+            // alert("asdf");
+            let count = 1; // 현재 보여지는 이미지의 넘버
+            let aTags = document.querySelectorAll("a");
+            let img = document.querySelector("img");
+
+            // 왼쪽 a 태그
+            aTags[0].onclick=()=>{
+                // alert("left"); // 확인용
+                let imgAlt = img.getAttribute("alt"); // alt 속성 값을 가져옴
+                // console.log(imgAlt);
+                if(imgAlt == "img01"){
+                    count = 3;
+                    img.setAttribute("alt", "img03");
+                    img.setAttribute("src","../1_html/sample/images/img03.png");
+                }else{
+                    img.setAttribute("alt","img0"+(--count));
+                    img.setAttribute("src","../1_html/sample/images/img0"+count+".png");
+                }
+            }
+            // 오른쪽 a 태그
+            aTags[1].onclick=()=>{
+                // alert("right");
+                let imgAlt = img.getAttribute("alt");
+                if(imgAlt == "img03"){
+                    count = 1;
+                    img.setAttribute("alt","img01");
+                    img.setAttribute("src","../1_html/sample/images/img01.png");
+                }else{
+                    img.setAttribute("alt","img0"+(++count)); // alt 속성은 이미지가 깨지는 등 문제가 생길 경우 텍스트로 대체하겠다는 속성.
+                    img.setAttribute("src","../1_html/sample/images/img0"+count+".png");
+                }
+            }
+
+        }
+        
+    </script>
+</head>
+<body>
+    <div>
+        <a id="lt" href="#"> ⏪ </a>
+        <img alt="img01" src="../1_html/sample/images/img01.png">
+        <a id="rt" href="#"> ⏩ </a>
+    </div>
+</body>
+</html>

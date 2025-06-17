@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <script>
+        $(()=>{
+            // $("p:eq(0)").add("span").css("color","red"); // p태그와 추가로 span태그 선택
+            // console.log($("p:eq(0)").add("span"));
+
+            $('div').children().click((e)=>{ // 매개변수 이벤트 객체. 이벤트의 정보를 가져와
+                // console.log($(this));
+                // alert('ss');
+                // console.log(e.target); // 뭘 눌러서 이벤트가 발생했는지 알 수 있음.
+                
+                if($(e.target).is("p")){
+                    $(e.target).css("background-color", "skyblue");
+                    //화살표함수에서는 this가 안먹힌다. 화살표함수는 this라는 키워드를 사용하기 부적절.
+                    //
+                }
+            });
+            $("div").children().click(function(){
+                if($(this).prop("tagName") == "SPAN"){
+                    $(this).css("background-color","yellow");
+                }
+            });
+            // 화살표 함수의 this => 외부의 this 사용으로 window 등과 같은 객체와 연결
+            // 일반 함수의 this => 이벤트 발생된 dom 엘리먼트와 연결
+        });
+    </script>
+</head>
+<body>
+    <div>
+        <p>add()</p>
+        <span>add(): 선택한 엘리먼트에 추가적으로 selector를 통해 표현식을 작성하고 추가한다.</span>
+        <p>is()</p> <!--맞는지 확인하는 거-->
+        <b>선택한 엘리먼트들 중에서 원하는 엘리먼트가 있는지 확인</b>
+    </div>
+</body>
+</html>

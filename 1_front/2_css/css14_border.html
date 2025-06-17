@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 20px;
+            font-size: 30px;
+        }
+        .c1{background-color: orange;}
+        .c2{background-color: aqua;}
+        .c3{background-color: blue;}
+        .c4{background-color: greenyellow;}
+
+        li{/*리스트 태그에 속성 적용*/
+            list-style-type: none;
+            /* 리스트의 기호를 바꿀 수 있다. */
+            width: 100px;
+            height: 70px;
+            float: left; /*플롯을 통해서도 한줄로 세울 수 있다. 플렉스로도 처리가 가능.*/
+            padding-top: 30px; /*width, height 값이 정해져 있더라도 패딩을 통해서 크기를 변경할 수 있다. => 정사각형처럼 보이게 함*/
+            border-radius: 50px 50px 50px 50px; /* 왼쪽위 오른쪽위 오른쪽아래 왼쪽아래 시계방향으로.
+            값을 하나만 적으면 모두 동일 테두리를 둥글게 처리. 값이 작을수록 끝이 덜 둥글게 됨*/
+            text-align: center;
+            box-shadow: 10px 10px rgba(0, 0, 1, 0.3); /*그림자 넣기*/
+            margin-left: 20px; /*서로 공간 띄워주기. 간격 띄우기*/
+        }
+
+    </style>
+</head>
+<body>
+    <ul>
+        <li class="c1">A</li>
+        <li class="c2">B</li>
+        <li class="c3">C</li>
+        <li class="c4">D</li>
+    </ul>
+</body>
+</html>

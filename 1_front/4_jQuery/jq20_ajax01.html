@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin: 0px; padding: 0px;}
+        table{width: 400px;}
+        fieldset{width: 400px;}
+        table tr:nth-child(odd){background-color: orange;}
+        body{width: 1000px; margin: 50px auto;}
+    </style>
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function(){
+            $("#emp_search").click(function(){
+                let empid = $("input[name=empid]").val();
+                // alert(empid);
+                
+/*<!-- XML은 웹 상에서 데이터를 전달하기 위한 목적. 지금은 json에게 자리를 뺏기고
+프로젝트에서 거의 설정 파일로 쓰임.  목적이 명확함.
+JSON은 더 가볍고 빠름. JS의 객체와 똑같이 생겨 스크립트에서 쓰기에도 편함.
+--*/
+
+                if(empid.length>2){
+                    //데이터 가져오기
+                    $.ajax({
+                        url:"emplist.xml",      //통신할 페이지 주소
+                        method:"get",           //서버에 요청하는 방식
+                        // data:{id:"lcj1234"},    //서버에 전송할 데이터
+                        dataType:"xml",         //전송받을 데이터의 타입(xml, json, html...)
+                        //async:false           //비동기 요청인지 동기 요청인지 결정.
+                        success:function(data){     //통신에 성공했을 때 실행.
+                            //성공했을 때 매개변수를 받아줘야 사용 가능.
+                            let empInfo = $(data).find("EMPLOYEE_ID:contains("+empid+")").parent(); // 원하는 데이터를 갖고 있는 ROW 태그를 찾음.
+                            console.log(empInfo);
+
+                            if((empInfo).is("ROW")){
+                                $("table input").each(function(i){
+                                    $(this).val($(empInfo).children().eq(i).text());
+                                });
+                            }else{
+                                alert("검색대상이 존재하지 않습니다.");
+                            }
+                        },
+                        error:function(){       //통신에 실패했을 때 실행.
+                            alert("데이터 로드 실패");
+                        }
+                    });
+                    // $.ajax({
+                    //     url:"emplist.xml",
+                    //     method:"get",
+                    //     dataType:"xml",
+                    //     success:function(data){
+                    //         console.log(data)
+                    //     },error:function(request){
+                    //         console.log(request.responseText);
+                    //     }
+                    // });
+                }else{
+                    alert("사원번호를 제대로 입력해 주세요!");
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <!-- 순수자바스크립트에서는 XMHTTPRequest를 통해서 비동기 통신 사용 가능. -->
+    <h1>데이터 가져오기</h1>
+    <fieldset>
+        <legend>사원정보 조회</legend>
+        <input type="text" name="empid">
+        <input type="button" id="emp_search" value="조회">
+    </fieldset>
+    <hr>
+    <table>
+        <tr>
+            <th>사원번호</th>
+            <td><input type="text" name="empNum"></td>
+        </tr>
+        <tr>
+            <th>이 름</th>
+            <td><input type="text" name="lastName"></td>
+        </tr>
+        <tr>
+            <th>이 메 일</th>
+            <td><input type="text" name="email"></td>
+        </tr>
+        <tr>
+            <th>전화번호</th>
+            <td><input type="text" name="phone"></td>
+        </tr>
+        <tr>
+            <th>입 사 일</th>
+            <td><input type="text" name="hire"></td>
+        </tr>
+    </table>
+</body>
+</html>

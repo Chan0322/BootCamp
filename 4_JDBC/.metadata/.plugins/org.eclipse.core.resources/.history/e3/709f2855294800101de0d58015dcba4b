@@ -1,0 +1,77 @@
+package com.model.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.model.dto.Product;
+
+import static common.JDBCTemplate.*;
+
+public class ProductDao {
+
+	public List<Product> selectAll(Connection con){
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		List<Product> res = new ArrayList<>();
+		String sql = " SELECT * FROM PRODUCT ";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			rs = pstm.executeQuery();
+			
+			while(rs.next()) {
+				Product p = new Product(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4)); // 데이터를 다 담고,
+				res.add(p); // 리스트에 추가
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("[Error]selectAll 에러");
+		}finally {
+			close(rs);
+			close(pstm);
+		}
+		return res;
+	}
+	
+	public Product selectOne(Connection con, String id) {
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		Product res = null;
+		String sql = " SELECT * FROM PRODUCT WHERE P_ID=? ";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setString(1, id);
+			rs = pstm.executeQuery();
+			
+			// 한 개만 가져오기에 반복문 아니어도 됨
+			if(rs.next()) {
+				res = new Product(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("[Error]selectOne 에러");
+		}finally {
+			close(rs);
+			close(pstm);
+		}
+		return res;
+	}
+	
+	public int insert(Connection con, Product dto) {
+		return 0;
+	}
+	
+	public int update(Connection con, Product dto) {
+		return 0;
+	}
+	
+	public int delete(Connection con, String id) {
+		return 0;
+	}
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.lv2.lv2_bj1&apos; to &apos;Lv2_Bj1&apos;&#x0D;&#x0A;- Original project: &apos;Study_BaekJoon&apos;&#x0D;&#x0A;- Original element: &apos;com.lv2.lv2_bj1&apos;&#x0D;&#x0A;- Renamed element: &apos;com.lv2.Lv2_Bj1&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;lv2_bj1&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;com.lv2{lv2_bj1.java[lv2_bj1" matchStrategy="1" name="Lv2_Bj1" qualified="false" references="true" similarDeclarations="false" stamp="1747318660561" textual="false" version="1.0"/>
+</session>

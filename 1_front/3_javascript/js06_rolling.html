@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        a{cursor: pointer;}
+        #gallery{width: 200px; vertical-align: middle;}
+        h1{display: inline-block;}
+    </style>
+    <script>
+        let num = 1; // 전역변수. 화면이 닫히기 전까지 살아있음.
+
+        function next(){
+            num = num+1;
+            // alert("123");
+            if(num > 3){
+                num=1;
+            }
+            document.getElementById("gallery").src="../1_html/sample/images/img0"+num+".png"
+            
+            return false; // onclick으로 넥스트가 실행되고, false값이 온클릭에 들어간다.
+            // 그 후 a태그에 리턴을 한번 더 해주면 다음 이벤트인 링크가 동작하지 않고 이벤트가 취소되어 이미지만 바뀐다.
+        }
+
+        function prev(){
+            num = num-1;
+            if(num < 1){
+                num=3;
+            }
+            document.getElementById("gallery").src="../1_html/sample/images/img0"+num+".png"
+        }
+    </script>
+</head>
+<body>
+    <div id="galleryWrap">
+        <h1><a onclick="prev();"> < </a></h1>
+        <img src="../1_html/sample/images/img01.png" id="gallery">
+        <h1><a onclick="return next();" href="http://www.naver.com"> > </a></h1>
+    </div>
+</body>
+</html>

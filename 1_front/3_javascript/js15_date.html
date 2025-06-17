@@ -1,0 +1,56 @@
+<!-- 날짜 관련 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload=function(){
+            document.getElementsByTagName("button")[0].onclick=dateTest01;
+            document.getElementsByTagName("button")[1].onclick=dateTest02;
+        }
+        function dateTest01(){
+            // alert("asdf"); 잘 연결되었는지 테스트용
+            let toDay = document.getElementById("today");
+
+            //오늘날짜 Date객체 생성
+            let date = new Date();
+
+            toDay.innerHTML = date + "<br>";
+            toDay.innerHTML += date.toDateString()+"<br>"; // 날짜만
+            toDay.innerHTML += date.toLocaleString()+"<br>"; // 언어별로 구분해서 문자열로 날짜,시간 전체 값을 반환
+            toDay.innerHTML += date.toLocaleDateString()+"<br>"; // 그 자역에 맞춰서 날짜 값만
+            toDay.innerHTML += date.toLocaleTimeString()+"<br>"; // 그 지역에 맞춰서 시간만
+
+            let year = date.getFullYear();
+            let month = date.getMonth()+1; //month는 1 적게 저장이 되는 특성이 있어 1 증가시켜야한다.
+            let day = date.getDate(); // 몇일
+            let week = date.getDay(); // 무슨 요일. 일-0 월-1 화-2 수-3 목-4 금-5 토-6 숫자로 저장됨.
+            let dayOfWeek = ['일','월','화','수','목','금','토']
+
+            toDay.innerHTML += "------------------------<br>";
+            toDay.innerHTML += year+"/"+month+"/"+day+"/"+dayOfWeek[week]+"<br>";
+            //month는 1 적게 저장되는 특징이 있다. week는 숫자 값으로 저장됨.
+        }
+
+        function dateTest02(){
+            let date = new Date(2022,2-1,22); //비워두면 오늘. 뭔갈 채우면 그에 해당하는 날짜
+            //month는 1 적게 해야 인식 가능.
+            document.getElementById("specific").innerHTML = date.toLocaleString()+"<br>";
+
+            date.setFullYear(2023); // get은 데이터를 가져오고, set은 값을 넣는다(저장한다).
+            document.getElementById("specific").innerHTML += date.toLocaleString();
+        }
+    </script>
+</head>
+<body>
+    <h1>오늘 날짜 출력</h1>
+    <span id="today"></span><br>
+    <button>오늘날짜</button>
+
+    <h2>특정 날짜 출력</h2>
+    <span id="specific"></span><br>
+    <button>특정날짜</button>
+</body>
+</html>

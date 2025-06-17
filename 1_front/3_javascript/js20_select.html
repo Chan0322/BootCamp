@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    function test01(){
+        // alert("확인");
+        let food = document.getElementsByName("food")[0];
+
+        // console.log(food);
+
+        // selectedIndex : 선택한 option 태그의 인덱스 반환
+        let idx = food.selectedIndex;
+        console.log(idx);
+        
+        //options : select 태그가 가지고 있는 option 태그들
+        // console.log(food.options);
+        let foodVal = food.options[idx].value;
+        alert(foodVal + " 저녁메뉴");
+    }
+
+    function test02(){
+        var food = document.getElementsByName("food")[1];
+        console.log(food.options); // 다중 선택하면 제일 앞에 있는 인덱스 번호만 저장이 된다.
+        // 하나 선택일 땐 인덱스 값을 통해 접근하면 되지만,
+        // 다중 선택일 경우에는 선택이 되었는지 하나하나 다 체크해봐야 한다.
+
+        let str=""; // 옵션 태그들 중에서 선택된 value 값들을 모으기 위한 변수.
+        for(let i=0; i<food.options.length; i++){ // options 태그가 6개이므로 6번 반복
+            // 첫 번째 option 선택은 필요 없으므로 1부터 해도 됨.
+            if(food.options[i].selected){
+                str += food.options[i].value + " ";
+            }
+        }
+        alert("저녁 메뉴: " + str);
+    }
+</script>
+<body>
+    <h1>저녁 메뉴</h1>
+    <form>
+        <select name="food" onchange="test01();"> <!--태그에 변경사항이 생기면-->
+            <option>--선택--</option>
+            <option value="스파게티">스파게티</option>
+            <option value="제육볶음">제육볶음</option>
+            <option value="서브웨이">서브웨이</option>
+            <option value="김치찜">김치찜</option>
+            <option value="피자">피자</option>
+            <!-- select 태그에 name 속성 값이 적절히 붙어 있어야 value 값이 잘 넘어간다. -->
+        </select>
+        <br><hr><br>
+        <select name="food" multiple="multiple" size="5">
+            <option>--선택--</option>
+            <option value="스파게티">스파게티</option>
+            <option value="제육볶음">제육볶음</option>
+            <option value="서브웨이">서브웨이</option>
+            <option value="김치찜">김치찜</option>
+            <option value="피자">피자</option>
+        </select>
+        <input type="button" value="선택" onclick="test02();">
+    </form>
+    
+
+</body>
+</html>

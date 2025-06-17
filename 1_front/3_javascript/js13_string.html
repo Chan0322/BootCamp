@@ -1,0 +1,77 @@
+<!-- 문자를 처리하는 부분을 담당하는 객체 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function strTest01(){
+            let str01 = "String"; // 일반적인 문자열 값
+            let str02 = new String("Test"); // 스트링 객체를 생성하며 Test를 넣음. 좀 더 자세히 보이게 됨.
+
+            console.log(str01);
+            console.log(str02);
+
+            // 문자열 더하기
+            let str03 = str01 + str02;
+            console.log(str03);
+
+            //concat() : 여러 문자열을 하나로 합치는 함수
+            let newStr = str01.concat(" Test", " Java", "Script", 1);
+            console.log("concat: " + newStr);
+
+            let num = 12.5;
+            let bool = true;
+            let res = "String " + num + bool;
+            console.log("res: " + res);
+            console.log(res + ":" + typeof(res));
+
+            // toUpperCase() : 대문자로, toLowerCase() : 소문자로
+            let str = "Apple iphone";
+            console.log("toUpperCase() : " + str.toUpperCase() );
+            console.log("toLowerCase() : " + str.toLowerCase() );
+
+            // length    => 문자열의 길이 확인 가능. 메소드가 아님. () 금지!
+            console.log("length: " + str.length);
+
+            // indexOf() : 문자열 탐색, 왼쪽->오른쪽, 탐색된 첫번째 인덱스 값을 반환.
+            //lastIndexOf() : 오른쪽->왼쪽
+            // 찾으려는 문자의 인덱스 번호 리턴(처음부터 탐색하다가 첫번째로 발견되는 인덱스만 리턴).
+            console.log("indexOf() : " + (str.indexOf("pl")));
+            console.log("lastIndexOf() : " + str.lastIndexOf("e"));
+            // 없는 값을 찾으면 -1 리턴.
+
+
+            //substring(startIdx, endIdx) : 문자열을 시작인덱스와 종료인덱스를 입력하여 원하는 문자열을 추출.
+            //                              startIdx에서 부터 endIdx 이전까지 추출.
+            str = "문자열 추출하기.관련 함수:indexOf,substring.";
+            let startIdx = str.indexOf(":"); //추출 위한 인덱스 번호를 찾기 위함.
+            let endIdx = str.lastIndexOf(".");
+            // console.log(endIdx);
+            let subStr = str.substring(startIdx+1, endIdx); //시작인덱스부터 종료인덱스 전까지
+            console.log(subStr);
+            // console.log(str); //원본은 그대로 유지.
+            //"indexOf,substring"
+            // str.substring(str.indexOf(":")+1,str.lastIndexOf(".")); // 이렇게 적을 수 있음. 단, 가독성은 떨어짐.
+
+            //split() : 기준이 되는 요소로 나뉘어 배열로 저장
+            let splitVal = subStr.split(",");
+            console.log(splitVal);
+            console.log(splitVal[0]);
+
+            str = "이창진 김창진 박창진 최창진 전창진";
+            console.log(str.split(" "));
+        }
+    </script>
+</head>
+<body>
+    <h1>String(문자열)</h1>
+    <p>"",''로 묶여있는 리터럴(값)<br>
+    자바스크립트의 내장객체로 String객체의 기본적인 메소드가 있다.
+    <!-- 자바에서는 "문자열", '문자'로 인식. -->
+    </p>
+    <h3>문자열 처리 메소드</h3>
+    <button onclick="strTest01();">클릭</button>
+</body>
+</html>

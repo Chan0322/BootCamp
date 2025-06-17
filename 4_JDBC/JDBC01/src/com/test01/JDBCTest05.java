@@ -1,0 +1,100 @@
+package com.test01;
+
+import static common.JDBCTemplate.*;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Scanner;
+
+public class JDBCTest05 {
+	
+	public static void main(String[] args) throws SQLException {
+		//[1] insert
+		//Scanner를 이용하여 번호, 이름, 별명을 입력 받아
+		//MYTEST 테이븝에 저장
+//		insert();
+		//[2] select
+		// 그리고 저장 후 조회해서 콘솔애 출력
+//		select();
+		
+		//추가
+		//while문을 추가하여 반복하기.
+		//ex)메뉴- 1.추가 2.조회 3.종료
+		while(true) {
+			System.out.println("----------------------------------");
+			System.out.println("메뉴 선택");
+			System.out.println("1. 추가");
+			System.out.println("2. 조회");
+			System.out.println("3. 종료");
+			System.out.print("번호 입력: ");
+			
+			Scanner sc = new Scanner(System.in);
+			int num = sc.nextInt();
+			
+			switch(num) {
+			case 1:
+				insert();
+				break;
+			case 2:
+				select();
+				break;
+			case 3:
+				return;
+			default:
+				System.out.println("잘못 입력하셨습니다. 다시 입력해주세요.");
+				break;
+			}
+		}
+	}
+
+	public static void insert() throws SQLException {
+		Connection con = null;
+		Statement stmt = null;
+		
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.print("번호: ");
+		int no = sc.nextInt();
+		System.out.print("이름: ");
+		String name = sc.next();
+		System.out.print("별명: ");
+		String nickName = sc.next();
+		
+		String sql = " INSERT INTO MYTEST VALUES("+no+", '"+name+"', '"+nickName+"') ";
+		
+		con = getConnection();
+		stmt = con.createStatement();
+		
+		int res = stmt.executeUpdate(sql);
+		
+		if(res>0) {
+			System.out.println("insert 성공");
+		}else {
+			System.out.println("insert 실패");
+		}
+		
+		close(stmt);
+		close(con);
+	}
+	
+	public static void select() throws SQLException {
+		Connection con = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		
+		String sql = " SELECT * FROM MYTEST ";
+		
+		con = getConnection();
+		stmt = con.createStatement();
+		rs = stmt.executeQuery(sql);
+		
+		while(rs.next()) {
+			System.out.println(rs.getInt(1) + "\t" + rs.getString(2) + "\t" + rs.getString(3));
+		}
+		close(rs);
+		close(stmt);
+		close(con);
+	}
+}

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .area{
+            height: 200px;
+            border: 2px solid red;
+        }
+    </style>
+    <script>
+        window.onload=()=>{
+            // document.getElementsByTagName("button")[0].onclick=function(){alert("123");}
+            // 버튼 클릭시 이벤트가 잘 감지되고 동작하는지 확인함.
+            document.getElementsByTagName("button")[0].onclick=arrTest1;
+            document.getElementsByTagName("button")[1].onclick=arrTest2;
+            document.getElementsByTagName("button")[2].onclick=arrTest3;
+            document.getElementsByTagName("button")[3].onclick=arrTest4;
+            document.getElementsByTagName("button")[4].onclick=arrTest5;
+            document.getElementsByTagName("button")[5].onclick=arrTest6;
+            document.getElementsByTagName("button")[6].onclick=arrTest7;
+            document.getElementsByTagName("button")[7].onclick=arrTest8;
+            document.getElementsByTagName("button")[8].onclick=arrTest9;
+        }
+        function arrTest1(){
+            // alert("123");
+            let arr = ['이창진',20,true,[1,2,3,4]]; // 배열을 통해 변수 하나로 여러 값을 저장 가능.
+            document.getElementById("area1").innerHTML = arr;
+            console.log(arr);
+            // 반복문을 통해 배열을 하나씩 접근 가능
+        } // 이렇게도 작성 가능하고. 이렇게 작성하는게 제일 깔끔.
+        function arrTest2(){
+            //배열 선언
+            var arrObj = new Array();
+            var arrObj01 = [];
+            // console.log(arrObj);
+            // console.log(arrObj01);
+
+            let arrObj02 = new Array(5); // 배열의 길이 정의
+            // console.log(arrObj02[1]);
+        
+            let arrObj03 = new Array(1,2,3,4,5,6,7); // 초기값 정의
+            // 숫자 하나만 넣으면 길이 정의. 여러개 넣으면 초기값!
+            // = [1,2,3,4,5,6,7];
+            console.log(arrObj03);
+
+            // 배열에 값 대입
+            // arrObj02 = "이창진";
+            // console.log(arrObj02 + typeof arrObj02);
+            // 값을 이렇게 넣으면, 원래는 변수안에 배열이 있었는데, String 값으로 바뀌어 버린다.
+            arrObj02[0] = '바나나';
+            arrObj02[1] = '딸기';
+            arrObj02[2] = '복숭아';
+            arrObj02[3] = '메론';
+            arrObj02[4] = '키위';
+            console.log(arrObj02);
+            // 인덱스 번호를 통해 배열에 적절한 값을 대입할 수 있다.
+
+            //속성(값)
+            console.log(arrObj02.length); // 배열의 길이
+        }
+        const arrTest3 = ()=>{
+            //indexOf()
+            var arr = ['사과','딸기','바나나','복숭아','키위','망고'];
+
+            document.getElementById("area2").innerHTML += "복숭아가 있는 인덱스: " + arr.indexOf("망고");
+            // 찾으려는 요소가 없다면 -1   
+        }
+        function arrTest4(){
+            let doc = document.getElementById("area3");
+            
+            let arr1 = ['사과','딸기','바나나'];
+            let arr2 = ['복숭아','키위','망고','파인애플','참외'];
+            let arr3 = arr1.concat(arr2); // arr1을 기준으로 arr2를 합친다.
+            
+            doc.innerHTML = "arr1 : " + arr1 + "<br>";
+            doc.innerHTML += "arr2 : " + arr2 + "<br>";
+            doc.innerHTML += "arr1을 기준으로 concat: " + arr3 + "<br>";
+            doc.innerHTML += "arr2을 기준으로 concat: " + arr2.concat(arr1) + "<br>";
+
+            let arr4 = ['수박','메론'];
+            doc.innerHTML += "arr1을 기준으로 concat: " + arr1.concat(arr2, arr4) + "<br>";
+        } // 합쳐지는 애가 기준 뒤에 붙여진다. 다수의 배열을 뒤에 붙일 수 있다.
+
+        function arrTest5(){
+            //join
+            let arr = ['모니터','키보드','마우스','커피','스피커','핸드크림','마이크','향수'];
+            let arrJoin = arr.join();
+
+            let doc = document.getElementById("area4");
+
+            doc.innerHTML += "arr: " + arr + "<br>";
+            doc.innerHTML += "arr의 자료형" + typeof(arr) + "<br>";
+            doc.innerHTML += "arrJoin: " + arrJoin + "<br>";
+            doc.innerHTML += "arrJoin의 자료형: " + typeof(arrJoin) + "<br>";
+            //문자열로 바뀌었음
+
+            //배열의 각 요소들을 지정한 문자(구분자)로 연결하여 하나의 문자열로 반환하는 함수.
+            arrJoin = arr.join('!');
+            doc.innerHTML += "arrJoin: " + arrJoin + "<br>";
+            //배열이 join에 입력한 문자로 String으로 변해 출력됨. 입력 안하면 전부 붙어서 출력.
+        }
+
+        function arrTest6(){
+            let arr = [10, 540, 35, 450, 123, 890];
+            // arr = ["aa", "da", "ca", "ba","cb"];
+            let doc = document.getElementById("area5");
+
+            doc.innerHTML += "arr: " + arr + "<br>";
+
+            //오름차순 정렬하고 그대로 유지됨.
+            doc.innerHTML += "arr.sort(): " + arr.sort() + "<br>";
+            doc.innerHTML += "sort 후 arr: " + arr + "<br>"; //정렬이 그대로 유지
+            // 아스키코드를 기준으로 맨 앞에 있는 숫자를 기준으로 정렬해버림.
+            // 유니코드 값을 기준으로 오름차순을 정렬해버림. => 숫자지만 문자열처럼 취급을 당해버림.
+            // 이 문제를 해결하기 위해서는 추가적인 코드 작성 필요 + 내림차순도 마찬가지.
+
+            doc.innerHTML += "arr.sort(compare1): " + arr.sort(compare1) + "<br>";
+            // 해당 함수를 기준으로 정렬. 이처럼 정렬의 기준을 추가해주면 원하는대로 마음대로 정렬 가능.
+            doc.innerHTML += "arr.sort(compare2): " + arr.sort(compare2) + "<br>";
+
+            doc.innerHTML += "arr.sort(compare1): " + arr.sort(compare1) + "<br>"
+            doc.innerHTML += arr.reverse() + "<br>";
+            //오름차순만 제대로 되어 있다면 리버스를 통해 간단하게 내림차순 구현 가능.
+            doc.innerHTML += arr; // 리버스 후에도 잘 유지됨.
+
+            //문자열은 이러한 필요 없이 기본 정렬만 사용해도 잘 된다.
+        }
+        // 정렬의 기준으로서 사용할 함수.
+        function compare1(no1, no2){
+            return (no1-no2);
+            //음수 리턴 : 제자리
+            //양수 리턴 : 위치 변경
+            // 이 차이가 바꿀지말지를 결정.
+            // 음수를 리턴하면 뒤에있는 값이 더 큼. => 제자리
+            // 양수를 리턴하면 뒤에 있는 값이 더 작으므로 자리 변경.
+            // 앞에 음수를 붙이면 내림차순
+        }
+        function compare2(no1, no2){
+            return -(no1-no2);
+            // 앞에 음수를 붙이면 내림차순
+            // 문자열의 경우 불가. 이상함.
+        }
+
+
+        function arrTest7(){
+            let doc = document.getElementById("area6");
+            let arr = ['서초동','방배동','역삼동','대치동','삼성동'];
+
+            doc.innerHTML += "arr의 기본: " + arr + "<br>";
+
+            arr.push('하남시');
+            doc.innerHTML += "arr에 push: " + arr + "<br>";
+            console.log(arr);
+
+            arr.push("양재동");
+            doc.innerHTML += "arr에 push: " + arr + "<br>";
+
+            arr.sort();
+            doc.innerHTML += "arr에 push: " + arr + "<br>";
+
+            let tmp = arr.pop();
+            doc.innerHTML += "arr에 pop: " + arr + "<br>";
+            doc.innerHTML += "arr에서 pop을 진행 후 tmp: " + tmp + "<br>"; //삭제한 내용을 가져옴.
+
+
+            arr.pop();
+            doc.innerHTML += "arr에 한번 더 pop: " + arr + "<br>";
+        }
+
+        function arrTest8(){
+            let doc = document.getElementById("area7");
+            let arr = ['야구','축구','농구','배구','탁구'];
+
+            doc.innerHTML += "arr의 기본값: " + arr + "<br>";
+
+            doc.innerHTML += "arr에서 shift하면? : " + arr.shift() + "<br>";
+            doc.innerHTML += "shift 후 arr: " + arr + "<br>";
+
+            doc.innerHTML += "arr에 unshift를 하면? : " + arr.unshift("당구") + "<br>";
+            doc.innerHTML += "unshift 후 arr: " + arr + "<br>";
+            //언쉬프트는 배열의 길이를 가져온다.
+        }
+
+
+        function arrTest9(){
+            var doc = document.getElementById("area8");
+            var arr = ['삼겹살','항정살','살치살','등심','안심'];
+
+            doc.innerHTML += "arr의 기본값: " + arr + "<br>";
+
+            //slice(시작인덱스,종료인덱스) => 어디서부터 어디까지 잘라낼 것인가
+            doc.innerHTML += "slice 실행: " + arr.slice(0,3) + "<br>";
+            //인덱스 2에서부터 4이전까지 잘라냄.
+            // 배열에서 꺼내오는 것일 뿐, 원래 있던 데이터들 모두 원본은 남는다.
+            doc.innerHTML += "slice 실행 후 arr: " + arr + "<br>";
+            console.log(arr.slice(0,3));
+            // slice는 배열로 꺼내오는 것이다.
+
+            doc.innerHTML += "<br>";
+            // splice(index, 제거수, 추가값)
+            // doc.innerHTML += "splice 실행: " + arr.splice(2, 2) + "<br>";
+            doc.innerHTML += "splice 실행: " + arr.splice(2, 2, '갈비살') + "<br>";
+            //인덱스 2부터 시작해서 2개 제거하겠다. 그리고 그 위치에 갈비살을 추가하겠다.
+            doc.innerHTML += "splice 실행 후 arr: " + arr + "<br>";
+            // splice는 원하는 것을 잘라서 제거를 할 수 있다.
+            // slice는 원본의 어떤 값을 복사해 오는 것이라 생각하면 된다.
+
+
+            //toString() : 배열을 문자열로 반환
+            let str = arr.toString();
+            doc.innerHTML += "arr: " + arr + "<br>";
+            doc.innerHTML += "arr에 toString: " + str + "<br>";
+            doc.innerHTML += "str의 타입: " + typeof(str) + "<br>";
+        }
+    </script>
+</head>
+<body>
+    <h1>배열(Array)</h1>
+    <p>배열이란 모든 자료형의 데이터를 저장할 수 있는 변수의 묶음이다.
+        자바에서의 컬렉션에 List와 거의 흡사하다.</p>
+    <!-- js의 특징. 변수에 저장만 하면 모든 타입의 데이터를 저장할 수 있다. 
+    여러개의 값들을 묶어서 한 번에 접근 가능. 인덱스를 적지 않으면 배열 전체를 의미하고,
+    인덱스 번호를 적음으로써 배열의 원하는 데이터만 가져올 수 있다. 
+    문자, 숫자, 배열, 객체 모두 다 저장 가능.-->
+    <div id="area1" class="area"></div>
+    <button>확인</button>
+
+    <h3>배열의 선언</h3>
+    <p>new를 이용한 배열 선언과 리터럴로 선언</p>
+    <button>확인</button>
+
+    <h3>array객체의 메소드</h3>
+    <h4>indexOf() : 배열에서 요소가 위치한 인덱스 리턴</h4> <!--요소란 배열의 값 하나하나를 의미
+    즉, 배열에서 내가 원하는 값이 몇번째에 위치한 것인지 찾을 수 있음-->
+    <div id="area2" class="area"></div>
+    <button>확인</button>
+
+    <h4>concat() : 두 개 이상의 배열을 결합</h4>
+    <div id="area3" class="area"></div>
+    <button>확인</button>
+
+    <h4>join() : 배열을 문자열로 반환</h4>
+    <div id="area4" class="area"></div>
+    <button>확인</button>
+
+    <h4>sort() : 배열을 정렬</h4>
+    <div id="area5" class="area"></div>
+    <button>확인</button>
+
+    <h4>push() : 배열의 맨 뒤에 요소 추가, pop() : 배열의 맨 뒤에 있는 요소 제거</h4>
+    <!-- pop은 제거하면서 그 값을 반환해준다. -->
+    <div id="area6" class="area"></div>
+    <button>확인</button>
+
+    <h4>shift() : 배열의 맨 앞에 요소 제거, unshift() : 배열의 맨 앞에 요소 추가</h4>
+    <div id="area7" class="area"></div>
+    <button>확인</button>
+
+    <h4>slice() : 배열의 요소 선택 잘라내기, splice() : 배열의 index위치의 요소 제거 및 추가</h4>
+    <div id="area8" class="area"></div>
+    <button>확인</button>
+</body>
+</html>

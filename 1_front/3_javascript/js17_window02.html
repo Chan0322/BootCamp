@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function test(){
+            let val = document.getElementsByName("test")[0].value;
+            window.opener.document.getElementById("tt").innerHTML=val; // opener 팝업창을 연곳의 문서 정보를 저장하고 있음.
+            // 지금 실행하는 환경 때문에 오류가 뜸. 특정 프로그램(서버 프로그램)이 하나 더 필요.
+            // 서버 프로그램은 작성한 html 파일들을 갖고 있다가 적절한 파일을 보내줌.
+            close();
+        }
+    </script>
+</head>
+<body>
+    <h1>팝업 창</h1>
+    <input type="text" onclick="" name="test">
+    <input type="button" onclick="test();" value="전달">
+    <input type="button" onclick="self.close();" value="창닫기">
+    <!-- self는 윈도우 객체의 프로퍼티 중 셀프. -->
+</body>
+</html>

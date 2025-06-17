@@ -1,0 +1,49 @@
+package com.model.service;
+
+import static common.JDBCTemplate.*;
+
+import java.sql.Connection;
+import java.util.List;
+
+import com.model.dao.MemberDao;
+import com.model.dao.MemberDaoImpl;
+import com.model.dto.Member;
+
+public class MemberServiceImpl implements MemberService {
+	MemberDao dao = new MemberDaoImpl();
+	@Override
+	public List<Member> selectAll() {
+		Connection con = getConnection();
+		
+		List<Member> res = dao.selectAll(con);
+		close(con);
+		return res;
+	}
+
+	@Override
+	public Member selectOne(int n) {
+		Connection con = getConnection();
+		dao.selectOne(con, n);
+		
+		return null;
+	}
+
+	@Override
+	public int insert(Member m) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int update(Member m) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int delete(int n) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

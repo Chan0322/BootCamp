@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function(){
+            $("div>p").eq(0).click(function(){
+                // alert("asdf");
+                //첫번째 b태그 선택
+                $("pre b").eq(0).toggle(); // toggle : 껐다켰다.
+                // $("pre b")[0].toggle();    // jq의 함수를 이용할 것이기 때문에 불가능.
+            });
+
+            $("div>p").eq(1).click(function(){
+                $("pre b").slice(1,2).toggle(); //인덱스 1부터 2 이전까지만 선택.
+            });
+
+            $("div>p").eq(2).click(function(){
+                $("pre b").first().css("color","red");
+            });
+
+            $("div>p").last().click(function(){
+                $("pre b").toggle();
+            });
+        });
+    </script>
+</head>
+<body>
+    <pre>
+        <b>eq()함수 : 선택한 엘리먼트들 중에서 인덱스로 탐색</b>
+        <b>slice() 함수 : 선택한 엘리먼트들 중에서 인덱스 길이로 탐색</b>
+        <b>first() 함수 : 선택한 엘리먼트들 중에서 첫 번째 요소 탐색</b>
+        <b>last() 함수 : 선택한 엘리먼트들 중에서 마지막 요소 탐색</b>
+    </pre>
+    <div>
+        <p>eq()</p>
+        <p>slice()</p>
+        <p>first()</p>
+        <p>last()</p>
+    </div>
+</body>
+</html>

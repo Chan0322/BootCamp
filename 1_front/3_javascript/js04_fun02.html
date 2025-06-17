@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function func01(){
+            alert("명시적 함수")
+        }
+        // 익명함수는 단독사용 불가! 보통 변수를 만들고 거기에 저장한다.
+        const func02 = function(){
+            alert("익명 함수");
+        }
+
+
+        //리터럴 함수
+        //내가 만든 함수를 다른 함수에서도 불러서 사용할 수 있다.
+        function func03(){
+            // literalPrn();
+            // alert("func03 종료!");
+            literalPrn(function(msg){ // 인자값, 파라미터값.
+                alert(msg); // literalPrn 함수안에 익명 함수 생성.
+            });
+        }
+        // function literalPrn(){
+        //     alert("다른 함수")
+        // }
+
+        function a(para){
+            para()
+        }
+        function b(){ //콜백함수. a함수 호출 이후에 뒤늦게(나중에) 실행되는 함수.
+            console.log("asdf")
+        }
+
+        function literalPrn(literal){ //literal이라는 매개 변수. 이 안에서만 사용할 수 있는 지역 변수.
+            // 매개 변수에 값으로 넘기는 함수를 저장한다.
+            // literal = function(){}
+            literal("안녕하세요, 리터럴 입니다.");
+        }
+
+        // 클로저
+        function func04(){
+            // alert(msg);
+            // addVal();
+            
+            // const tmp = closureTest("이창진");
+            // tmp();
+
+            closureTest("이창진")();
+        }
+
+        // const func04 = closureTest("이창진");
+        
+        function closureTest(val){
+            const msg="입니다.";
+            function addVal(){
+                alert(val+" "+msg);
+            }
+            return addVal; //리턴을 통해 어느 위치에서든 내부에 있는 함수를 불러 쓸 수 있다. 리턴에는 괄호를 지워야함.
+        }
+
+
+        // 화살표 함수
+        // [1]본문 한줄
+        function basic(){
+            console.log("1");
+        }
+        const arrow = ()=> {console.log("1");}
+        // const arrow = ()=> {
+        //     console.log("1");
+        //     alert("1");
+        // } // 본문이 두 줄 이상일때
+
+        //[2]매개 변수
+        function basic2(no1, no2){ // 매개변수는 한번에 여러개 받아도 된다.
+            return no1+no2; // 리턴은 값을 하나 리턴한다.
+            //들어오는 값은 여러개일 수 있으나, 반환하는 값은 하나.
+        }
+        // const arrow2 = (no1, no2)=>{ return no1+no2; }
+        const arrow2 = (no1, no2)=> no1+no2; // 리턴문 한줄만 있을 경우 이와 같이 {}, return 등 생략 가능.
+        // 리턴이 아닌 다른 실행 코드가 한 줄 있을 경우에는 생략 불가!
+
+
+        //[3]매개변수 하나
+        function basic3(no1){
+            return no1*10;
+        }
+        const arrow3 = no1 => no1*10;
+        const arrow4 = ()=>10*10; // 매개변수가 없을 때는 생략 불가.
+
+        let arrow5 = ()=>{ // 코드가 여러 줄 일경우 {}로 잘 묶어야 한다.
+            console.log("print");
+            return 10;
+        }
+    </script>
+</head>
+<body>
+    <h2>함수의 종류</h2>
+    <p onclick="func01();">1. 명시적 함수</p>
+    <p onclick="func02();">2. 익명 함수</p>
+    <p onclick="func03();">3. 리터럴 함수</p> <!--리터럴이란 값이라 생각하자. 값을 넣고, 저장하고 등등 이 값으로 사용한다.-->
+    <!-- 함수를 값으로 넘길 수 있다. -->
+
+    <h2>클로저(Closure)</h2>
+    <!-- 함수 등을 선언하고 진행할 때, 내부적으로 선언한 것은 내부에서만 써야 하는데, 이를 벗어나기 위한 가술. -->
+    <!-- 내부에 함수가 있다면, 외부의 다른 함수에 접근이 가능하도록 해준다. -->
+    <p onclick="func04();">클로저</p>
+</body>
+</html>

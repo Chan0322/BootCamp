@@ -1,0 +1,29 @@
+package com.model.dao;
+
+import java.sql.Connection;
+import java.util.List;
+
+import com.model.dto.Product;
+
+public class ProductDao {
+
+	public List<Product> selectAll(Connection con){
+		return null;
+	}
+	
+	public Product selectOne(Connection con, String id) {
+		return null;
+	}
+	
+	public int insert(Connection con, Product dto) {
+		return 0;
+	}
+	
+	public int update(Connection con, Product dto) {
+		return 0;
+	}
+	
+	public int delete(Connection con, String id) {
+		return 0;
+	}
+}

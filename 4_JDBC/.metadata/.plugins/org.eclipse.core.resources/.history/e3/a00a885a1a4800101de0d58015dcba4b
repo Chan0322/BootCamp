@@ -1,0 +1,30 @@
+package com.model.service;
+
+import java.util.List;
+
+import com.model.dao.ProductDao;
+import com.model.dto.Product;
+
+public class ProductService {
+	private ProductDao dao = new ProductDao();
+	
+	public List<Product> selectAll(){
+		return null;
+	}
+	
+	public Product selectOne(String id) {
+		return null;
+	}
+	
+	public int insert(Product dto) {
+		return 0;
+	}
+	
+	public int update(Product dto) {
+		return 0;
+	}
+	
+	public int delete(String id) {
+		return 0;
+	}
+}

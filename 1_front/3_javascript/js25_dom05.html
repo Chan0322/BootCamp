@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let cnt = 0;
+        function addAppend(){
+            let fieldset = document.getElementById("addele");
+
+            let p = document.createElement("p");
+            // p.appendChild(document.createTextNode());
+            // 텍스트 추가
+            p.textContent = "자식태그들 중 마지막에 붙여 넣는다!!"+(cnt++);
+
+            fieldset.appendChild(p);
+        }
+
+        function addBefore(){
+            let fieldset = document.getElementById("addele");
+            
+            let newP = document.createElement("p");
+            newP.textContent = "엘리먼트의 앞에 붙여넣는다.";
+
+            let div = document.querySelector("fieldset > div");
+            fieldset.insertBefore(newP, div); // 추가할 노드, 기준이 될 노드
+        }
+
+        function moveEle(){
+            let ele = document.querySelector("fieldset").children[1]; // div태그. 자식 엘리먼트 노드만. 텍스트노드 제외,
+
+            document.body.appendChild(ele);
+
+        }
+
+        // 내 풀이
+        // function addTest(){
+        //     let btn1 = document.getElementById("test01");
+        //     let p = document.createElement("div");
+        //     p.textContent="dom test";
+        //     btn1.appendChild(p);
+        // }
+        // function moveTest(){
+        //     let btn2 = document.getElementById("test01");
+        //     let btnMove = document.getElementById("test02");
+
+        //     btnMove.appendChild(btn2);
+        // }
+
+        function addTest(){
+            let div = document.createElement("div");
+            div.textContent="dom test";
+
+            document.getElementById("test01").appendChild(div);
+        }
+        function moveTest(){
+            let test01Chi = document.getElementById("test01").children[0];
+            
+            let test02 = document.getElementById("test02");
+            test02.appendChild(test01Chi);
+
+            console.log(test02.parentNode);
+        }
+    </script>
+</head>
+<body>
+    <h1>태그 추가</h1>
+    <button onclick="addAppend();">appendChild()</button>
+    <button onclick="addBefore();">insertBefore()</button>
+    <button onclick="moveEle();">Move Ele</button>
+
+    <fieldset id="addele">
+        <legend>부모태그</legend>
+        <div>div태그</div>
+    </fieldset>
+
+
+    <!--  -->
+    <h3>1. test01태그에 "dom test"라는 내용을 가진 div태그를 추가
+        <button onclick="addTest();">클릭!</button>
+    </h3>
+    <h3>2. test01태그에 추가된 태그들을 test02로 이동시켜보자
+        <button onclick="moveTest();">클릭!!</button>
+    </h3>
+
+    *test01*
+    <div id="test01"></div>
+    *test02*
+    <div id="test02"></div>
+</body>
+</html>

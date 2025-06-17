@@ -1,0 +1,11 @@
+5288893@hanafos.com
+우재남 강사(깃/깃허브 특강)
+
+. 깃 --> 버전 관리 툴
+. 깃허브 --> 클라우드 서비스 + SNS
+. 리눅스 : WSL => Ubuntu, CentOS, Rocky, RHEL.....
+. DB : MySQL, Oracle, SQL Server
+. 리눅스 기본 명령어
+. MarkDown 언어를 통한 깃허브 꾸미기
+
+. 자격증... >> 정보관리 기술사(4년 경력)

@@ -1,0 +1,68 @@
+<!-- Day 3 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        div{
+            border: 1px dashed red;
+            margin: 10px;
+        }
+
+        #body{
+            height: 400px;
+        }
+        #content{
+            height: 90%;
+            width: 60%;
+            float: left;
+        }
+        #aside{
+            height: 90%;
+            width: 30%;
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <!-- 헤더 영역에 검색이나 로고 등을 넣읍시다. <div>로 만들면 구분하기가 어려워 태그 자체를 만들어 사용하는 경우도 있다. <header>-->
+    <!-- 
+    시맨틱 태그와 화면구조.   이런 식으로 만든 웹을 시맨틱웹이라고도 함. 보통 div태그를 이용하는 경우가 보편적.
+    header : 제목, 로고, 아이콘 ...
+    nav : 탐색링크(검색)
+    section : 콘텐츠를 주제별로 묶고 싶을 경우. 세션에는 각각의 아티클이 들어간다.
+    article : 독립적으로 사용할 수 있는 내용(컨텐츠)을 정의 (컨텐츠를 집어 넣는 부분.)
+    aside : 광고나 메인 컨텐츠와 상관없는 별개의 내용을 정의
+    footer : 저자, 저작권, (웹 서비스를 제공하는 회사의)연락처 등을 정의 ex)저작권, 정책, 약관 ...
+    -->
+    <div id="header"> <!--실습하기 편하도록(편하게 확인하기 위해) 헤드 안에서 스타일 적용. 페이지 내부에서 div라는 이름을 가진 태그는
+        전부 이러한 스타일을 적용시킬 것이다. -->
+        <h1>제목</h1>
+        <div>
+            <span><a href="">메뉴1</a></span>
+            <span><a href="">메뉴2</a></span>
+            <span><a href="">메뉴3</a></span>
+            <span><a href="">메뉴4</a></span>
+            <span><a href="">메뉴5</a></span>
+        </div>
+    </div>
+    <hr>
+    <div id="body"> <!--블록요소는 기본적으로 본인을 갖고 있는 상위 태그의 크기만큼 꽉 채워진다.
+        헤드에 #body 아이디가 바디인 태그만 수정-->
+        <div id="content">
+            <div>컨텐츠1</div>
+            <div>컨텐츠2</div>
+            <div>컨텐츠3</div>
+        </div>
+        <div id="aside">광고</div>
+    </div>
+    <hr>
+    <div id="footer">
+        <p>copyright &copy; all rights reserved...</p>
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+package com.lv9;
+
+public class condfk {
+
+	public static void main(String[] args) {
+
+		
+		// 자동 형변환 예시
+		int iNum1 = 15;
+		double dNum1 = 3.5;
+		double res = iNum1 + dNum1;
+		// iNum1 + dNum1 => 15 + 3.5
+		// => 15.0(int가 double로 자동 형변환) + 3.5 => 18.5
+		//System.out.println(res);
+		
+		
+		///////////////////////////////////////////////////////
+		
+		// byte와 short 연산에서는 결과 값을 int 타입으로 반환한다!
+		byte bNum1 = 30, bNum2 = 50;
+		//byte res1 = bNum1 + bNum2;	// 오류 발생
+		int res2 = bNum1 + bNum2;	// int 값으로 자동 반환
+		byte res3 = (byte)(bNum1 + bNum2); // 강제 형변환으로 실행
+		
+		short sNum1 = 10, sNum2 = 30;
+		//short res4 = sNum1 + sNum2;	// 오류 발생!
+		int res5 = sNum1 + sNum2;
+		short res6 = (short)(sNum1 + sNum2);
+		
+		
+		/////////////////////////////////////////////////////////////
+		
+		//실수 -> 정수 강제 형변환
+		double pi = 3.141592;
+		int intPi = (int)pi;    // 결과 값 3
+		System.out.println(intPi);
+		
+		float fNum = 9.99f;
+		int fToINum = (int)fNum;
+		System.out.println(fToINum);
+	}
+
+}

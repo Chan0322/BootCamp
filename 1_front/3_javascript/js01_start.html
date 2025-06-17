@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 3.externer -->
+    <script type="text/javascript" src="./js/test.js"></script>
+    <!-- 외부에서 작성한 파일 불러오기기 -->
+</head>
+<body>
+    <h2>자바스크립트 사용법</h2>
+    <ol>
+        <li>태그에 직접 간단 소스코드를 작성해서 실행되게 하는 방법, inline</li>
+        <li>script 태그 영역에 작성해서 실행되게 하는 방법, interner</li>
+        <li>별도의 js파일로 작성해서 가져다 실행하는 방법, externer</li>
+    </ol>
+    <hr>
+    <h3>inline</h3>
+    <ol>
+        <!-- 1. inline -->
+        <li onclick="window.alert('inline')">inline 방식</li>
+        <!-- 태그가 클릭되면 이를 감지하고 실행. 클릭 이벤트가 발생이 되면 함수를 실행해라. -->
+        <li onclick='a=function(){
+            alert("1234");
+        }()'>inline 방식</li> <!--태그 내부에도 함수 작성 가능. 그러나 복잡하고 지저분하고 일회용임. ""를 썼으면 ''를 써서 다르게 해야 문자를 인식함.-->
+        <li onclick="internerTest();">interner</li>
+        <!-- 2.interner -->
+        <script type="text/javascript">
+            function internerTest(){
+                let doc = document.getElementsByTagName("li")[1];
+                console.log(doc);
+                doc.style.color="red";
+            }
+            // 인터널테스트()라는 함수(기능)을 만들고, 태그가 클릭되면 이 함수가 실행되도록 정의.
+            // 함수 생성 문법. 펑션 + 이름() + {코드}
+            // let은 변수를 선언하는 것. 변수란 방을 생각하자. 방에 해당 내용을 넣는 것.
+            // doc라는 방 안에 document(HTML 문서)내에서 태그 이름으로 li라는 이름을 가진 태그들을 찾고, 그 중에 1 번째 순서(2번째)
+            // 첫번째는 0이다. 리스트의 순서는 위에서 아래로!
+            // 리스트 태그들 중에서 2번째에 해당하는 태그를 doc라는 방에 저장하고,
+            // 그 태그의 글자 색(속성 값)을 변경하겠다.
+            // 원하는 태그를 찾는 것이 중요하다.
+        </script>
+        <li onclick="test()">externer</li>
+    </ol>
+</body>
+</html>

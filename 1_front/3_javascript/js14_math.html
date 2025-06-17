@@ -1,0 +1,62 @@
+<!-- 숫자를 처리하는 부분을 담당. string 처럼 객체를 만들어 쓰는 것이 아니다.-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            border: 2px solid black;
+            height: 150px;
+        }
+    </style>
+    <script>
+        const mathTest=()=>{
+            let doc = document.getElementsByTagName("div")[0];
+            let num = -123;
+
+            // abs() : 절대값
+            doc.innerHTML += "절대값 : " + Math.abs(num) + "<br>";
+            // random() : 임의의 난수 발생. 0~1 사이의 값이 나옴.
+            doc.innerHTML += "임의의 난수 발생 : " + Math.random() + "<br>";
+            
+            //round() : 반올림.
+            doc.innerHTML += "반올림 : " + Math.round(123.56) + "<br>";
+            //floor() : 버림.
+            doc.innerHTML += "버림(내림) : " + Math.floor(123.456) + "<br>";
+            //ceil() : 올림.
+            doc.innerHTML += "올림 : " + Math.ceil(123.456) + "<br>";
+
+            //Pi 파이 / E 오일러상수수
+            doc.innerHTML += "Pi : " + Math.PI + "<br>" +
+                            "오일러상수 : " + Math.E + "<br>";
+        }
+
+        function randomBgColor(){
+            // let r = Math.random();
+            // let g = Math.random();
+            // let b = Math.random();  이렇게 하면 동일한 작업을 반복해야 함.
+
+            // 하나의 코드로 처리
+            let rNum = function(){
+                //1~100, 필요없는 소수점 버림.
+                // return Math.floor(Math.random()*100+1);
+
+                //0~255
+                return Math.floor(Math.random()*256);
+            }
+            console.log(rNum());
+            document.body.style.backgroundColor = "rgb("+rNum()+","+rNum()+","+rNum()+")";
+        }
+    </script>
+</head>
+<body>
+    <h1>Math 객체</h1>
+    <div></div>
+    <button onclick="mathTest();">확인</button>
+    <hr>
+    <h2>랜덤으로 배경색 설정하기</h2>
+    <button onclick="randomBgColor();">배경색 변경</button>
+</body>
+</html>

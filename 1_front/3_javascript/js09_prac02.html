@@ -1,0 +1,99 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 400px;
+            height: 200px;
+            background-color: rgb(241, 207, 121);
+            border: 2px solid rgb(202, 167, 241);
+        }
+    </style>
+    <script>
+        function prinVal(){
+            let consumer = document.getElementsByTagName("input")[0].value;
+            let pname = document.getElementById("pname").value;
+            let price = document.getElementsByName("price")[0].value;
+            let div = document.getElementsByTagName("div")[0];
+
+            div.innerText = consumer + "\n" + pname + "\n" + price;
+        }
+    </script>
+</head>
+<body>
+    <h1>HTML 태그에 접근</h1>
+    구매자는 태그 이름으로, 상품명은 id로, 구매 가격은 name으로 접근
+    <br><br>
+    <label>구매자 : </label>
+    <input type="text" placeholder="구매자 이름을 입력하세요">
+
+    <br><br>
+    <label>상품명 : </label>
+    <input type="text" id="pname" placeholder="구매 상품명을 입력하세요">
+    
+    <br><br>
+    <label>가 격 : </label>
+    <input type="text" name="price" placeholder="구매 가격을 입력하세요">
+
+    <br><br>
+    <button onclick="printVal();">입력값 출력하기</button>
+
+    <br><br>
+    <div></div>
+</body>
+</html>                내 풀이        -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 400px;
+            height: 200px;
+            background-color: rgb(241, 207, 121);
+            border: 2px solid rgb(202, 167, 241);
+        }
+    </style>
+    <script>
+        const printVal = function(){
+            let nameTg = document.getElementsByTagName("input")[0];
+            let userName = nameTg.value;
+
+            let productName = document.getElementById("pname").value;
+            let price = document.getElementsByName("price")[0].value;
+            
+            let res = document.getElementsByTagName("div")[0];
+            res.innerHTML += "구입자: " + userName + "님<br>";
+            res.innerHTML += "구입상품: " + productName + "<br>";
+            res.innerHTML += "구매가격: " + price + "만원";
+        }
+    </script>
+</head>
+<body>
+    <h1>HTML 태그에 접근</h1>
+    구매자는 태그 이름으로, 상품명은 id로, 구매 가격은 name으로 접근
+    <br><br>
+    <label>구매자 : </label>
+    <input type="text" placeholder="구매자 이름을 입력하세요">
+
+    <br><br>
+    <label>상품명 : </label>
+    <input type="text" id="pname" placeholder="구매 상품명을 입력하세요">
+    
+    <br><br>
+    <label>가 격 : </label>
+    <input type="text" name="price" placeholder="구매 가격을 입력하세요">
+
+    <br><br>
+    <button onclick="printVal();">입력값 출력하기</button>
+
+    <br><br>
+    <div></div>
+</body>
+</html>

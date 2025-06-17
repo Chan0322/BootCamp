@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function locTest(){
+            let loc = location.href;
+            // alert(loc);
+
+            // location.href="https://www.naver.com";
+
+            // loc = location.host; // ip주소, 포트넘버
+            // alert(loc);
+
+            location.reload(); // 새로고침
+        }
+    </script>
+</head>
+<body>
+    <h1>location 객체</h1>
+
+    <a href="https://www.google.com">구글</a>
+    
+    <button onclick="locTest();">이동</button>
+</body>
+</html>

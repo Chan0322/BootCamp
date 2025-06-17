@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function(){
+            $("#signal").submit(function(){ // 폼태그 내부에서 submit 이벤트가 발생하면
+                if( $(".infobox").val()=="" || $(".infobox").val()==null ){
+                    $(".error").show();
+                    return false;
+                }
+            });
+
+            $("#confirm").click(()=>{
+                if($("input[name=chk]:checked").length==0){
+                    alert("하나 이상 선택하세요");
+                }else{
+                    // console.log($("input[name=chk]:checked"));
+                    $("input[name=chk]:checked").each(function(no){ // each : 엘리먼트 갯수만큼 반복. 각 엘리먼트에 한번씩 적용된다.
+                        // console.log(no); // no 값이 각 엘리먼트의 인덱스 번호와 같다. 
+                        let chk = $("input[name=chk]:checked").eq(no);
+                        // console.log(chk);
+                        let type = chk.next().text(); // 다음 요소의 텍스트 값
+                        //next : 다음 요소(엘리먼트) => b태그
+                        let price = chk.val();
+
+                        $("#res").append(`${type}의 가격: ${price}원<br>`);
+                    });
+                }
+            });
+        });
+
+        function allchk(chk){
+            // $("input[name=chk]").prop("checked",chk);
+            //each()를 사용하여 처리
+             // $("input[name=chk]").each(function(i){
+                 // $("input[name=chk]").eq(i).prop("checked", chk);
+             // });
+            $("input[name=chk]").each(function(){
+                // console.log($(this));
+                $(this).prop("checked", chk);
+            });
+            let tt = $("input[name=all]");
+            console.log(tt.prop("checked"));
+            console.log(tt.attr("checked")); //prop, attr의 차이
+        }
+    </script>
+</head>
+<body>
+    <form id="signal" action="" method="">
+        <div>
+            <span class="label">User Id</span>
+            <input type="text" class="infobox" name="userId">
+            <span class="error" style="color: red; display:none;">반드시 입력하세요!!!</span>
+        </div>
+        <input type="submit" class="submit" value="입력하기">
+    </form>
+    <hr>
+    <fieldset style="width: 300px;">
+        <legend>체크 여부 확인</legend>
+        <input type="checkbox" name="all" onclick="allchk(this.checked);">전체선택<br>
+
+        <input type="checkbox" name="chk" value="1300"><b>시내버스</b><br>
+        <input type="checkbox" name="chk" value="2500"><b>광역버스</b><br>
+        <input type="checkbox" name="chk" value="5000"><b>무궁화기차</b><br>
+
+        <input type="button" value="확인" id="confirm"><br>
+
+        <span>가격</span>
+        <div id="res"></div>
+    </fieldset>
+</body>
+</html>

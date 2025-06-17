@@ -1,0 +1,91 @@
+<!-- 태그를 변형시킨다. 잡아늘리고, 꼬고, 돌리고? -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .trans{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            color: white;
+            font-size: 30pt;
+            word-wrap: break-word; /*워드-랩은 글자들이 가로로 박스를 넘어갈 때, 단어 단위로 잘라서 내린다.
+            특정 공간 내부에 글자들이 벗어나게 되는 경우 임의대로 분리여부를 결정해 밖으로 나가지 않게끔 처리해준다.*/
+        }
+
+        #tlate{
+            transform: translate(50px, 50px); /* translate - 괄호 안에 수치 값을 입력. 해당 수치 만큼 이동 */
+        }
+
+        #trotate{
+            transform: rotate(30deg); /*도수 만큼 회전한다.*/
+        }
+
+        #tscale{
+            transform: scale(0.3, 0.3); /*가로, 세로의 크기를 비율에 따라 변경*/
+        }
+
+        #tran:hover{
+            width: 800px;
+            background-color: blue;
+            transform: translate(300px, 0px);
+        }
+
+        #tran{
+            transition: width 0.5s, background 1.5s linear, transform 1.5s; /*단독으로 쓰기 보다는 변하는 것을 추가해줘야 한다. 
+            #tran:hover 
+            해당 시간동안 바뀌게 한다. 기본은 속도가 끝에서 느려지며 끝남. 이를 균등한 속도로 맞추려면 시간 뒤에 리니어 추가.
+            현재 우리나라에서 가장 많이 쓰는 프론트엔드는 js 기반의 리액트.
+            그러나 프론트쪽은 변화가 빨라 언제 뭐로 바뀔지 모른다.
+            그와 다르게 백엔드는 상당히 정체되어 있고, 그 변화 폭도 매우 작다.
+            프론트는 오래된 기술이 티가 나고 사용자와 직접 만나는 부분이라 트렌드에 민감.
+            백엔드는 오래된 기술을 써도 크게 티가 나지 않는 경우가 많음.*/
+        }
+
+        li{
+            width: 445px;
+            background-color: pink;
+            margin-top: 5px;
+            padding-left: 5px;
+            font-size: 30pt;
+            font-weight: bold; /*글씨 굵게*/
+            list-style-type: none; /*앞 기호 지우기*/
+            cursor: pointer; /*a 태그처럼 클릭할 수 있는 모양으로 바꿈
+            crosshair 은 드래그하고싶어지게 만듦
+            help는 ?가 뜸*/
+            transition: width 1s linear, color 1s linear, letter-spacing 1s linear;
+        }
+        li:hover{
+            width: 700px;
+            color: blue;
+            letter-spacing: 5px; /*자간 조절*/
+        }
+    </style>
+ </head>
+ <body>
+    <h2>transform - translate</h2>
+    <div id="tlate" class="trans">translate : 위치 이동</div>
+    <h2>transform - rotate</h2>
+    <div id="trotate" class="trans">rotate : 회전</div>
+    <h3>transform - scale</h3>
+    <div id="tscale" class="trans">scale : 크기</div>
+    
+    <h3>transition 속성 전환</h3> <!--바뀌는 속도 등을 조절할 수 있다. 애니메이션 효과를 주는 것처럼 보이게 된다.-->
+    <div id="tran" class="trans">transition</div>
+
+    <hr>
+    <div>
+        <h2>Moving Menu</h2>
+        <ul>
+            <li>COMPANY</li>
+            <li>PRODUCT</li>
+            <li>SERVICE</li>
+            <li>CUSTOMER SUPPORT</li>
+            <li>COMMUNITY</li>
+        </ul>
+    </div>
+ </body>
+ </html>

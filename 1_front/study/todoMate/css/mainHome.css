@@ -1,0 +1,101 @@
+/* #header, #body, #footer{
+    min-width: 10px;
+} */
+/* header */
+.headLogo{
+    width: 20px;
+}
+#logo_Todo{
+    margin-left: 20%;
+    margin-top: 10px;
+    margin-right: 45%;
+}
+#logo_Calender,#logo_Message{
+    margin-right: 5px;
+}
+#logo_SettingList{
+    margin-right: 20%;
+}
+
+.headLogo2{
+    width: 35px;
+}
+#logo_My{
+    margin-left: 20%;
+    margin-top: 10px;
+    margin-right: 5px;
+}
+/* body */
+#body1_My{
+    width: 45px;
+    margin-top: 30px;
+}
+#myLogo{
+    display: inline-block;
+    margin-left: 10px;
+}
+#body1_Diary{
+    width: 30px;
+    height: 30px;
+    /* margin-left: 40%; */
+    float: right;
+    margin-top: 19%;
+}
+#body_1{
+    margin-left: 20%;
+    float: left;
+    width: 30%;
+}
+#body_2{
+    float: left;
+    margin-right: 20%;
+    margin-left: 3%;
+}
+
+table{
+    width: 100%;
+    border: 1px solid gray;
+}
+td{
+    border: 0.5px solid gray;
+    text-align: center;
+    padding: 5px;
+}
+
+.now{
+    /* 달력에 오늘 날짜 표시 */
+    border-radius: 50px;
+    border: 2px solid skyblue;
+}
+.selected{
+    /* 선택된 날짜 스타일 변경 */
+    border-radius: 50px;
+    border: 2px solid red;
+}
+.categoryI_1, .newCategory{
+    border: 1px solid gray;
+    border-radius: 5px;
+    background-color: aliceblue;
+}
+#ai_todo_1{
+    border: 1px solid gray;
+    border-radius: 5px;
+    background-color: skyblue;
+}
+
+#todoManage{
+    display: inline;
+    /* float: right; */
+    margin-left: 0.5%;
+    /* margin-right: 26.5%; */
+    margin-top: 1%;
+}
+#todoDrop a{
+    display: block;
+    border: 1px solid gray;
+}
+#todoDrop{
+    max-width: 100px;
+    float: right;
+    margin-right: 20%;
+}

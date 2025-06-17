@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>화이팅!</title>
+    <script>
+        function numPlus(){
+            let inpNum = document.getElementById("numInp").value;
+            console.log(inpNum);
+
+            let addNum = Number(inpNum)+10;
+            alert(addNum);
+        }
+
+        function numChk(){
+            let numArr = [1,2,4,7,11,16];
+            let inpNum2 = document.getElementById("numInp2").value;
+            console.log(typeof numArr);
+            for(i=0; i<numArr.length; i++){
+                if(inpNum2 == numArr[i]){
+                    alert(inpNum2);
+                    return false;
+                }
+            }
+            alert("해당 숫자는 존재하지 않습니다.");
+        }
+
+        function goSite(){
+            let clickBtn = document.querySelector("input[name=site]:checked").value;
+            let loc;
+            console.log(clickBtn);
+
+            loc = "https://www."+clickBtn+".com";
+            location.href = loc;
+        }
+
+        function firstChk(){
+            let chkBox = document.getElementsByName("chk")[0];
+            console.log(chkBox);
+            if(!chkBox.checked){
+                chkBox.checked = true;
+            }else{
+                chkBox.checked = false;
+            }
+        }
+
+        function rNum(){
+            let randomNum = Math.floor(Math.random()*45+1);
+            console.log(randomNum);
+            let inpRand = document.getElementById("rNum");
+            inpRand.value=randomNum;
+        }
+
+        function siteSelect(){
+            let selSite = document.getElementsByName("webSite")[0].value;
+            console.log(selSite);
+            window.open("https://www."+selSite+".com", "_blank", "width=600px; height=300px;");
+        }
+        
+        function sortNum(){
+            let numArr2 = [1,2,3,11,21,22,214,6];
+            let numSort = numArr2.sort();
+            alert("유니코드 오름차순: "+numSort+"\n"+"유니코드 내림차순: "+numSort.reverse());
+        }
+
+        function mulNum(){
+            let inpNum3 = document.getElementById("numberMul").value;
+            let totalMul2="";
+            for(let i=1; i<10; i++){
+                totalMul2 += inpNum3+"*"+i+"="+inpNum3*i+", ";
+            }
+            alert(totalMul2);
+        }
+
+        function strAdd(){
+            let name = document.getElementById("user").value;
+            let str = document.getElementsByTagName("span")[1].textContent;
+            alert(name+str);
+        }
+    </script>
+</head>
+<body>
+    <fieldset>
+        <legend>문제 1</legend>
+        <h3>input 태그에 숫자를 입력하고 버튼을 클릭하면, +10이 된 값을 alert으로 출력해 주세요</h3>
+        <h5>(input 값 : 5 -> alert으로 출력된 값 : 15 )</h5>
+        <input type="number" name="num1" id="numInp">
+        <button onclick="numPlus();">클릭</button>
+    </fieldset>
+    <fieldset>
+        <legend>문제 2</legend>
+        <h3>input 태그에 숫자를 입력하고 버튼을 클릭하였을 때, 해당 값이 존재하는지 여부를 출력해 주세요</h3>
+        <h5>(숫자가 있으면 : 해당 숫자 출력, 숫자가 없으면 "해당 숫자는 존재하지 않습니다." 출력)</h5>
+        <input type="number" name="num2" id="numInp2">
+        <button onclick="numChk();">클릭</button><br>
+        1 2 4 7 11 16
+    </fieldset>
+    <fieldset>
+        <legend>문제 3</legend>
+        <h3>라디오버튼을 클릭하면 value값을 이용해 해당 사이트로 이동해 주세요.</h3>
+        <h5>(location.href 이용)</h5>
+        <input type="radio" name="site" value="naver" onclick="goSite();"><label for="naver">네이버</label><br>
+        <input type="radio" name="site" value="google" onclick="goSite();"><label for="google">구글</label><br>
+        <input type="radio" name="site" value="w3schools" onclick="goSite();"><label for="w3schools">w3schools</label>
+    </fieldset>
+    <fieldset>
+        <legend>문제 4</legend>
+        <h3>버튼을 클릭하면, 첫번째 체크박스의 항목을 체크해 주세요</h3>
+        <input type="checkbox" name="chk" id="java"><label for="java">Java</label>
+        <input type="checkbox" name="chk" id="db"><label for="db">DataBase</label>
+        <input type="checkbox" name="chk" id="web"><label for="web">Web</label>
+        <button onclick="firstChk();">클릭</button>
+    </fieldset>
+    <fieldset>
+        <legend>문제 5</legend>
+        <h3>1~45 사이의 랜덤한 숫자를 생성해서 input 태그 안에 입력해 주세요.</h3>
+        랜덤 : <input type="text" name="randNum" id="rNum">
+        <button onclick="rNum();">클릭</button>
+    </fieldset>
+    <fieldset>
+        <legend>문제 6</legend>
+        <h3>open 메소드를 사용하여, 선택한 select태그의 해당 패이지를 팝업창으로 실행해 주세요.</h3>
+        <h5>(새창, 새탭도 가능)</h5>
+        <select name="webSite" id="siteSel" size="4">
+            <option value="naver">네이버</option>
+            <option value="google">구글</option>
+            <option value="w3schools">w3schools</option>
+        </select>
+        <button onclick="siteSelect();">클릭</button>
+    </fieldset>
+    <fieldset>
+        <legend>문제 7</legend>
+        <h3>숫자를 유니코드 순으로 출력해 주세요.</h3>
+        <span>숫자 : 1,2,3,11,21,22,214,6</span>
+        <button onclick="sortNum();">클릭</button>
+    </fieldset>
+    <fieldset>
+        <legend>문제 8</legend>
+        <h3>원하는 구구단을 입력하고, alert으로 해당 단을 출력해 주세요.</h3>
+        <h5>입력 예 : 5 -> 출력 : 5*1=5 5*2=10 ...</h5>
+        <input type="number" name="numMul" id="numberMul">
+        <button onclick="mulNum();">클릭</button>
+    </fieldset>
+    <fieldset>
+        <legend>문제 9</legend>
+        <h3>input 태그에 입력한 문자열과, span 태그의 문자열을 합쳐서 출력해 주세요.</h3>
+        <h5>입력 예 : 홍길동 -> 출력 : "홍길동 님, 안녕하세요"</h5>
+        <input type="text" name="userName" id="user">
+        <span>님, 안녕하세요</span>
+        <button onclick="strAdd();">클릭</button>
+    </fieldset>
+</body>
+</html>

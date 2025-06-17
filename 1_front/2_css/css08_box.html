@@ -1,0 +1,50 @@
+<!-- border 박스 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 보더라인을 기준으로 바깥 영역(공백)을 마진, 안쪽 영역(공백)을 패딩. */
+        dl,dt,dd,p{ /*이 태그들을 전부 설정.*/
+            margin: 0px; padding: 0px;
+        }
+        dt{
+            background-color: skyblue;
+            text-align: center;
+            font-size: 20px;
+            letter-spacing: 15px; /*자간 크기 변경*/
+            border-bottom: 5px navy double; /*border를 원하는 위치에만 그릴 수도 있다.*/
+            padding: 15px; /*border를 기준으로 안 쪽 여백이 커졌다. 마진과 달리 패딩에도 배경색이 칠해진다.*/
+        }
+        dl{
+            width: 600px;
+            border: 3px double navy; /*굵기 선종류 색상*/
+            margin: 150px 30px; /*적절한 마진과 패딩으로 위치를 옮길 수도 있다. 위아래, 좌우의 공백 조절*/
+        }
+        dd{
+            padding: 10px;
+        }
+        /* class가 'line'인 태그를 선택하여 아래쪽 보더라인을 5px red dotted로 그려보자. */
+        .line{
+            border-bottom: 5px red dotted; /*border 라인은 굵어질수록 안쪽으로 커지고 다른쪽과 겹치지 않는다.*/
+        }
+    </style>
+</head>
+<body>
+    <dl><!--리스트처럼 보이진 않지만, 용어나 설명 등 정의를 하는 것들을 작성할 때 많이 사용됨 dl, dt, dd 등으로 구성.
+        알아서 dl, dt, dd 구조를 정리해준다.-->
+        <dt>sk하이닉스</dt><!--설명하려는 요소의 용어(제목), 이름 등을 작성하려 할 때 사용.-->
+        <dd class="line"><!--설명하려는 내용, dt를 기준으로 dd에 적힌 내용들이 자동으로 들여쓰기가 된다.-->
+            <h2>대표 곽노정</h2>
+            <p>종합 반도체 제조사.</p>
+        </dd>
+        <dt>삼성전자</dt>
+        <dd>
+            <h2>대표 전영현</h2>
+            <p>삼성을 대표하는 최대 규모의 계열사</p>
+        </dd>
+    </dl>
+</body>
+</html>

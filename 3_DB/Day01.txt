@@ -1,0 +1,95 @@
+C:\Users\ehdck>sqlplus
+
+사용자명 입력: /as sysdba
+
+//계정 생성시 'c##'를 붙여야 한다. 그걸 생략하기 위해 설정한 것.
+SQL>ALTER SESSION SET "_ORACLE_SCRIPT"=TRUE;
+세션이 변경되었다
+
+SQL> COMMIT;
+커밋이 완료되었습니다.
+
+
+//계정 생성    사용자명:MULTI, PW:MULTI로 계정 만들겠다.
+SQL> CREATE USER MULTI IDENTIFIED BY MULTI;
+사용자가 생성되었습니다.
+
+//권한 부여
+SQL> GRANT CONNECT, RESOURCE TO MULTI;
+권한이 부여되었습니다.
+
+//데이터 입력 가능하게 설정
+SQL> GRANT UNLIMITED TABLESPACE TO MULTI;
+권한이 부여되었습니다.
+
+SQL> COMMIT;
+커밋이 완료되었습니다.
+
+//시스템 계정 -> MULTI계정 접속
+SQL> CONN MULTI/MULTI;
+연결되었습니다.
+
+
+SQL> SELECT * FROM USER_TABLES;
+선택된 레코드가 없습니다.		// 조회되는 것이 없다.
+
+SQL> EXIT
+Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production
+Version 19.3.0.0.0에서 분리되었습니다.
+
+//접속 방법
+C:\Users\ehdck>SQLPLUS
+사용자명 입력: MULTI
+비밀번호 입력: MULTI
+SQL>
+
+SQL> SELECT * FROM TABS;
+선택된 레코드가 없습니다.
+
+-- 테이블 생성
+//컬럼 이름, 타입
+SQL> CREATE TABLE TEST( NO NUMBER, NAME VARCHAR2(20) );
+// 위 아래 둘 다 동일
+SQL> CREATE TABLE TEST(
+  2  NO NUMBER,
+  3  NAME VARCHAR2(20));
+테이블이 생성되었습니다.
+
+-- 생성한 테이블에서 조회
+SQL> SELECT * FROM TEST;
+선택된 레코드가 없습니다.		// 데이터가 없다는 뜻
+
+--TEST 테이블에 데이터 1줄 추가
+SQL> INSERT INTO TEST VALUES(1,'이창진');
+1 개의 행이 만들어졌습니다.
+SQL> INSERT INTO TEST(NO,NAME) VALUES(2,'LCJ');
+1 개의 행이 만들어졌습니다.
+
+
+SQL> SELECT * FROM TEST;
+        NO NAME
+---------- ----------------------------------------
+         1 이창진
+         2 LCJ
+
+SQL> SELECT * FROM TEST WHERE NO=1;
+        NO NAME
+---------- ----------------------------------------
+         1 이창진
+
+
+-- 테이블 삭제
+SQL> DROP TABLE TEST;
+테이블이 삭제되었습니다.
+
+
+SQL> SELECT * FROM TEST;
+SELECT * FROM TEST
+              *
+1행에 오류:
+ORA-00942: 테이블 또는 뷰가 존재하지 않습니다
+
+--접속종료
+SQL> EXIT
+Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production
+Version 19.3.0.0.0에서 분리되었습니다.

@@ -1,0 +1,184 @@
+<!-- Day7 연산자 -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function op01(){
+            let var1 = 22;
+
+            console.log(var1);
+            var1 = "데이터";
+            console.log(var1);
+
+            const var2 = [1,2]; // 배열
+            var1 = var2;
+            console.log(var1);
+
+            var1 = 11>1;
+            console.log(var1);
+
+            var1 = sumVal();
+            console.log(var1);
+        }
+        function sumVal(){
+            return 11+22;
+        }
+
+        const op02 = ()=>{
+            // 산술연산자.
+            let num = 11+22;
+            console.log("11+22: " + num);
+            num = 22-11;
+            console.log("22-11: " + num);
+            num = 11*22;
+            console.log("22*11: " + num);
+            num = 8/3;
+            console.log("8/3: " + num);
+            num = 8%3; //나누었을 때 나머지
+            console.log("8%3: " + num);
+
+            //복합대입연산자
+            num = 10;
+            //num->10
+
+            // num = num + 20;
+            num += 20;
+            console.log(num);
+
+            num -= 5;
+            console.log(num);
+        }
+
+        // document.getElementsByTagName("h3")[2].onclick=()=>{ // 처음 브라우저 실행 시 위에서부터 읽어 아직 아래 내용을 몰라 h3를 못찾음.
+        //     alert("확인!!");
+        // } => 코드는 위치에 따라 실행될 수도, 안될수도 있음.
+
+        window.onload=()=>{ // 해결방법2   온로드로  페이지를 다 읽고 띄우기 직전에 이 코드를 해석함.
+            document.getElementsByTagName("h3")[2].onclick=()=>{ // 처음 브라우저 실행 시 위에서부터 읽어 아직 아래 내용을 몰라 h3를 못찾음.
+            // alert("확인!!");
+            //증감연산자
+            //1씩 증가 or 1씩 감소
+            let num = 10;
+            num++;
+            num++; //후위연산자(후위증감연산자)
+            ++num; //전위연산자
+            console.log("num++ : " + num);
+            
+            //후위연산자와 전위연산자의 차이
+            num=10;
+            console.log("++num : " + ++num); //연산 후 출력
+            num=10;
+            console.log("num++ : " + num++); //해당 라인 종료 후 연산.
+            console.log(num);
+
+            // let val = 0;
+            // for(){
+            //     code;
+            //     code;
+            //     code + val++;
+            // }  이처럼 잘 사용하면 코드가 더 심플해질 수 있다.
+
+            console.log(--num);
+
+
+            //2씩 증가 시키고 싶은데????
+            num += 2;
+
+            //논리 연산자 : 논리값을 연산,
+            //논리값 &&/|| 논리값 ==> 논리값
+            //and : &&, or : ||
+
+            //or : 하나라도 true면 결과 값이 true이다.
+            //true  || true  => true
+            //true  || false => true
+            //false || true  => true
+            //false || false => false
+            let or = false || false;
+            console.log(or);
+
+            or = 10>0 || 3>10;
+            // // true || false => true
+            // no%3==0 || no%5==0; 결과 값이 true이면 3의 배수이거나 5의 배수
+            // if(no%3==0 || no%5==0){ console.log("3의배수 또는 5의배수이다.") } 3 5 6 9 10 12
+            // or는 이거 또는 저거.
+
+            
+            //[and] : 둘 다 true여야지만 결과 값이 true이다.
+            //true  && true  => true
+            //true  && false => false
+            //false && true  => false
+            //false && false => false
+            let and = false && false;
+            console.log(and);
+            // if(no%3==0 && no%5==0){ console.log("3의배수 그리고 5의배수이다. (공배수)") } 15 30 45
+            //if(no>5 && no<20){  } 6~19까지의 숫자이면 if 실행.
+
+            //부정 !, 논리값을 부정. true->false, false->true
+            // !no%3==0 && !no%5==0  // 3의 배수도 아니고 5의 배수도 아닐 때.
+            let not = true;
+            console.log(!not);
+
+            }
+        }
+
+        function op04(){
+            //동등비교 ==, ===
+            //==  : 타입과 상관없이 비교하여 같은지
+            //===(엄격한 비교) : 타입까지 비교하여 같은지 확인 
+            let check1 = 1;
+            let check2 = "1";
+            console.log('1 == "1" : ' + (check1==check2));
+            console.log('1 == "1" : ' + (check1===check2));
+
+            check1 = 1;
+            check2 = 2;
+            console.log('1 !== "1" : ' + (check1!==check2)); // 같지 않으면 true, 같으면 false
+
+            // 대소 비교 >,<,>=,<=
+            console.log("4>3 : " + (4>3)); // 4가 3초과이면(크다)
+            console.log("4>=3 : " + (4>=3)); // 4가 3이상이면(같거나 크다)
+            console.log("2<2 : " + (2<2)); //작다
+            console.log("2<=2 : " + (2<=2)); //이하이다.(작거나 같다.)
+        }
+    </script>
+ </head>
+ <body>
+    <h1>연산자</h1>
+    <h3 onclick="op01();">1. 대입 연산자(=), 우측의 값을 좌측의 변수에 대입</h3>
+    <h3 onclick="op02();">2. 산술 연산자(+,-,*,/,%), 복합대인연산자(산술+대입, +=)</h3> <!--더,빼,곱,나,나머지 나누기는 몫만 나옴.-->
+    <h3>3. 증감 연산자(++,--), 논리 연산자(&&,||)</h3> <!--and, or-->
+    <!-- <script>
+        document.getElementsByTagName("h3")[2].onclick=()=>{ // 처음 브라우저 실행 시 위에서부터 읽어 아직 아래 내용을 몰라 h3를 못찾음.
+            alert("확인!!");
+        }
+    </script> 위 해결 방법 1-->
+
+    <h3 onclick="op04();">4. 비교 연산자()</h3>
+    <hr>
+    <h3>연산자를 이용한 짧은 조건문 사용 테스트</h3>
+    <script>
+        document.getElementsByTagName("h3")[4].onclick=()=>{
+            // alert("asdf"); 잘 연결되었는지 테스트용
+            //prompt를 이용하여 숫자 하나를 입력 받는다.
+            //입력받은 숫자가 짝수인지 홀수 인지 판단하여 alert 창을 띄운다.
+            let input = window.prompt("숫자를 입력하세요");
+            console.log("input의 type: " + typeof input);   // 입력받은 숫자는 String
+            input = Number(input);
+            console.log("input의 type: " + typeof input);   // 입력받은 숫자를 숫자형으로 변경
+            
+            if(input%2 == 0){
+                //짝수일 때 실행
+                alert("짝수입니다");
+            }
+            if(input%2 == 1){
+                //홀수일 때 실행
+                alert("홀수입니다");
+            }
+            
+        };
+    </script>
+ </body>
+ </html>

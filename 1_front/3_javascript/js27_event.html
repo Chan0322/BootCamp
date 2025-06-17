@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function test1(){
+            alert('클릭!!');
+        }
+
+        window.onload=()=>{
+            document.getElementById("test2").onclick=()=>{
+                alert('클릭!!!');
+            } // 맨 마지막에 추가된 내용들만 적용됨.
+
+            document.getElementById("test3").addEventListener("click", clEv); // 이벤트의 종류, 실행할 함수
+            // 클릭했을 때 여러 처리가 가능.
+            
+            function clEv(){
+                alert('click');
+            }
+
+            document.getElementById("test4").addEventListener("click", function(){
+                alert("클릭!!!!!"); // test4 버튼을 누르면 앞서 작성했던 내용이 아닌 이 내용으로 바뀐다.
+                document.getElementById("test2").onclick=()=>{
+                    alert('click!!!!');
+                }
+
+                document.getElementById("test3").removeEventListener("click", clEv); // 인라인, 고전은 동일한 이벤드를 중복으로 적용 불가. 표준 방식은 동일한 이벤트를 여러번 중복으로 적용 가능.
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>이벤트 모델</h1>
+
+    <h3>인라인</h3>
+    <button onclick="alert('클릭!');">클릭!</button>
+    <button onclick="test1();">클릭!!</button>
+
+    <h3>고전</h3>
+    <button id="test2">클릭!!!</button>
+
+    <h3>표준</h3>
+    <button id="test3">클릭!!!!</button>
+    <button id="test4">클릭!!!!</button>
+
+    <h3>기본이벤트 제거</h3>
+    <form action="js01_start.html" method="get"> <!--액션 - 어디로 보낼건지 메소드 -포스트:url에 노출X 겟:url에 노출-->
+        이름 : <input type="text" name="name" id="name">
+        나이 : <input type="text" name="age" id="age">
+        <br>
+        <input type="submit" value="전송" onclick="return test5();">
+        <!--false가 리턴되면 폼태그의 동작을 중단한다.-->
+    </form>
+    <script>
+        function test5(){
+            let age = document.getElementById("age").value;
+
+            if(age<=20){
+                alert("청소년 불가");
+                return false; // 이벤트 취소. 이벤트 동작을 제거할 수 있다.
+            }
+        }
+    </script>
+
+</body>
+</html>

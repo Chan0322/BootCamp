@@ -1,0 +1,11 @@
+package com.silsub2.salary.run;
+
+import com.silsub2.salary.model.vo.Salary;
+
+public class Run {
+
+	public static void main(String[] args) {
+		Salary[] sa = new Salary[3];
+	}
+
+}

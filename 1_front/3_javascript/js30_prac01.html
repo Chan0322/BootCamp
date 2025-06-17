@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function numChk1(){
+            let number = document.getElementById("num").value;
+            console.log(number);
+            if(!isNaN(number)){
+                alert("숫자입니다.");
+            }else{
+                alert("숫자가 아닙니다.");
+            }
+        }
+
+        function nameChk1(){
+            let inputName = document.getElementById("name").value;
+            let nameArr = ["홍길동", "이순신", "김선달", "유재석", "강호동"];
+            console.log(inputName);
+            for(let i=0; i<nameArr.length; i++){
+                if(inputName === nameArr[i]){
+                alert("이름이 있습니다.");
+                return false;
+            }
+            }
+            alert("이름이 없습니다.");
+        }
+
+        function go(){
+            let site = document.getElementsByName("site");
+            let selSite;
+            for(let i=0; i<site.length; i++){
+                if(site[i].checked){
+                    selSite = site[i].value;
+                }
+            }
+            console.log(selSite);
+            window.open("https://www."+selSite+".com", "_blank", "width=800px", "height=600px");
+        }
+
+        function allChk(check){
+            let chkItem = document.getElementsByName("chkBx");
+            for(let i=0; i<chkItem.length; i++){
+                chkItem[i].checked = check;
+            }
+        }
+
+        function createRandNum(){
+            let num = Math.floor(Math.random()*20+1);
+            let inp = document.getElementsByName("randNum")[0];
+            console.log(num);
+            inp.value= num;
+        }
+
+        function goSite(){
+            let siteGoo = document.getElementsByClassName("siteGo");
+            let selSiteGo;
+            for(let i=0; i<siteGoo.length; i++){
+                if(siteGoo[i].selected){
+                    selSiteGo = siteGoo[i].value;
+                }
+            }
+            console.log(selSiteGo);
+            window.open("https://www."+selSiteGo+".com", "_self");
+        }
+
+        function sortNum(){
+            let numArr = [1,4,2,3,11,31,27,5];
+            console.log(numArr.sort(compare1));
+            console.log(numArr.sort(compare2));
+            alert("오름차순: " + numArr.sort(compare1) + "\n" + "내림차순: "+ numArr.sort(compare2));
+        }
+        function compare1(n1, n2){
+            return (n1-n2);
+        }
+        function compare2(n1, n2){
+            return -(n1-n2);
+        }
+        
+        function createTb(){
+            let userIn = document.forms[0];
+            let userInfo = [
+                userIn.name.value,
+                userIn.age.value,
+                userIn.gender.value
+            ];
+            console.log(userInfo);
+
+            let tr = document.createElement("tr");
+            let row;
+            for(let i=0; i<userInfo.length; i++){
+                let td = document.createElement("td");
+                td.textContent=userInfo[i];
+                tr.appendChild(td);
+                
+                document.getElementById("addTb").appendChild(tr);
+            }
+        }
+            function mulNum(){
+                let userMul = document.getElementById("mul").value;
+                console.log(userMul);
+
+                let totalMul = "";
+                for(let i=1; i<10; i++){
+                    totalMul += userMul+"*"+i+"="+userMul*i+", ";
+                }
+                alert(totalMul);
+            }
+    </script>
+</head>
+<body>
+    <fieldset>
+        <legend>문제 1</legend>
+        <h3>input 태그에 값을 입력하고 버튼을 클릭하였을 때, 값이 숫자인지 아닌지 출력해 주세요.</h3>
+        <h5>(값이 숫자라면 : "숫자입니다. " 숫자가 아니면 "숫자가 아닙니다. " 를 alert으로 출력)</h5>
+        <input type="text" name="num1" id="num">
+        <button onclick="numChk1();">판별</button>
+    </fieldset>
+    <fieldset>
+        <legend>문제 2</legend>
+        <h3>input 태그에 이름을 입력하고 버튼을 클릭하였을 때, 해당 이름이 존재하는지 여부를 출력 해 주세요</h3>
+        <h5>(이름이 있으면 : "이름이 있습니다." 없으면 "이름이 없습니다." 를 alert으로 출력)</h5>
+        <input type="text" name="name1" id="name">
+        <button onclick="nameChk1();">판별</button><br>
+        <pre>홍길동 이순신 김선달 유재석 강호동</pre>
+    </fieldset>
+    <fieldset>
+        <legend>문제 3</legend>
+        <h3>라디오버튼을 클릭하면 원하는 사이트를 팝업창으로 연결해 주세요.</h3>
+        <h5>(새창, 새탭 등도 허용)</h5>
+        <input type="radio" name="site" value="naver" onclick="go();">네이버<br>
+        <input type="radio" name="site" value="google" onclick="go();">구글<br>
+        <input type="radio" name="site" value="w3schools" onclick="go();">w3schools
+    </fieldset>
+    <fieldset>
+        <legend>문제 4</legend>
+        <h3>전체선택버튼을 클릭하면 체크항목을 모두 체크하거나 모두 해제해 주세요.</h3>
+        <input type="checkbox" name="all" onclick="allChk(this.checked);">전체선택<br>
+        <input type="checkbox" name="chkBx" onclick="Chk();">Java<br>
+        <input type="checkbox" name="chkBx" onclick="Chk();">DataBase<br>
+        <input type="checkbox" name="chkBx" onclick="Chk();">Web
+    </fieldset>
+    <fieldset>
+        <legend>문제 5</legend>
+        <h3>1~20사이의 랜덤한 숫자를 생성해서 input 태그 안에 입력해주세요.</h3>
+        랜덤:<input type="text" name="randNum">
+        <button onclick="createRandNum();">생성</button>
+    </fieldset>
+    <fieldset>
+        <legend>문제 6</legend>
+        <h3>셀렉트 태그를 사용하여, 원하는 페이지로 이동해 주세요.</h3>
+        <select name="siteMove" id="id_siteMove" onchange="goSite();">
+            <option>--선택--</option>
+            <option value="naver" class="siteGo">네이버</option>
+            <option value="google" class="siteGo">구글</option>
+            <option value="coupang" class="siteGo">쿠팡</option>
+        </select>
+    </fieldset>
+    <fieldset>
+        <legend>문제 7</legend>
+        <h3>숫자를 정렬해서 alert으로 출력해 주세요.</h3>
+        숫자 : 1,4,2,3,11,32,27,5
+        <button onclick="sortNum();">정렬</button>
+    </fieldset>
+    <fieldset>
+        <legend>문제 8</legend>
+        <h3>input 태그에 입력된 값으로 table을 생성해 주세요</h3>
+        <form name="user">
+            <table id="inputTb">
+                <tr>
+                    <td>이름:<input type="text" name="name"></td>
+                </tr>
+                <tr>
+                    <td>나이:<input type="text" name="age"></td>
+                </tr>
+                <tr>
+                    <td>성별:<input type="text" name="gender"></td>
+                </tr>
+            </table>
+        </form>
+        <button onclick="createTb();">생성</button>
+        
+        <table border="1px" id="createMyTb">
+            <thead>
+                <tr>
+                    <th>이름</th>
+                    <th>나이</th>
+                    <th>성별</th>
+                </tr>
+            </thead>
+            <tbody id="addTb"></tbody>
+        </table>
+    </fieldset>
+    <fieldset>
+        <legend>문제 9</legend>
+        <h3>원하는 구구단을 입력하고, alert으로 해당 단을 출력하세요.</h3>
+        <h5>(입력 예: 3 -> 3*1 = 3 3*2 = 6 ...)</h5>
+        <input type="number" name="mul" id="mul">
+        <button onclick="mulNum();">출력</button>
+    </fieldset>
+</body>
+</html>

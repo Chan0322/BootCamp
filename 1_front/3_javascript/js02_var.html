@@ -1,0 +1,202 @@
+<!-- variable. 변수. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        console.log(test); // var 호이스팅(끌어올린다.)
+        // 얘는 에러가 안뜸. 브라우저가 아직 없는 것이라고 띄움. 최대한 에러 없이 최선의 노력을 다해 코드를 진행시키기 위함.
+
+        // 자바스크립트는 위에서 아래로 한 번 훓어보고, 대충 뭐가 있는지 파악을 해 둔 상태로 동작.
+        // 훓어보니까 var 변수가 있긴 하기 때문에 일단은 에러 없이 출력하여 마치 선언이 되어 있는 것처럼 보임.
+        // 그래서 마치 아래 선언된 변수가 끌어 올려진 것처럼 보여 var 호이스팅.
+
+        // 개발자 입장에서는 let이 조금 더 명확하다 에러를 보여주기 때문.
+
+        var test=1;
+        // 이름(변수명)이 test인 변수에다 숫자 1을 저장(대입)
+        // '=' : 대입 연산자. 우측의 값을 좌측에 넣는다, 저장한다.
+        console.log(test); // 저장된 변수 값을 콘솔에서 확인해보자.
+        // console.log(test+1);
+        test=10;
+
+        // 변수 선언!
+        // 키워드(var, let, const) 변수명;
+        // var, let은 거의 흡사. const는 조금 특별.
+
+        // 변수 선언과 동시에 초기화(변수의 값을 처음 넣는 것. 초기값을 넣는다.)
+        // 키워드 변수명 = 값;
+        // console.log(test2); // 코딩은 기본적으로 동작하기 위한 매개체가 있어야 한다. 만들고 실행을 해야 한다. 없는걸 실행한다? 에러.
+        // 코드 순서 상 test2는 아직 선언 X
+        let test2 = 2;
+        console.log(test2);
+        test2=20;
+
+        const test3=3;
+        console.log(test3);
+        // test3=30; //에러! 변경 불가! immutable 변수.
+        // const는 값을 바꿀 수 없다. 한 번만 값을 바꿀 수 있음. 값을 처음 한번만(초기화) 넣을 수 있다. 상수.
+        // 값을 저장해 놓고 코드 상에서 바꿀 일이 없으면 const를 많이 사용하고, 함부로 바꾸지 못하게 하기 위해서도 많이 사용.
+
+        // var, let은 변수를 바꿀 수 있다.
+        // var 변수는 선언되기 전에 호출 할 경우, 에러를 띄우지 않고 아직 선언되지 않았다고 띄운다.
+        // let 변수는 선언되기 전 호출 할 경우, 에러가 발생한다.
+
+        {
+            var no=10;
+            let no2=20;
+            const no3=30;
+        }
+        // 이러한 중괄호를 하나의 블록, 지역이라고 얘기한다.
+        // 블록 안에서 만든 것은 블록 안에서만 써야 하는 규칙이 있다.
+        console.log(no);
+        // console.log(no2);
+        // console.log(no3);
+        // 그러나 var 변수는 블록 밖에서도 사용이 가능한 경우가 있어서 실수하고 꼬일 가능성이 높다.
+        // let과 const는 블록 안에서만 쓸 수 있어 밖에서는 함부로 변수를 사용할 수 없다.
+
+
+        // 위 코드들은 함수 안에 적은것이 아니라서 바로 실행이 된다.
+        // 함수를 사용하면 함수가 호출되야 실행 가능.
+
+
+        // 전역변수
+        let variable=10; //전역변수, 값유지, 스크립트 내부에 선언.
+        // 전역변수. 스크립트 내부에 그냥 선언.
+
+        function test01(){
+            variable = variable+5;
+            console.log(variable);
+        }
+        function test01_1(){
+            variable = variable+5;
+            console.log(variable);
+            // console.log(variable2); //지역변수이므로 찾지 못함.
+        }
+        // 위 두 함수 모두 전역변수로 선언한 variable을 사용 가능.
+        // 전역변수는 특정 함수에서 만든 변수가 아닌 이상 다 쓸 수 있다.
+        // 전역변수는 페이지를 새로고침하기 전까지 계속 살아있다.
+        // 전역변수의 값은 계속 유지됨. test01에서 수정된 값을 test01_1에서 이용가능.
+
+
+        function test02(){
+            let variable2 = variable + 100; // 지역 변수
+            document.getElementById("res01").innerHTML = "<b style='color:red;background:yellow; '>"+variable2+"</b>";
+            // 내가 처리하려는 태그(아이디가 res01인)를 찾아서 선택하고 innerHTML이라는 속성에 입력하고 싶은 내용을 입력.
+            // "<b style='color:red;background:yellow; '>115</b>"라는 값이 innerHTML에 입력된다.
+            // 원하는 HTML 코드를 스크립트에서 이러한 방식으로 넣어줄 수 있다.
+            // innerHTML 또한 하나의 변수이다.
+            // id라는 속성은 페이지 내에서 중복되지 않고 하나만 있는 것으로 간주하기 때문에 Element에 s가 붙지 않는다.
+            // 태그 내의 여러 속성을 찾는 경우에는 s가 붙게 된다.
+
+            // !!! 실행이 끝나면 사라지고, 다시 실행되면 다시 시작된다 !!!
+        }
+
+
+        function test03(){
+            // alert('123'); // 이렇게 하면 태그와, 이벤트, 이벤트 발생 시 동작하는 함수가 잘 연결되었는지 확인할 수 있음.
+            //문자(String)
+            let variable3 = '문자';
+            console.log(variable3 + " : " + typeof variable3)
+            // variable3의 타입을 확인하겠다.
+
+            //숫자
+            variable3 = 5;
+            console.log(variable3 + " : " + typeof variable3)
+            // 변수에 들어온 데이터의 값이 바뀜에 따라 해당 데이터에 맞는 타입으로 알아서 맞춰준다.
+            // 다른 언어들은 변수의 타입들을 미리 정해놓는다. 메모리의 사이즈(방의 크기)를 미리 정해주기 위해서.
+            console.log(`${variable3} : ${typeof variable3}`)
+            // `` <- 백틱. 백틱을 이용하면 위처럼 + 를 쓰며 귀찮게 하지 않아도 최대한 심플하게 작성할 수 있다.
+            // 변수는 ${변수명}을 통해 입력하고 한칸 띄우며 나머지 입력.   +가 많을 때 생략할 수 있음.
+
+            //논리 (참, 거짓) boolean
+            variable3 = true;
+            console.log(`${variable3} : ${typeof variable3}`)
+
+            //널 (NULL) 특수 값. 숫자도, 문자도, 논리값도 그 어떠한 값도 아닌.
+            variable3 = null;
+            console.log(`${variable3} : ${typeof variable3}`)
+            // 널을 넣었는데 오브젝트라고 나옴. 버그때문인듯.
+            // 타입이라고 하기엔 애매함. 널이라는 값이다. 아무것도 없다. 비었다. 빈 공간이다.
+            // 0이 들어있는 것은 비어있는 것이 아닌 0이라는 숫자가 있는것. null 값이 비어있는 것.
+
+            //객체(object)
+            // - 배열
+            variable3=[1,2,3,4]; // 한번에 여러 값들이 묶여 있음.
+            console.log(`${variable3} : ${typeof variable3}`) // object. 객체 타입이 뜸.
+            // - 객체
+            variable3 = {name:'이창진', age:19};
+            console.log(`${variable3} : ${typeof variable3}`)
+           
+            //함수
+            variable3 = function(){alert("변수의 타입");}
+            console.log(`${variable3} : ${typeof variable3}`)
+            // 자바스크립트는 변수에 함수도 저장할 수 있다. 많이 사용됨.
+        }
+    </script>
+</head>
+<body>
+    <h1>변수 사용</h1>
+    <h3>변수 선언 규칙</h3>
+    <ol>
+        <li>대소문자 구분한다. aA aa 구분.</li>
+        <li>이름은 영문, $, _로 시작해야 한다. (숫자 등은 불가)</li>
+        <li>영문,$,_,숫자를 포함하여 생성 가능하다.</li>
+        <li>키워드나 예약어를 사용할 수 없다.</li> <!--자바스크립트 내부에 문법적으로 사용되는 언어들(펑션 등)을 사용하지 마라.-->
+    </ol>
+    <h3>변수의 범위</h3> <!--변수의 방을 만들어 놨을 때 어디까지 쓸 수 있는가-->
+    <ol>
+        <li>전역 변수 : 다른 함수들에서 공용으로 사용할 수 있다.(값이 유지된다.) <!--여기저기에서 다양하게 쓸 수 있다.-->
+            <button onclick="test01_1();">확인</button>
+        </li>
+        <li>
+            지역 변수 : 함수나 객체 내부에 선언되고고 실행이 종료되면 사라진다.
+            <!--종료 후 다음번 실행 시 다시 만들어짐.-->
+            <button onclick="test02();">확인</button>
+        </li>
+        <!--클릭 시 결과를 div 태그에 출력해보자.-->
+        <div id="res01"></div>
+    </ol>
+
+    <h3>변수 선언과 저장</h3>
+    <ol>
+        <li>let, var, const 키워드를 사용하여 변수를 선언한다.</li>
+        <li>
+            변수의 타입은 저장되는 데이터의 타입에 따라 결정된다.
+            <button onclick="test03();">확인</button>
+            <!--
+            자바에서, 
+            변수 안에는 어떤 값(타입)이 저장되어 있다. 여기는 숫자 저장하는 방, 여기는 문자 저장하는 방 이런 식으로 타입이 정해져 있어
+            다른 타입의 데이터는 저장할 수 없다. 그에 해당하는 타입만 저장 가능함.
+            그러나 자바스크립트는 좀 자유로워서 변수에 들어오는 데이터에 따라서 해당 변수의 타입이 정해진다.
+            그래서 방 하나를 만들어 놓고 돌려쓸 수 있음(그럴 일은 없겠지만...)
+            -->
+        </li>
+    </ol>
+
+    <h3>Infinity, NaN</h3> <!--미리 정의된 특수한 변수값(타입?)-->
+    <ol>
+        <li>Infinity:양의 무한대, 0으로 나누었을 때</li>
+        <li>
+            NaN(Not a Number) : 숫자가 아닌 값.
+            <button onclick="test04();">확인</button>
+        </li>
+        <!--
+        연산 진행 시, 특정한 값들을 곱했을 때 값이 너무 커 특정 영역을 벗어나면 인피니티.
+        숫자로 처리해야 할 값들을 가지고 문자로 처리해버리면 NaN을 확인 가능. 
+        -->
+    </ol>
+    <script>
+        function test04(){
+            const infi = 1/0;
+            console.log(infi);
+            const nan = 'String' / 2;  // 자바에서는 애초에 작성도 못하고 빨간 줄이 뜬다.
+            // 자바스크립트는 최대한 어떻게든 동작시키려 하기 때문에 이러한 특수 값들이 존재한다.
+            console.log(nan);
+        }
+    </script>
+
+</body>
+</html>

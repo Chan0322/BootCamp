@@ -1,0 +1,37 @@
+<!-- 애니메이션 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            font-size: 30pt;
+            background-color: red;
+            word-wrap: break-word; /*단어를 적절히 잘라서 넘김*/
+            animation: mybox 2s infinite linear; /*단독으로 사용 불가. 키프레임즈와 함께 사용해야 함 infinite-무한반복
+            linear-일정한 속도로 바뀌어 더 부드러워보임.*/
+        }
+        @keyframes mybox {
+            /* 
+                애니메이션은 제작시 여러 장의 그림을 합쳐서 만들어진다. 보통 24장으로 1초에 24프레임
+                키프레임즈는 0%에서 시작해서 100%까지. 프레임 별로 값을 바꿔주면 애니메이션이 된다.
+                %는 시간이라고 생각하면 된다.
+                아래 예시에서 만약 10초동안 넘긴다면 0~25%까지가 2.5초 총 5장의 프레임을 시간마다 넘긴다.
+            */
+            0%{width: 100px; height: 100px; background: red; transform: translate(10px, 10px);}
+            25%{width: 200px; height: 200px; background: blue; transform: translate(50px, 50px)}
+            50%{width: 250px; height: 250px; background: orange; transform: translate(100px, 100px)}
+            75%{width: 300px; height: 300px; background: pink; transform: translate(50px, 50px)}
+            100%{width: 200px; height: 100px; background: red; transform: translate(10px, 10px)}
+        }
+    </style>
+</head>
+<body>
+    <h1>Animation 효과</h1>
+    <div>Animation</div>
+</body>
+</html>
