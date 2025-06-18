@@ -1,0 +1,24 @@
+<svg id="btn_ico_profile_40" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="60" height="60" viewBox="0 0 60 60">
+  <defs>
+    <clipPath id="clip-path">
+      <circle id="타원_13568" data-name="타원 13568" cx="27" cy="27" r="27" fill="#fff" opacity="0.4"/>
+    </clipPath>
+    <filter id="타원_13570" x="18" y="13" width="23.4" height="23.4" filterUnits="userSpaceOnUse">
+      <feOffset dy="1" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="0.5" result="blur"/>
+      <feFlood flood-opacity="0.031"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <circle id="bg" cx="30" cy="30" r="30" fill="#e5e5e6"/>
+  <circle id="Hover_10_20_" data-name="Hover 10% ~ 20%" cx="30" cy="30" r="30" fill="#585d72" opacity="0"/>
+  <g id="inner" transform="translate(3 3)" clip-path="url(#clip-path)">
+    <g id="icon" transform="translate(4.792 10.5)">
+      <path id="Union" d="M0,45.361a21.908,21.908,0,1,1,43.816,0,2.192,2.192,0,0,1-2.195,2.192H2.192A2.192,2.192,0,0,1,0,45.361Z" transform="translate(0 0.549)" fill="#fff" fill-rule="evenodd"/>
+      <g transform="matrix(1, 0, 0, 1, -7.79, -13.5)" filter="url(#타원_13570)">
+        <circle id="타원_13570-2" data-name="타원 13570" cx="10.2" cy="10.2" r="10.2" transform="translate(19.5 13.5)" fill="#fff"/>
+      </g>
+    </g>
+  </g>
+</svg>
