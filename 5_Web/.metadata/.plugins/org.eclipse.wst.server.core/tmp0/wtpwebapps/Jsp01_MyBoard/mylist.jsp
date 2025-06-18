@@ -26,6 +26,8 @@
 			<th>NAME</th>
 			<th>TITLE</th>
 			<th>DATE</th>
+			<th>수정</th>
+			<th>삭제</th>
 		</tr>
 <%
 		for(int i=0; i<list.size(); i++){	
@@ -33,8 +35,10 @@
 		<tr>
 			<td><%=list.get(i).getMyno() %></td>
 			<td><%=list.get(i).getMyname() %></td>
-			<td><%=list.get(i).getMytitle() %></td>
+			<td><a href="selectone.jsp?myno=<%=list.get(i).getMyno()%>"><%=list.get(i).getMytitle() %></a></td>
 			<td><%=list.get(i).getMydate() %></td>
+			<td><button onclick="location.href='myupdate.jsp?myno=<%=list.get(i).getMyno() %>'">수정</button></td>
+			<td><button onclick="location.href='mydelete.jsp?myno=<%=list.get(i).getMyno() %>'">삭제</button></td>
 		</tr>
 <%
 		}
@@ -44,7 +48,7 @@
 
 		<tr>
 			<td colspan="4" align="right">
-				<button onclick="location.href='myinsert.jsp'">글쓰기</button>
+				<button onclick="location.href='myinsert.jsp';">글쓰기</button>
 			</td>
 		</tr>
 	</table>

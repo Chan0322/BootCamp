@@ -1,0 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<!--  selectone 페이지에서 넘어오는 parameter 값 myno를 받아 dao를 통해 delete 진행하고 결과값 화면처리 -->
+
+</body>
+</html>
