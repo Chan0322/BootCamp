@@ -1,0 +1,28 @@
+package com.my.dao;
+
+import static common.JDBCTemplate.*;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.my.dto.MyBoard;
+
+public class MyBoardDao {
+	
+	//전체 출력
+	public List<MyBoard> selectAll(){
+		// 1. 준비
+		Connection con = getConnection();
+		Statement stmt = null;
+		ResultSet rs = null;
+		List<MyBoard> res = new ArrayList<>();
+		String sql = "SELECT * FROM MYBOARD";
+		
+		// 2. 실행
+		
+		return null;
+	}
+}
