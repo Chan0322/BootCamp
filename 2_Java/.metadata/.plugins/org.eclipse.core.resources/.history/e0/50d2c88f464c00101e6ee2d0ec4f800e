@@ -39,7 +39,7 @@ public class FileIOTest {
 		}finally {
 			try {
 				fw.close();
-				//br.close();
+				br.close();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
