@@ -48,7 +48,7 @@
 				<td><input type="checkbox"></td>
 				<td><%=dto.getSeq() %></td>
 				<td><%=dto.getWriter() %></td>
-				<td><%=dto.getTitle() %></td>
+				<td><a href="boarddetail.jsp?seq=<%=dto.getSeq()%>"><%=dto.getTitle() %></a></td>  <!-- title을 누르면 해당 게시글의 상세 페이지로 -->
 				<td><%=dto.getRegdate() %></td>
 			</tr>
 <%

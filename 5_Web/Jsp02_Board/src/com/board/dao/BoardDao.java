@@ -3,6 +3,7 @@ package com.board.dao;
 import static common.JDBCTemplate.*;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -54,7 +55,39 @@ public class BoardDao {
 	
 	// 선택 조회
 	public BoardDto selectOne(int seq) {
-		return null;
+		Connection con = getConnection();
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		BoardDto res = new BoardDto();
+		
+		String sql = " SELECT * FROM BOARD WHERE SEQ=? ";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setInt(1, seq);
+			System.out.println("03.query 준비: " + sql);
+			
+			rs = pstm.executeQuery();
+			System.out.println("04.query 실행 및 리턴");
+			
+			while(rs.next()) {
+				// 한 개만 출력하므로 if도 가능!
+				res.setSeq(rs.getInt(1));
+				res.setWriter(rs.getString(2));
+				res.setTitle(rs.getString(3));
+				res.setContent(rs.getString(4));
+				res.setRegdate(rs.getDate(5));
+			}
+		} catch (SQLException e) {
+			System.out.println("3/4 단계 에러");
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstm);
+			close(con);
+			System.out.println("05. db 종료\n");
+		}
+		return res;
 	}
 	
 	// 글 추가
