@@ -1,0 +1,75 @@
+/* 기본 리셋 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: gainsboro;
+}
+
+/* 헤더 영역 */
+#header {
+  background: white;
+  padding: 10px 20px;
+  /* position: fixed; */
+}
+
+/* 헤더 상단(로고, 검색, 관리 아이콘) */
+.top1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* 카테고리 영역 */
+.cateList {
+  background-color: white;
+  padding: 10px 20px;
+  margin-top: 10px;
+}
+
+/* 메인 컨테이너 - 왼쪽 사이드바와 오른쪽 피드 영역 */
+#body {
+  display: flex;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+/* 왼쪽 사이드바: 항상 스크롤 가능하게 */
+#leftItem {
+  background-color: white;
+  width: 250px;
+  height: calc(100vh - 80px);
+  overflow-y: auto;
+  padding: 10px;
+  border-right: 1px solid #ccc;
+}
+
+/* 오른쪽 피드 영역*/
+#rightItem {
+  width: 800px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* 오른쪽 피드 영역 내 컨텐츠 그룹 */
+.feedGroup {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+/* 피드 목록 */
+.feedList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* 개별 피드 */
+.feedContent {
+  border: 1px solid #ddd;
+  padding: 5px;
+}
