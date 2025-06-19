@@ -51,8 +51,11 @@ body {
 /* 오른쪽 피드 영역*/
 #rightItem {
   width: 800px;
+  height: calc(100vh - 80px); /* 화면 높이에서 헤더 높이를 빼서 고정 높이 지정 */
   padding: 10px;
   background-color: white;
+  overflow-y: auto;
+
 }
 
 /* 오른쪽 피드 영역 내 컨텐츠 그룹 */
