@@ -98,12 +98,31 @@
 		String msg="";
 		String url="";
 		if(res>0){
-			msg="글 수정 성공";
-			url="?command=boarddetail&seq="+dto.getSeq();
+			msg="게시글 수정 성공";
+			url="?command=boarddetail&seq="+seq;
 		}else{
-			msg="글 수정 실패";
-			url="?command=boardupdateform&seq="+dto.getSeq();
+			msg="게시글 수정 실패";
+			url="?command=boardupdateform&seq="+seq;
 		}
+		request.setAttribute("msg", msg);
+		request.setAttribute("url", url);
+		pageContext.forward("result.jsp");
+		
+	}else if(command.equals("boarddelete")){
+		int seq = Integer.parseInt(request.getParameter("seq"));
+		
+		int res = dao.delete(seq);
+		
+		String msg = "";
+		String url = "";
+		if(res>0){
+			msg = "게시글 삭제 성공";
+			url = "?command=boardlist";
+		}else{
+			msg = "게시글 삭제 실패";
+			url = "?command=boarddetail&seq="+seq;
+		}
+		
 		request.setAttribute("msg", msg);
 		request.setAttribute("url", url);
 		pageContext.forward("result.jsp");

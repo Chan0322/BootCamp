@@ -147,7 +147,35 @@ public class MVCBoardDao {
 		return res;
 	}
 	
-	public int delete(MVCBoardDto dto) {
-		return 0;
+	public int delete(int seq) {
+		Connection con = getConnection();
+		PreparedStatement pstm = null;
+		int res = 0;
+		
+		String sql = " DELETE FROM MVCBOARD WHERE SEQ=? ";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setInt(1, seq);
+			System.out.println("03. query 준비: " + sql);
+			
+			res = pstm.executeUpdate();
+			System.out.println("04. query 실행 및 리턴");
+			
+			if(res>0) {
+				commit(con);
+			}else {
+				rollback(con);
+			}
+		} catch (SQLException e) {
+			System.out.println("3/4 단계 에러");
+			e.printStackTrace();
+		}finally {
+			close(pstm);
+			close(con);
+			System.out.println("05. db 종료\n");
+		}
+		
+		return res;
 	}
 }
