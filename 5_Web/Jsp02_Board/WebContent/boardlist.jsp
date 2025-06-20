@@ -30,6 +30,9 @@
 	BoardDao dao = new BoardDao();
 	List<BoardDto> list = dao.selectAll();
 %>
+
+<%@ include file="./form/header.jsp" %>	<!-- header.jsp 파일을 이 위치에 포함시키겠다. 외부에 따로 작성된 파일을 불러와 적용시킬 수 있다. -->
+
 <h1>List</h1>
 <form action="muldel.jsp" method="post" id="muldelform">
 	<table>
@@ -72,5 +75,6 @@
 		</tr>
 	</table>
 </form>
+<%@ include file="./form/footer.jsp" %>
 </body>
 </html>

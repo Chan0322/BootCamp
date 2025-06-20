@@ -37,6 +37,7 @@
 	BoardDao dao = new BoardDao();
 	BoardDto dto = dao.selectOne(seq);	// 일치하는 게시글 하나를 조회해 받아온다.
 %>
+<%@ include file="./form/header.jsp" %>
 <div id="detailform">
 	<h1>Detail</h1>
 	<table>
