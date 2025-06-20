@@ -50,6 +50,12 @@
 			}		
 		}
 %>
+		<tr>
+			<td colspan="4">
+				<input type="button" value="글쓰기"
+					onclick="location.href='mycontroller.jsp?command=boardinsertform'">
+			</td>
+		</tr>
 	</table>
 	
 </body>

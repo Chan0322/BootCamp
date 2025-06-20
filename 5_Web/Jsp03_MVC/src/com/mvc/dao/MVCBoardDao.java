@@ -76,17 +76,75 @@ public class MVCBoardDao {
 			close(rs);
 			close(pstm);
 			close(con);
-			System.out.println("05.db 종료");
+			System.out.println("05.db 종료\n");
 		}
 		return res;
 	}
 	
 	public int insert(MVCBoardDto dto) {
-		return 0;
+		String sql = " INSERT INTO MVCBOARD VALUES(SEQ_MVCBOARD.NEXTVAL, ?, ?, ?, SYSDATE) ";
+		
+		Connection con = getConnection();
+		PreparedStatement pstm = null;
+		int res = 0;
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setString(1, dto.getWriter());
+			pstm.setString(2, dto.getTitle());
+			pstm.setString(3, dto.getContent());
+			System.out.println("03. query 준비: " + sql);
+			
+			res = pstm.executeUpdate();
+			System.out.println("04. query 실행");
+			
+			if(res>0) {
+				commit(con);
+			}else {
+				rollback(con);
+			}
+		} catch (SQLException e) {
+			System.out.println("3/4 단계 에러");
+			e.printStackTrace();
+		}finally {
+			close(pstm);
+			close(con);
+			System.out.println("05. db 종료\n");
+		}
+		return res;
 	}
 	
 	public int update(MVCBoardDto dto) {
-		return 0;
+		Connection con = getConnection();
+		PreparedStatement pstm = null;
+		int res = 0;
+		
+		String sql = " UPDATE MVCBOARD SET TITLE=?, CONTENT=? WHERE SEQ=? ";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setString(1, dto.getTitle());
+			pstm.setString(2, dto.getContent());
+			pstm.setInt(3, dto.getSeq());
+			System.out.println("03. query 준비: " + sql);
+			
+			res = pstm.executeUpdate();
+			System.out.println("04.query 실행 및 리턴");
+			
+			if(res>0) {
+				commit(con);
+			}else {
+				rollback(con);
+			}
+		} catch (SQLException e) {
+			System.out.println("3/4 단계 에러");
+			e.printStackTrace();
+		}finally {
+			close(pstm);
+			close(con);
+			System.out.println("05. db 종료\n");
+		}
+		return res;
 	}
 	
 	public int delete(MVCBoardDto dto) {
