@@ -11,31 +11,50 @@ public class BookManager {
 	private Scanner sc = new Scanner(System.in);
 	
 	public BookManager() {}
+	
 	public void addBook(Book book) {
 		try {
-			book.setBNo(bd.getLastBookNo()+1);
+			int lastNum = bd.getLastBookNo();
+			book.setBNo(lastNum+1);
+//			book.setBNo(bd.getLastBookNo()+1);
 		} catch (IndexOutOfBoundsException e) {
 			book.setBNo(1);
 		}
 		bd.addBook(book);
 	}
+	
 	public int deleteBook(int no) {
-		return 0;
+		int res = bd.deleteBook(no);
+		return res;
 	}
+	
 	public int searchBook(String title) {
-		return 0;
+		int index = bd.searchBook(title);
+		return index;
 	}
+	
 	public Book selectBook(int index) {
-		return null;
+		Book res = bd.selectBook(index);
+		return res;
 	}
+	
 	public ArrayList<Book> selectAll(){
-		return null;
+		ArrayList<Book> res = bd.selectAll();
+		return res;
 	}
+	
 	public Book[] sortedBookList() {
-		for(Book b : bd.sortedBookList()) {
-			
+		ArrayList<Book> sortedList = bd.sortedBookList();
+		Book[] bArr = new Book[sortedList.size()];
+		for(int i=0; i<bArr.length; i++) {
+			bArr[i] = sortedList.get(i);
 		}
-		return null;
+		return bArr;
 	}
-	public void printBookList(Book[] br) {}
+	
+	public void printBookList(Book[] br) {
+		for(Book b : br) {
+			System.out.println(b);
+		}
+	}
 }

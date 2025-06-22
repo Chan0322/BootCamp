@@ -1,5 +1,7 @@
 package com.collection.silsub2.view;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 import com.collection.silsub2.controller.BookManager;
@@ -21,7 +23,7 @@ public class BookMenu {
 			System.out.println("6. 끝내기");
 			System.out.print("메뉴 번호 선택: ");
 			int num = sc.nextInt();
-			
+			sc.nextLine();
 			switch(num) {
 			case 1:
 				Book b = inputBook();
@@ -32,15 +34,42 @@ public class BookMenu {
 				bm.printBookList(barr);
 				break;
 			case 3:
+				int res = bm.deleteBook(inputBookNo());
+				if(res == 1) {
+					System.out.println("성공적으로 삭제");
+				}else {
+					System.out.println("삭제할 글이 존재하지 않음.");
+				}
+				break;
 			case 4:
+				int index = bm.searchBook(inputBookTitle());
+				if(index == -1) {
+					System.out.println("조회한 글이 존재하지 않음");
+				}else {
+					Book resBook = bm.selectBook(index);
+					System.out.println(resBook);
+				}
+				break;
 			case 5:
+				ArrayList<Book> allBook = bm.selectAll();
+				if(allBook.isEmpty()) {
+					System.out.println("없습니다");
+				}else {
+					Iterator<Book> list = allBook.iterator();
+					while(list.hasNext()) {
+						System.out.println(list.next());
+					}
+				}
+				break;
 			case 6:
+				return;
 			}
 		}
 	}
 	public Book inputBook() {
 		System.out.print("도서 제목: ");
 		String title = sc.nextLine();
+//		sc.nextLine();
 		System.out.print("도서 장르 (1:인문 / 2:자연과학 / 3:의료 / 4.기타): ");
 		int category = sc.nextInt();
 		sc.nextLine();
@@ -50,9 +79,13 @@ public class BookMenu {
 		return new Book(category, title, author);
 	}
 	public int inputBookNo() {
-		return 0;
+		System.out.print("도서 번호: ");
+		int bNo = sc.nextInt();
+		return bNo;
 	}
 	public String inputBookTitle() {
-		return null;
+		System.out.print("도서 제목: ");
+		String title = sc.nextLine();
+		return title;
 	}
 }
