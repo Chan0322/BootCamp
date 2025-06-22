@@ -1,0 +1,76 @@
+package com.collection.silsub3.model.dao;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
+import com.collection.silsub3.model.vo.Book;
+
+public class BookDao {
+	private HashMap<String, Book> bookMap = new HashMap<>();
+	
+	public BookDao() {}
+
+	public BookDao(HashMap<String, Book> bookMap) {
+		super();
+		this.bookMap = bookMap;
+	}
+	
+	public int getLastBookNo() {
+		int lastNo = 0;
+		Iterator<String> lNo = bookMap.keySet().iterator();
+		while(lNo.hasNext()){
+			int no = Integer.parseInt(lNo.next());
+			if(no > lastNo) {
+				lastNo = no;
+			}
+		}
+		return lastNo;
+	}
+	
+	public void addBook(Book book) {
+		bookMap.put(book.getbNo(), book);
+	}
+	
+	public Book deleteBook(String key) {
+		Iterator<String> k = bookMap.keySet().iterator();
+		while(k.hasNext()) {
+			String ke = k.next();
+			if(ke.equals(key)) {
+				Book res = bookMap.get(ke);
+				k.remove();
+				return res;
+			}
+		}
+		return null;
+	}
+	
+	public String searchBook(String title) {
+		for(Map.Entry<String, Book> e : bookMap.entrySet()) {
+			if(e.getValue().getTitle().equals(title)) {
+				return e.getKey();
+			}
+		}
+		return null;
+	}
+	
+	public Book selectBook(String key) {
+		return bookMap.get(key);
+	}
+	
+	public HashMap<String, Book> selectAll(){
+		return bookMap;
+	}
+	
+	public ArrayList<Book> sortedBookList(){
+		ArrayList<Book> sortedList = new ArrayList<>();
+		
+		for(Map.Entry<String, Book> e : bookMap.entrySet()) {
+			sortedList.add(e.getValue());
+		}
+		Collections.sort(sortedList);
+		return sortedList;
+	}
+}

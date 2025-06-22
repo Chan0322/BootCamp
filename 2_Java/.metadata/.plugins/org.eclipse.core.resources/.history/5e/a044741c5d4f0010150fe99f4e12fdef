@@ -1,0 +1,5 @@
+package com.collection.silsub3.model.dao;
+
+public class BookDao {
+
+}

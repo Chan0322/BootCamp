@@ -1,0 +1,38 @@
+package com.collection.silsub3.controller;
+
+import java.util.HashMap;
+import java.util.Scanner;
+
+import com.collection.silsub3.model.dao.BookDao;
+import com.collection.silsub3.model.vo.Book;
+
+public class BookManager {
+	private BookDao bd;
+	Scanner sc = new Scanner(System.in);
+	
+	public BookManager() {}
+	
+	public void addBook(Book book) {
+		int lastNo = bd.getLastBookNo();
+	}
+	
+	public Book deleteBook(String key) {
+		return null;
+	}
+	
+	public String searchBook(String title) {
+		return null;
+	}
+	
+	public HashMap<String, Book> selectAll(){
+		return null;
+	}
+	
+	public Book[] sortedBookList() {
+		return null;
+	}
+	
+	public void printBookList(Book[] br) {
+		
+	}
+}

@@ -1,0 +1,30 @@
+package com.collection.silsub3.view;
+
+import java.util.Scanner;
+
+import com.collection.silsub3.controller.BookManager;
+import com.collection.silsub3.model.vo.Book;
+
+public class BookMenu {
+	Scanner sc = new Scanner(System.in);
+	private BookManager bm;
+	
+	public BookMenu() {}
+	
+	public void mainMenu() {
+		
+	}
+	
+	public Book inputBook() {
+		return null;
+	}
+	
+	public String inputBookNo() {
+		return null;
+	}
+	
+	public String inputBookTitle() {
+		return null;
+	}
+	
+}
