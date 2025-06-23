@@ -6,7 +6,6 @@ INDEX VERSION 1.131+C:\work\5_Web\.metadata\.plugins\org.eclipse.jdt.core
 1311570451.index
 2107300128.index
 3586529156.index
-1684305710.index
 1703362467.index
 2404314182.index
 2210579389.index

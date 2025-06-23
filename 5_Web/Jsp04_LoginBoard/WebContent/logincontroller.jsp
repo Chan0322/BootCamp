@@ -40,6 +40,7 @@
 			// 4. application 영역 : 하나의 어플리케이션 당 1개의 application 객체 생성되고 공유된다.
 			
 			if(dto.getMyrole().equals("ADMIN")){
+				// 관리자 로그인 시, 관리자 페이지로 이동
 				response.sendRedirect("adminmain.jsp");
 			}
 		}else{
@@ -48,6 +49,18 @@
 			request.setAttribute("url", "index.jsp");
 			pageContext.forward("result.jsp");
 		}
+		
+	}else if(command.equals("logout")){
+		//session에 저장된 정보를 삭제
+		session.invalidate();
+		
+		request.setAttribute("msg", "로그아웃");
+		request.setAttribute("url", "index.jsp");
+		pageContext.forward("result.jsp");
+		
+	}else if(command.equals("userlistall")){
+		dao.selectAll();
+		
 	}
 %>
 </body>

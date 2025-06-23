@@ -6,12 +6,20 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import com.login.dto.MyMemberDto;
 
 import common.JDBCTemplate;
 
 public class MyMemberDao extends JDBCTemplate{
+	
+	// 관리자 기능
+	//회원 전체 정보 조회
+	public List<MyMemberDto> selectAll(){
+		return null;
+	}
+	
 	// 로그인
 	public MyMemberDto login(String id, String pw) {
 		Connection con = getConnection();
@@ -53,4 +61,5 @@ public class MyMemberDao extends JDBCTemplate{
 		}
 		return res;
 	}
+	
 }
