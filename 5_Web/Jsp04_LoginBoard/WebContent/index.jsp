@@ -26,6 +26,8 @@
 				<tr>
 					<td colspan="2">
 						<input type="submit" value="login">
+						<input type="button" value="regist"
+							onclick="location.href='logincontroller.jsp?command=registform'">
 					</td>
 				</tr>
 			</table>

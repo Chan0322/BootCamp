@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.login.dto.MyMemberDto;
@@ -17,9 +18,47 @@ public class MyMemberDao extends JDBCTemplate{
 	// 관리자 기능
 	//회원 전체 정보 조회
 	public List<MyMemberDto> selectAll(){
-		return null;
+		Connection con = getConnection();
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		List<MyMemberDto> res = new ArrayList<>();
+		
+		String sql = " SELECT * FROM MYMEMBER ORDER BY MYNO DESC ";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			System.out.println("03. query 준비: "+sql);
+			
+			rs = pstm.executeQuery();
+			System.out.println("04. query 실행 및 리턴");
+			
+			while(rs.next()) {
+				MyMemberDto tmp = new MyMemberDto();
+				tmp.setMyno(rs.getInt(1));
+				tmp.setMyid(rs.getString(2));
+				tmp.setMypw(rs.getString(3));
+				tmp.setMyname(rs.getString(4));
+				tmp.setMyaddr(rs.getString(5));
+				tmp.setMyphone(rs.getString(6));
+				tmp.setMyemail(rs.getString(7));
+				tmp.setMyenabled(rs.getString(8));
+				tmp.setMyrole(rs.getString(9));
+				
+				res.add(tmp);
+			}
+		} catch (SQLException e) {
+			System.out.println("3/4 단계 에러");
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstm);
+			close(con);
+			System.out.println("05. db 종료\n");
+		}
+		return res;
 	}
 	
+	//회원 기능
 	// 로그인
 	public MyMemberDto login(String id, String pw) {
 		Connection con = getConnection();
@@ -57,9 +96,80 @@ public class MyMemberDao extends JDBCTemplate{
 			close(rs);
 			close(pstm);
 			close(con);
-			System.out.println("05. db 종료");
+			System.out.println("05. db 종료\n");
 		}
 		return res;
 	}
 	
+	//id 중복 체크
+	public String idChk(String id) {
+		Connection con = getConnection();
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		String res = null;
+		
+		String sql = " SELECT * FROM MYMEMBER WHERE MYID=? ";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setString(1, id);
+			System.out.println("03. query 준비: "+sql);
+			
+			rs = pstm.executeQuery();
+			System.out.println("04. query 실행 및 리턴");
+			
+			while(rs.next()) {
+				res = rs.getString(2);	// 두번째 컬럼 아이디 값만 가져옴.
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("3/4 단계 에러");
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstm);
+			close(con);
+			System.out.println("05. db 종료\n");
+		}
+		return res;
+	}
+	
+	//회원가입
+	public int insertMember(MyMemberDto dto) {
+		Connection con = getConnection();
+		PreparedStatement pstm = null;
+		int res = 0;
+		
+		String sql = " INSERT INTO MYMEMBER "
+				+ " VALUES(SEQ_MYMEMBER.NEXTVAL, ?, ?, ?, ?, ?, ?, 'Y', 'USER') ";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setString(1, dto.getMyid());
+			pstm.setString(2, dto.getMypw());
+			pstm.setString(3, dto.getMyname());
+			pstm.setString(4, dto.getMyaddr());
+			pstm.setString(5, dto.getMyphone());
+			pstm.setString(6, dto.getMyemail());
+			System.out.println("03. query 준비: " + sql);
+			
+			res = pstm.executeUpdate();
+			System.out.println("04. query 실행 및 리턴");
+			
+			if(res>0) {
+				commit(con);
+			}else {
+				rollback(con);
+			}
+		} catch (SQLException e) {
+			System.out.println("3/4 단계 에러");
+			e.printStackTrace();
+		}finally {
+			close(pstm);
+			close(con);
+			System.out.println("05. db 종료\n");
+		}
+		
+		return res;
+	}
 }
