@@ -97,26 +97,26 @@ public class aaaaa {
 //		float fNum = s.nextFloat();
 		
 		
-//		// hasNext()
-//		Scanner scanner = new Scanner(System.in);
-//		System.out.println("먹고싶은 음식들을 입력해 주세요. (공백으로 구분)");
-//		while(scanner.hasNext()) {
-//			String food = scanner.next();		// 입력 : 피자 치킨 김치찌개
-//			System.out.println(food);			// 출력 : 피자\n치킨\n김치찌개
-//		}
-//		System.out.println("맛있게 드세요!");
-//		scanner.close();
-//		
+		// hasNext()
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("먹고싶은 음식들을 입력해 주세요. (공백으로 구분)");
+		while(scanner.hasNext()) {
+			String food = scanner.next();		// 입력 : 피자 치킨 김치찌개
+			System.out.println(food);			// 출력 : 피자\n치킨\n김치찌개
+		}
+		System.out.println("맛있게 드세요!");
+		scanner.close();
+		
 		
 		// 사용자 정의 구분자
 		String fruits = "apple,banana,grape,orange";
         Scanner scanner2 = new Scanner(fruits);
-        scanner2.useDelimiter(",");
-        while (scanner2.hasNext()) {
-            String fruit = scanner2.next();
+        scanner.useDelimiter(",");
+        while (scanner.hasNext()) {
+            String fruit = scanner.next();
             System.out.println("과일: " + fruit);
         }
-        scanner2.close();
+        scanner.close();
 
         
         
@@ -127,8 +127,8 @@ public class aaaaa {
         sc.nextLine();  // 개행 문자 제거
         System.out.print("이름을 입력하세요: ");
         String name1 = sc.nextLine();  // 제대로 입력 가능
-        System.out.println("나이: " + age1);
-        System.out.println("이름: " + name1);
+        System.out.println("나이: " + age);
+        System.out.println("이름: " + name);
         sc.close();
 
 	}
