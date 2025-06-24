@@ -166,6 +166,21 @@
 			request.setAttribute("url", "logincontroller.jsp?command=userinfo&myno="+myno);
 		}
 		pageContext.forward("result.jsp");
+		
+	}else if(command.equals("deleteuser")){
+		int myno = ((MyMemberDto)session.getAttribute("dto")).getMyno();
+		//System.out.println(myno);
+		boolean res = dao.deleteMember(myno);
+		
+		if(res){
+			request.setAttribute("msg", "탈퇴 성공");
+			request.setAttribute("url", "logincontroller.jsp?command=logout");
+		}else{
+			request.setAttribute("msg", "탈퇴 실패");
+			request.setAttribute("url", "usermain.jsp");
+		}
+		
+		pageContext.forward("result.jsp");
 	}
 %>
 </body>

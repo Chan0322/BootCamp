@@ -56,6 +56,7 @@
 		<tr>
 			<td colspan="2">
 				<input type="button" value="수정" onclick="location.href='logincontroller.jsp?command=updateform'">
+				<input type="button" value="탈퇴" onclick="location.href='logincontroller.jsp?command=deleteuser'">
 			</td>
 		</tr>
 	</table>

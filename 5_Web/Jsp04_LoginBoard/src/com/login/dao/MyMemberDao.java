@@ -249,4 +249,36 @@ public class MyMemberDao extends JDBCTemplate{
 		
 		return (res>0)?true:false;
 	}
+	
+	// 회원 탈퇴
+	public boolean deleteMember(int myno) {
+		Connection con = getConnection();
+		PreparedStatement pstm = null;
+		int res = 0;
+		// 완전히 삭제하지 않고 가입 상태 값을 바꿔주자! => 사용자 변심으로 탈퇴 취소 가능
+		String sql = " UPDATE MYMEMBER SET MYENABLED='N' WHERE MYNO=? ";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setInt(1, myno);
+			System.out.println("03. query 준비: "+sql);
+			
+			res = pstm.executeUpdate();
+			System.out.println("04. query 실행 및 리턴");
+			
+			if(res>0) {
+				commit(con);
+			}else {
+				rollback(con);
+			}
+		} catch (SQLException e) {
+			System.out.println("3/4 단계 에러");
+			e.printStackTrace();
+		}finally {
+			close(pstm);
+			close(con);
+			System.out.println("05. db 종료\n");
+		}
+		return (res>0);
+	}
 }
