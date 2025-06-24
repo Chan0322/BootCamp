@@ -181,7 +181,7 @@ public class MyMemberDao extends JDBCTemplate{
 		MyMemberDto res = null;
 		
 		String sql = " SELECT * FROM MYMEMBER WHERE MYNO=? ";
-		
+		// "USER01' OR 1=1" => Prepared에서는 보안이 더 좋아 ?안에 OR 같은게 인식 안됨.
 		try {
 			pstm = con.prepareStatement(sql);
 			pstm.setInt(1, myno);
@@ -212,5 +212,41 @@ public class MyMemberDao extends JDBCTemplate{
 			System.out.println("05. db 종료\n");
 		}
 		return res;
+	}
+	
+	//회원 정보 수정
+	public boolean updateMember(MyMemberDto dto) {
+		Connection con = getConnection();
+		PreparedStatement pstm = null;
+		int res =0;
+		
+		String sql = " UPDATE MYMEMBER SET MYADDR=?, MYPHONE=?, MYEMAIL=? WHERE MYNO=? ";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setString(1, dto.getMyaddr());
+			pstm.setString(2, dto.getMyphone());
+			pstm.setString(3, dto.getMyemail());
+			pstm.setInt(4, dto.getMyno());
+			System.out.println("03. query 준비: "+sql);
+			
+			res = pstm.executeUpdate();
+			System.out.println("04. query 실행 및 리턴");
+			
+			if(res>0) {
+				commit(con);
+			}else {
+				rollback(con);
+			}
+		} catch (SQLException e) {
+			System.out.println("3/4 단계 에러");
+			e.printStackTrace();
+		}finally {
+			close(pstm);
+			close(con);
+			System.out.println("05. db 종료\n");
+		}
+		
+		return (res>0)?true:false;
 	}
 }

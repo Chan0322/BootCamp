@@ -53,6 +53,11 @@
 			<th>등 급</th>
 			<td><%=dto.getMyrole() %></td>
 		</tr>
+		<tr>
+			<td colspan="2">
+				<input type="button" value="수정" onclick="location.href='logincontroller.jsp?command=updateform'">
+			</td>
+		</tr>
 	</table>
 </body>
 </html>

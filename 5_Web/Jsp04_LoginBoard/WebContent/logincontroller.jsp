@@ -120,8 +120,52 @@
 		int myno = Integer.parseInt(request.getParameter("myno"));
 		MyMemberDto dto = dao.selectMember(myno);
 		
+		// 현재 로그인된 회원의 정보 // 아래 방식으로 변경하여 작성해보면 url애서 감춰서도 할 수 있다. 보안상 이점.
+		//MyMemberDto log = (MyMemberDto)session.getAttribute("dto");
+		//log.getMyno();
+		//MyMemberDto dto = dao.selectMember(myno);
+		
 		request.setAttribute("info", dto);
 		pageContext.forward("userinfo.jsp");
+		
+	}else if(command.equals("updateform")){
+		//int myno = Integer.parseInt(request.getParameter("myno"));
+		//MyMemberDto dto = dao.selectMember(myno);
+		
+		//로그인한 회원의 정보
+		MyMemberDto login = (MyMemberDto)session.getAttribute("dto");
+		
+		// 로그인한 회원의 정보 중에 myno를 꺼내 selectOne한다.
+		MyMemberDto	dto = dao.selectMember(login.getMyno());
+		//System.out.println(dto.getMyid());
+		
+		request.setAttribute("dto", dto);
+		pageContext.forward("updateuser.jsp");
+		
+	}else if(command.equals("updateuser")){
+		String myaddr = request.getParameter("myaddr");
+		String myphone = request.getParameter("myphone");
+		String myemail = request.getParameter("myemail");
+		int myno = Integer.parseInt(request.getParameter("myno"));
+		
+		//System.out.println(myaddr+myphone+myemail+myno);
+		
+		MyMemberDto dto = new MyMemberDto();
+		dto.setMyaddr(myaddr);
+		dto.setMyphone(myphone);
+		dto.setMyemail(myemail);
+		dto.setMyno(myno);
+		
+		boolean res = dao.updateMember(dto);
+		
+		if(res){
+			request.setAttribute("msg", "내 정보 수정 성공");
+			request.setAttribute("url", "usermain.jsp");
+		}else{
+			request.setAttribute("msg", "내 정보 수정 실패");
+			request.setAttribute("url", "logincontroller.jsp?command=userinfo&myno="+myno);
+		}
+		pageContext.forward("result.jsp");
 	}
 %>
 </body>
