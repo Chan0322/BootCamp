@@ -58,6 +58,41 @@ public class MyMemberDao extends JDBCTemplate{
 		return res;
 	}
 	
+	// 회원 등급 변경
+		public boolean updateRole(int myno, String myrole) {
+			Connection con = getConnection();
+			PreparedStatement pstm = null;
+			int res = 0;
+			
+			String sql = " UPDATE MYMEMBER SET MYROLE=? WHERE MYNO=? ";
+			
+			try {
+				pstm = con.prepareStatement(sql);
+				pstm.setString(1, myrole);
+				pstm.setInt(2, myno);
+				System.out.println("03. query 준비: "+sql);
+				
+				res = pstm.executeUpdate();
+				System.out.println("04. query 실행 및 리턴");
+				
+				if(res>0) {
+					commit(con);
+				}else {
+					rollback(con);
+				}
+			} catch (SQLException e) {
+				System.out.println("3/4 단계 에러");
+				e.printStackTrace();
+			}finally {
+				close(pstm);
+				close(con);
+				System.out.println("05. db 종료\n");
+			}
+			return (res>0);
+		}
+	
+		
+		
 	//회원 기능
 	// 로그인
 	public MyMemberDto login(String id, String pw) {
@@ -281,4 +316,6 @@ public class MyMemberDao extends JDBCTemplate{
 		}
 		return (res>0);
 	}
+	
+	
 }

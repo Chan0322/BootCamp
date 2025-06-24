@@ -181,6 +181,30 @@
 		}
 		
 		pageContext.forward("result.jsp");
+		
+	}else if(command.equals("updateroleform")){
+		int myno = Integer.parseInt(request.getParameter("myno"));
+		//System.out.println(myno);
+		MyMemberDto dto = dao.selectMember(myno);
+		
+		request.setAttribute("selectOne", dto);
+		pageContext.forward("updateroleform.jsp");
+		
+	}else if(command.equals("updaterole")){
+		int myno = Integer.parseInt(request.getParameter("myno"));
+		String myrole = request.getParameter("myrole");
+		
+		boolean res = dao.updateRole(myno, myrole);
+		
+		if(res){
+			request.setAttribute("msg", "회원 등급 변경 성공");
+			request.setAttribute("url", "logincontroller.jsp?command=userlistall");
+		}else{
+			request.setAttribute("msg", "회원 등급 변경 실패");
+			request.setAttribute("url", "logincontroller.jsp?command=userlistall");
+		}
+		
+		pageContext.forward("result.jsp");
 	}
 %>
 </body>
