@@ -115,6 +115,13 @@
 		request.setAttribute("msg", msg);
 		request.setAttribute("url", url);
 		pageContext.forward("result.jsp");
+		
+	}else if(command.equals("userinfo")){
+		int myno = Integer.parseInt(request.getParameter("myno"));
+		MyMemberDto dto = dao.selectMember(myno);
+		
+		request.setAttribute("info", dto);
+		pageContext.forward("userinfo.jsp");
 	}
 %>
 </body>

@@ -19,5 +19,8 @@
 		<button onclick="location.href='logincontroller.jsp?command=logout'">로그아웃</button>
 	</div>
 	<h1>User Main</h1>
+	<div>
+		<a href="logincontroller.jsp?command=userinfo&myno=<%=dto.getMyno()%>">MyPage</a> <!-- 내 정보 보기 -->
+	</div>
 </body>
 </html>
