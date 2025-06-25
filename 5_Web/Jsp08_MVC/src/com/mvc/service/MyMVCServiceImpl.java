@@ -26,7 +26,12 @@ public class MyMVCServiceImpl implements MyMVCService {
 
 	@Override
 	public MyMVCDto selectOne(int seq) {
-		return null;
+		Connection con = getConnection();
+		MyMVCDto res = dao.selectOne(con, seq);
+		
+		close(con);
+		System.out.println("05. db 종료\n");
+		return res;
 	}
 
 	@Override

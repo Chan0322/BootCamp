@@ -44,7 +44,30 @@ public class MyMVCDaoImpl implements MyMVCDao {
 
 	@Override
 	public MyMVCDto selectOne(Connection con, int seq) {
-		return null;
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		MyMVCDto res = null;
+		
+		try {
+			pstm = con.prepareStatement(selectOneSql);
+			pstm.setInt(1, seq);
+			System.out.println("03.query 준비: "+selectOneSql);
+			
+			rs = pstm.executeQuery();
+			System.out.println("04. query 실행 및 리턴");
+			
+			while(rs.next()) {
+				res = new MyMVCDto(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDate(5));
+			}
+		} catch (SQLException e) {
+			System.out.println("3/4 단계 에러");
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstm);
+			System.out.println("05. db 종료\n");
+		}
+		return res;
 	}
 
 	@Override

@@ -8,7 +8,7 @@ import com.mvc.dto.MyMVCDto;
 public interface MyMVCDao {
 	
 	String selectAllSql = " SELECT * FROM MYMVCBOARD ORDER BY SEQ DESC ";
-	String selectOneSql = "";
+	String selectOneSql = " SELECT * FROM MYMVCBOARD WHERE SEQ=? ";
 	String insertSql = "";
 	String updateSql = "";
 	String deleteSql = "";

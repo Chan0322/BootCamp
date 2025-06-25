@@ -32,7 +32,7 @@
 					<tr>
 						<td>${dto.seq }</td>
 						<td>${dto.writer }</td>
-						<td>${dto.title }</td>
+						<td><a href="controller.do?command=detail&seq=${dto.seq }">${dto.title }</a></td>
 						<td>${dto.regdate }</td>
 					</tr>
 				</c:forEach>

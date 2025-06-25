@@ -33,6 +33,14 @@ public class MyMVCServlet extends HttpServlet {
 			request.setAttribute("list", list);
 			RequestDispatcher disp = request.getRequestDispatcher("boardlist.jsp");
 			disp.forward(request, response);
+			
+		}else if(command.equals("detail")) {
+			int seq = Integer.parseInt(request.getParameter("seq"));
+			MyMVCDto dto = service.selectOne(seq);
+			
+			request.setAttribute("dto", dto);
+			RequestDispatcher disp = request.getRequestDispatcher("boarddetail.jsp");	// request 객체를 공유하여
+			disp.forward(request, response); // 응답
 		}
 	}
 
