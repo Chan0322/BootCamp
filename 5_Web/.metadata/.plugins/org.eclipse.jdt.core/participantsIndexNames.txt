@@ -3,6 +3,8 @@ C:\work\5_Web\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1789690074.i
 \Jsp07_EL_JSTL\src
 C:\work\5_Web\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1150147803.index
 \Jsp02_Board\src
+C:\work\5_Web\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3245088658.index
+\Jsp08_MVC\src
 C:\work\5_Web\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4287926913.index
 \Jsp04_LoginBoard\src
 C:\work\5_Web\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\247094568.index
