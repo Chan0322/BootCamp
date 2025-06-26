@@ -54,6 +54,15 @@ public class AnswerController extends HttpServlet {
 			}
 			disp("result.jsp", request, response);
 			
+		}else if(command.equals("detail")) {
+			//1. 전달받은 parameter를 활용하여 데이터 select 해온다.
+			//2. boarddetail.jsp 페이지로 응답.
+			//3. 해당 페이지에서 준비된 데이터 화면에 출력(글 번호, 작성자, 작성일, 제목, 내용)
+			int boardno = Integer.parseInt(request.getParameter("boardno"));
+			//AnswerDto res = service.selectOne(boardno);
+			request.setAttribute("dto", service.selectOne(boardno));
+			disp("boarddetail.jsp", request, response);
+			
 		}
 	}
 

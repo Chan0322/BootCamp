@@ -36,4 +36,14 @@ public class AnswerService {
 		System.out.println("05. db 종료\n");
 		return res;
 	}
+	
+	public AnswerDto selectOne(int boardno) {
+		Connection con = getConnection();
+		
+		AnswerDto res = dao.selectOne(con, boardno);
+		
+		close(con);
+		System.out.println("05. db 종료\n");
+		return res;
+	}
 }

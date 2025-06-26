@@ -78,4 +78,32 @@ public class AnswerDao {
 		
 		return res;
 	}
+	
+	public AnswerDto selectOne(Connection con, int boardno) {
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		AnswerDto res = null;
+		
+		String sql = " SELECT * FROM ANSWERBOARD WHERE BOARDNO=? ";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setInt(1, boardno);
+			System.out.println("03. query 준비 : "+sql);
+			
+			rs = pstm.executeQuery();
+			System.out.println("04. query 실행 및 리턴");
+			
+			while(rs.next()) {
+				res = new AnswerDto(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getDate(8));
+			}
+		} catch (SQLException e) {
+			System.out.println("3/4 단계 에러");
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstm);
+		}
+		return res;
+	}
 }
