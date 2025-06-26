@@ -64,6 +64,35 @@ public class MyMVCServlet extends HttpServlet {
 			
 			RequestDispatcher disp = request.getRequestDispatcher("result.jsp");
 			disp.forward(request, response);
+			
+		}else if(command.equals("updateform")) {
+			int seq = Integer.parseInt(request.getParameter("seq"));
+			MyMVCDto dto = service.selectOne(seq);
+			
+			request.setAttribute("dto", dto);
+			RequestDispatcher disp = request.getRequestDispatcher("boardupdate.jsp");
+			disp.forward(request, response);
+			
+		}else if(command.equals("boardupdate")) {
+			String title = request.getParameter("title");
+			String content = request.getParameter("content");
+			int seq = Integer.parseInt(request.getParameter("seq"));
+			
+			MyMVCDto dto = new MyMVCDto(seq, null, title, content, null);
+			
+			boolean res = service.update(dto);
+			
+			if(res) {
+				request.setAttribute("msg", "글 수정 성공");
+				request.setAttribute("url", "controller.do?command=list");
+			}else {
+				request.setAttribute("msg", "글 수정 실패");
+				request.setAttribute("url", "controller.do?command=updateform&seq="+seq);
+			}
+			
+			RequestDispatcher disp = request.getRequestDispatcher("result.jsp");
+			disp.forward(request, response);
+			
 		}
 	}
 

@@ -31,6 +31,11 @@
 				<textarea rows="10" cols="40" readonly="readonly">${dto.content }</textarea>
 			</td>
 		</tr>
+		<tr>
+			<td colspan="2">
+				<input type="button" value="수정" onclick="location.href='controller.do?command=updateform&seq=${dto.seq }'">
+			</td>
+		</tr>
 	</table>
 </body>
 </html>

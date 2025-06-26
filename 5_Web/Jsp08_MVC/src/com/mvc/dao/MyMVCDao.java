@@ -10,7 +10,7 @@ public interface MyMVCDao {
 	String selectAllSql = " SELECT * FROM MYMVCBOARD ORDER BY SEQ DESC ";
 	String selectOneSql = " SELECT * FROM MYMVCBOARD WHERE SEQ=? ";
 	String insertSql = " INSERT INTO MYMVCBOARD VALUES(SEQ_MYMVCBOARD.NEXTVAL, ?, ?, ?, SYSDATE) ";
-	String updateSql = "";
+	String updateSql = " UPDATE MYMVCBOARD SET TITLE=?, CONTENT=? WHERE SEQ=? ";
 	String deleteSql = "";
 
 	public List<MyMVCDto> selectAll(Connection con);

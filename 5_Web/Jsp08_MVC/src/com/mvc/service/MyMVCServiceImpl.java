@@ -54,7 +54,20 @@ public class MyMVCServiceImpl implements MyMVCService {
 
 	@Override
 	public boolean update(MyMVCDto dto) {
-		return false;
+		Connection con = getConnection();
+		
+		boolean res = dao.update(con, dto);
+		
+		if(res) {
+			commit(con);
+		}else {
+			rollback(con);
+		}
+		
+		close(con);
+		System.out.println("05. db 종료\n");
+		
+		return res;
 	}
 
 	@Override
