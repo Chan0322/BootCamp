@@ -72,7 +72,19 @@ public class MyMVCServiceImpl implements MyMVCService {
 
 	@Override
 	public boolean delete(int seq) {
-		return false;
+		Connection con = getConnection();
+		
+		boolean res = dao.delete(con, seq);
+		
+		if(res) {
+			commit(con);
+		}else {
+			rollback(con);
+		}
+		
+		close(con);
+		System.out.println("05. db 종료\n");
+		return res;
 	}
 
 }

@@ -11,7 +11,7 @@ public interface MyMVCDao {
 	String selectOneSql = " SELECT * FROM MYMVCBOARD WHERE SEQ=? ";
 	String insertSql = " INSERT INTO MYMVCBOARD VALUES(SEQ_MYMVCBOARD.NEXTVAL, ?, ?, ?, SYSDATE) ";
 	String updateSql = " UPDATE MYMVCBOARD SET TITLE=?, CONTENT=? WHERE SEQ=? ";
-	String deleteSql = "";
+	String deleteSql = " DELETE FROM MYMVCBOARD WHERE SEQ=? ";
 
 	public List<MyMVCDto> selectAll(Connection con);
 	public MyMVCDto selectOne(Connection con, int seq);

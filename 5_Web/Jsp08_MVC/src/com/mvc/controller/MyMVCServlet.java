@@ -93,6 +93,21 @@ public class MyMVCServlet extends HttpServlet {
 			RequestDispatcher disp = request.getRequestDispatcher("result.jsp");
 			disp.forward(request, response);
 			
+		}else if(command.equals("delete")) {
+			int seq = Integer.parseInt(request.getParameter("seq"));
+			
+			boolean res = service.delete(seq);
+			
+			if(res) {
+				request.setAttribute("msg", "글 삭제 성공");
+				request.setAttribute("url", "controller.do?command=list");
+			}else {
+				request.setAttribute("msg", "글 삭제 실패");
+				request.setAttribute("url", "controller.do?command=detail&seq="+seq);
+			}
+			
+			RequestDispatcher disp = request.getRequestDispatcher("result.jsp");
+			disp.forward(request, response);
 		}
 	}
 
