@@ -21,4 +21,19 @@ public class AnswerService {
 		
 		return res;
 	}
+	
+	public int insert(AnswerDto dto) {
+		Connection con = getConnection();
+		
+		int res = dao.insert(con, dto);
+		
+		if(res>0) {
+			commit(con);
+		}else {
+			rollback(con);
+		}
+		close(con);
+		System.out.println("05. db 종료\n");
+		return res;
+	}
 }

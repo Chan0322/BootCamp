@@ -48,4 +48,34 @@ public class AnswerDao {
 		}
 		return res;
 	}
+	
+	public int insert(Connection con, AnswerDto dto) {
+		PreparedStatement pstm = null;
+		int res = 0;
+		
+		//INSERT INTO ANSWERBOARD
+		//VALUES(BOARDNOSQ.NEXTVAL, GROUPNOSQ.NEXTVAL, 1, 0, '첫번째 글', '1번 글 입니다!!', '유저1', SYSDATE);
+		String sql = " INSERT INTO ANSWERBOARD "
+				+ " VALUES(BOARDNOSQ.NEXTVAL, GROUPNOSQ.NEXTVAL, 1, 0, ?, ?, ?, SYSDATE) ";
+		
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setString(1, dto.getTitle());
+			pstm.setString(2, dto.getContent());
+			pstm.setString(3, dto.getWriter());
+			System.out.println("03. query 준비 : " + sql);
+			
+			res = pstm.executeUpdate();
+			System.out.println("04. query 실행 및 리턴");
+			
+		} catch (SQLException e) {
+			System.out.println("3/4 단계 에러");
+			e.printStackTrace();
+		}finally {
+			close(pstm);
+		}
+		
+		return res;
+	}
 }
