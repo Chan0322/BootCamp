@@ -41,6 +41,29 @@ public class MyMVCServlet extends HttpServlet {
 			request.setAttribute("dto", dto);
 			RequestDispatcher disp = request.getRequestDispatcher("boarddetail.jsp");	// request 객체를 공유하여
 			disp.forward(request, response); // 응답
+			
+		}else if(command.equals("writeform")) {
+			response.sendRedirect("boardwrite.jsp");	// 글 작성 페이지로 이동.
+			
+		}else if(command.equals("boardwrite")) {
+			String writer = request.getParameter("writer");
+			String title = request.getParameter("title");
+			String content = request.getParameter("content");
+			
+			MyMVCDto dto = new MyMVCDto(0,writer, title, content, null); // 받아온 값들을 넘겨주기 위해 dto 객체에 담음.
+			
+			boolean res = service.insert(dto);
+			
+			if(res) {
+				request.setAttribute("msg", "글 작성 성공");
+				request.setAttribute("url", "controller.do?command=list");
+			}else {
+				request.setAttribute("msg", "글 작성 실패");
+				request.setAttribute("url", "controller.do?command=writeform");
+			}
+			
+			RequestDispatcher disp = request.getRequestDispatcher("result.jsp");
+			disp.forward(request, response);
 		}
 	}
 

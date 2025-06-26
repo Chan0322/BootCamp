@@ -72,7 +72,26 @@ public class MyMVCDaoImpl implements MyMVCDao {
 
 	@Override
 	public boolean insert(Connection con, MyMVCDto dto) {
-		return false;
+		PreparedStatement pstm = null;
+		int res = 0;
+		
+		try {
+			pstm = con.prepareStatement(insertSql);
+			pstm.setString(1, dto.getWriter());
+			pstm.setString(2, dto.getTitle());
+			pstm.setString(3, dto.getContent());
+			System.out.println("03. query 준비 : " + insertSql);
+			
+			res = pstm.executeUpdate();
+			System.out.println("04. query 실행 및 리턴");
+			
+		} catch (SQLException e) {
+			System.out.println("3/4 단계 에러");
+			e.printStackTrace();
+		}finally {
+			close(pstm);
+		}
+		return (res>0);
 	}
 
 	@Override
