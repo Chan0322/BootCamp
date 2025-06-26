@@ -26,7 +26,28 @@ document.addEventListener('DOMContentLoaded', function(){   // html 로드 후 �
             </div>
         `;
 
-        // 피드 추가
+        // 피드 추가 -> 기존 목록 끝에 새 피드를 넣는다.
         feedList.insertAdjacentHTML('beforeend', newFeedHtml);
     });
+
+    // 프로필 수정 팝업
+    const editBtn = document.querySelector('.editProfile');
+    const popup = document.getElementById('editProfilePopupId');
+    const cancelBtn = document.getElementById('cancelEditBtn');
+    const saveBtn = document.getElementById('saveEditBtn');
+
+    // 팝업 열기
+    editBtn.addEventListener('click', function(){
+        popup.classList.add('show');
+    });
+    // 닫기
+    cancelBtn.addEventListener('click', function () {
+        popup.classList.remove('show');
+    });
+    // 저장 버튼
+    saveBtn.addEventListener('click', function () {
+        alert('프로필이 저장되었습니다!');
+        popup.classList.remove('show');
+    });
+
 });
