@@ -32,6 +32,7 @@
 		<tr>
 			<td colspan="2">
 				<input type="button" value="수정" onclick="location.href='answer?command=updateform&boardno=${dto.boardno}'">
+				<input type="button" value="답글" onclick="location.href='answer?command=answerform&parentboardno=${dto.boardno}'">
 			</td>
 		</tr>
 	</table>

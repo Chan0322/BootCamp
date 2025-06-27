@@ -89,6 +89,36 @@ public class AnswerController extends HttpServlet {
 				request.setAttribute("url", "answer?command=updateform&boardno="+boardno);
 			}
 			disp("result.jsp", request, response);
+			
+		}else if(command.equals("answerform")) {
+			int parentboardno = Integer.parseInt(request.getParameter("parentboardno"));
+			
+			request.setAttribute("parent", service.selectOne(parentboardno));
+			disp("answerwrite.jsp", request, response);
+			
+		}else if(command.equals("answerwrite")) {
+			int parentboardno = Integer.parseInt(request.getParameter("parentboardno"));
+//			System.out.println(parentboardno);
+			String title = request.getParameter("title");
+			String content = request.getParameter("content");
+			String writer = request.getParameter("writer");
+			
+			AnswerDto dto = new AnswerDto();
+			dto.setTitle(title);
+			dto.setContent(content);
+			dto.setWriter(writer);
+			
+			boolean res = service.answerInsert(parentboardno, dto);
+			
+			if(res) {
+				request.setAttribute("msg", "답변 작성 성공");
+				request.setAttribute("url", "answer?command=list");
+			}else {
+				request.setAttribute("msg", "답변 작성 실패");
+				request.setAttribute("url", "answer?command=list");
+			}
+			disp("result.jsp", request, response);
+			
 		}
 	}
 

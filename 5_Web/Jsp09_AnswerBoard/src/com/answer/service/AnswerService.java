@@ -61,4 +61,39 @@ public class AnswerService {
 		
 		return res;
 	}
+	
+	public boolean answerInsert(int parentboardno, AnswerDto dto) {
+		Connection con = getConnection();
+		
+		AnswerDto parent = dao.selectOne(con, parentboardno);
+		int parentgroupno = parent.getGroupno();
+		int parentgroupsq = parent.getGroupsq();
+		int parenttitletab = parent.getTitletab();
+		
+		// update
+		
+		// 업데이트 전 업데이트 될 글이 몇개인지 확인
+		int cnt = dao.countUpdate(con, parentgroupno, parentgroupsq);
+		
+		int uRes = dao.updateAnswer(con, parentgroupno, parentgroupsq);
+		
+		// insert
+		dto.setGroupno(parentgroupno);
+		dto.setGroupsq(parentgroupsq);
+		dto.setTitletab(parenttitletab);
+		
+		int iRes = dao.insertAnswer(con, dto);
+		
+		if(uRes==cnt && iRes==1) {
+			System.out.println("결과1: "+uRes);
+			System.out.println("결과2: "+iRes);
+			commit(con);
+		}else {
+			rollback(con);
+		}
+		close(con);
+		System.out.println("05. db 종료 \n");
+		
+		return (uRes==cnt && iRes==1);
+	}
 }
