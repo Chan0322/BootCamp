@@ -1,0 +1,50 @@
+$(function(){
+	getJson();
+});
+
+function getJson(){
+	//alert("getJson()!! ");
+	
+	//getJSON통해 json 데이터 받아온다.
+	$.getJSON("json/bike.json", function(data){
+		//console.log(data);
+		$.each(data, function(key, val){
+			//console.log(key);
+			//console.log(val);
+			//console.log("0--------------")
+			
+			if(key=="DESCRIPTION"){
+				$("table").attr("border", "1");
+				
+				$("thead").append(
+					"<tr>"+
+						"<th>"+val.ADDR_GU+"</th>"+
+						"<th>"+val.CONTENT_ID+"</th>"+
+						"<th>"+val.CONTENT_NM+"</th>"+
+						"<th>"+val.NEW_ADDR+"</th>"+
+						"<th>"+val.CRADLE_COUNT+"</th>"+
+						"<th>"+val.LONGITUDE+"</th>"+
+						"<th>"+val.LATITUDE+"</th>"+
+					"</tr>"
+				);
+			}else {
+				// key가 == 'DATA'일 때 실행
+				for(let i=0; i<val.length; i++){
+					//str : 배열 안에 있는 하나의 json 데이터
+					let str = val[i];
+					$("tbody").append(
+						"<tr>"+
+							"<td>"+str.addr_gu+"</td>"+
+							"<td>"+str.content_id+"</td>"+
+							"<td>"+str.content_nm+"</td>"+
+							"<td>"+str.new_addr+"</td>"+
+							"<td>"+str.cradle_count+"</td>"+
+							"<td>"+str.longitude+"</td>"+
+							"<td>"+str.latitude+"</td>"+
+						"</tr>"
+					);
+				}
+			}
+		});
+	});
+}
