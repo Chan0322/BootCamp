@@ -82,7 +82,7 @@ public class AnswerDao {
 	public AnswerDto selectOne(Connection con, int boardno) {
 		PreparedStatement pstm = null;
 		ResultSet rs = null;
-		AnswerDto res = null;
+		AnswerDto res = new AnswerDto();
 		
 		String sql = " SELECT * FROM ANSWERBOARD WHERE BOARDNO=? ";
 		
@@ -95,7 +95,15 @@ public class AnswerDao {
 			System.out.println("04. query 실행 및 리턴");
 			
 			while(rs.next()) {
-				res = new AnswerDto(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getDate(8));
+				//res = new AnswerDto(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getDate(8));
+				res.setBoardno(rs.getInt(1));
+				res.setGroupno(rs.getInt(2));
+				res.setGroupsq(rs.getInt(3));
+				res.setTitletab(rs.getInt(4));
+				res.setTitle(rs.getString(5));
+				res.setContent(rs.getString(6));
+				res.setWriter(rs.getString(7));
+				res.setRegdate(rs.getDate(8));
 			}
 		} catch (SQLException e) {
 			System.out.println("3/4 단계 에러");
@@ -104,6 +112,32 @@ public class AnswerDao {
 			close(rs);
 			close(pstm);
 		}
+		return res;
+	}
+	
+	public int update(Connection con, AnswerDto dto) {
+		PreparedStatement pstm = null;
+		int res = 0;
+		
+		String sql = " UPDATE ANSWERBOARD SET TITLE=?, CONTENT=? WHERE BOARDNO=? ";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setString(1, dto.getTitle());
+			pstm.setString(2, dto.getContent());
+			pstm.setInt(3, dto.getBoardno());
+			System.out.println("03. query 준비: "+sql);
+			
+			res = pstm.executeUpdate();
+			System.out.println("04. query 실행 및 리턴");
+			
+		} catch (SQLException e) {
+			System.out.println("3/4 단계 에러");
+			e.printStackTrace();
+		}finally {
+			close(pstm);
+		}
+
 		return res;
 	}
 }

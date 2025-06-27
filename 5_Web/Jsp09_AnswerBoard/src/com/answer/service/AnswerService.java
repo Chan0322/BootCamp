@@ -46,4 +46,19 @@ public class AnswerService {
 		System.out.println("05. db 종료\n");
 		return res;
 	}
+	
+	public int update(AnswerDto dto) {
+		Connection con = getConnection();
+		
+		int res = dao.update(con, dto);
+		if(res>0) {
+			commit(con);
+		}else {
+			rollback(con);
+		}
+		close(con);
+		System.out.println("05. db 종료\n");
+		
+		return res;
+	}
 }

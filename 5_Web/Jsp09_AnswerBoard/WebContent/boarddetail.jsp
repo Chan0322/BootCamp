@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>게시글</h1>
+	<h1>작성글 보기</h1>
 	<table>
 		<tr>
 			<th>글 번호</th>
@@ -28,6 +28,11 @@
 		<tr>
 			<th>내 용</th>
 			<td><textarea rows="10" cols="40" readonly="readonly">${dto.content }</textarea></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<input type="button" value="수정" onclick="location.href='answer?command=updateform&boardno=${dto.boardno}'">
+			</td>
 		</tr>
 	</table>
 </body>
