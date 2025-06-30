@@ -41,4 +41,17 @@ public class MyBoardDao extends SqlMapConfig {
 		
 		return res;
 	}
+	
+	// 글 작성
+	public int insert(MyBoardDto dto) {
+		SqlSession session = null;
+		int res = 0;
+		
+		session = getSqlSessionFactory().openSession(true);
+		res = session.insert(namespace+".myinsert", dto);
+		
+		session.close();
+		
+		return res;
+	}
 }

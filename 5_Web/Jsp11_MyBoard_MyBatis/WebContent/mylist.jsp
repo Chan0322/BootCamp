@@ -24,6 +24,11 @@
 				<td>${dto.mydate }</td>
 			</tr>
 		</c:forEach>
+		<tr>
+			<td colspan="4">
+				<button onclick="location.href='myboard?command=writeform'">글쓰기</button>
+			</td>
+		</tr>
 	</table>
 </body>
 </html>

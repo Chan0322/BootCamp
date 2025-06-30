@@ -51,6 +51,29 @@ public class MyBoardController extends HttpServlet {
 			dis.forward(request, response);
 			
 			
+		}else if(command.equals("writeform")) {
+			response.sendRedirect("mywrite.jsp");
+			
+			
+		}else if(command.equals("write")) {
+			String myname = request.getParameter("myname");
+			String mytitle = request.getParameter("mytitle");
+			String mycontent = request.getParameter("mycontent");
+			
+			MyBoardDto dto = new MyBoardDto();
+			dto.setMyname(myname);
+			dto.setMytitle(mytitle);
+			dto.setMycontent(mycontent);
+			
+			int res = dao.insert(dto);
+			
+			if(res>0) {
+				System.out.println("글 작성 성공");
+				response.sendRedirect("index.html");
+			}else {
+				System.out.println("글 작성 실패");
+				response.sendRedirect("index.html");
+			}
 		}
 	}
 

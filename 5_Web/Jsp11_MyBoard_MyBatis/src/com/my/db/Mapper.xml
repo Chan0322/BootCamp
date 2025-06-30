@@ -24,4 +24,9 @@
 		FROM MYBOARD
 		WHERE MYNO = #{myno}
 	</select>
+	
+	<insert id="myinsert" parameterType="MyBoardDto">
+		INSERT INTO MYBOARD
+		VALUES(SEQ_MYBOARD.NEXTVAL, #{myname}, #{mytitle}, #{mycontent}, SYSDATE)
+	</insert>
 </mapper>
