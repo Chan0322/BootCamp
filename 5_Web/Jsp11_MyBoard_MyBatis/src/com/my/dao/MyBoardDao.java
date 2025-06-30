@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.my.dto.MyBoardDto;
 
 public class MyBoardDao extends SqlMapConfig {
+	private String namespace = "com.my.myboard";
 	
 	// 전체 출력
 	public List<MyBoardDto> selectAll(){
@@ -19,6 +20,24 @@ public class MyBoardDao extends SqlMapConfig {
 		res = session.selectList("com.my.myboard.selectAll");	// 리스트로 리턴받아 저장.
 		
 		session.close();
+		
+		return res;
+	}
+	
+	// 선택 출력
+	public MyBoardDto selectOne(int myno) {
+		SqlSession session = null;
+		MyBoardDto res = new MyBoardDto();
+		
+		try {
+			session = getSqlSessionFactory().openSession(true);
+			res = session.selectOne(namespace+".selectOne", myno);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
 		
 		return res;
 	}

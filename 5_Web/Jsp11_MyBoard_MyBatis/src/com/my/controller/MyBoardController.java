@@ -31,8 +31,26 @@ public class MyBoardController extends HttpServlet {
 //			System.out.println(res.get(0).getMyname());
 			
 			request.setAttribute("list", res);
+			
+//			System.out.println("dao 완료!!");
+//			System.out.println(res.get(1).getMyno());
 			RequestDispatcher dis = request.getRequestDispatcher("mylist.jsp");
 			dis.forward(request, response);
+			
+			
+		}else if(command.equals("detail")){
+			int myno = Integer.parseInt(request.getParameter("myno"));
+			
+			MyBoardDto res = dao.selectOne(myno);
+//			System.out.println(res.getMytitle());	// 값이 잘 넘어오는지 체크하기 위함
+//			System.out.println(res.getMyname());
+			
+			request.setAttribute("dto", res);
+		
+			RequestDispatcher dis = request.getRequestDispatcher("mydetail.jsp");
+			dis.forward(request, response);
+			
+			
 		}
 	}
 
