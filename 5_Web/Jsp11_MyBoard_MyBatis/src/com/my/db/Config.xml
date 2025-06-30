@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- configuration 선언 -->
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<!-- typeAlias 특정 타입 등에 별칭을 부여하겠다. -->
+	 <!-- 매번 적기 귀찮으니 이 이름으로 사용하자. -->
+	<typeAliases>
+		<typeAlias type="com.my.dto.MyBoardDto" alias="MyBoardDto"/>
+	</typeAliases>
+	
+	<!-- db에 접근해 사용할 환경 -->
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC"/>
+			<dataSource type="POOLED">
+				<property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
+				<property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl"/>
+				<property name="username" value="MULTI"/>
+				<property name="password" value="MULTI"/>
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<!-- Mapper 경로 -->
+	<mappers>
+		<mapper resource="com/my/db/Mapper.xml" />
+	</mappers>
+</configuration>
