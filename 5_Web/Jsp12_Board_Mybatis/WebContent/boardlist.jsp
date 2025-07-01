@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,8 +21,8 @@
 			<tr>
 				<td>${dto.seq }</td>
 				<td>${dto.writer }</td>
-				<td>${dto.title }</td>
-				<td>${dto.regdate }</td>
+				<td><a href="board?command=detail&seq=${dto.seq }">${dto.title }</a></td>
+				<td><fmt:formatDate value="${dto.regdate}" pattern="yy년MM월dd일" /></td>
 			</tr>
 		</c:forEach>
 	</table>

@@ -7,4 +7,10 @@
 		SELECT *
 		FROM BOARD
 	</select>
+	
+	<select id="selectOne" resultType="BoardDto">
+		SELECT *
+		FROM BOARD
+		WHERE SEQ=#{seq}
+	</select>
 </mapper>

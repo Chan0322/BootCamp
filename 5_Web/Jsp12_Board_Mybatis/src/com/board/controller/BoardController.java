@@ -38,6 +38,16 @@ public class BoardController extends HttpServlet {
 			dis.forward(request, response);
 			
 			
+		}else if(command.equals("detail")) {
+			int seq = Integer.parseInt(request.getParameter("seq"));
+			
+			BoardDto dto = dao.selectOne(seq);
+			
+			request.setAttribute("dto", dto);
+			RequestDispatcher dis = request.getRequestDispatcher("boarddetail.jsp");
+			dis.forward(request, response);
+			
+			
 		}
 	}
 
