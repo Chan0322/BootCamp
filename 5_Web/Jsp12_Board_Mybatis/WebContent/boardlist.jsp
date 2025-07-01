@@ -25,6 +25,11 @@
 				<td><fmt:formatDate value="${dto.regdate}" pattern="yy년MM월dd일" /></td>
 			</tr>
 		</c:forEach>
+		<tr>
+			<td colspan="4">
+				<input type="button" value="글쓰기" onclick="location.href='board?command=writeform'">
+			</td>
+		</tr>
 	</table>
 </body>
 </html>

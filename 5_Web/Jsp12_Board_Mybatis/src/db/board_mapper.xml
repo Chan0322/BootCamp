@@ -19,4 +19,9 @@
 		SET TITLE=#{title}, CONTENT=#{content}
 		WHERE SEQ=#{seq}
 	</update>
+	
+	<insert id="insert">
+		INSERT INTO BOARD
+		VALUES(SEQ_BOARD.NEXTVAL, #{writer}, #{title}, #{content}, SYSDATE)
+	</insert>
 </mapper>

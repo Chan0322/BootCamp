@@ -79,6 +79,29 @@ public class BoardController extends HttpServlet {
 			}
 			
 			
+		}else if(command.equals("writeform")) {
+			response.sendRedirect("boardwrite.jsp");
+			
+			
+		}else if(command.equals("insert")) {
+			String writer = request.getParameter("writer");
+			String title = request.getParameter("title");
+			String content = request.getParameter("content");
+			
+			BoardDto dto = new BoardDto();
+			dto.setWriter(writer);
+			dto.setTitle(title);
+			dto.setContent(content);
+			
+			int res = dao.insert(dto);
+			
+			if(res>0) {
+				System.out.println("insert 성공!");
+				response.sendRedirect("board?command=list");
+			}else {
+				System.out.println("insert 실패!");
+				response.sendRedirect("board?command=list");
+			}
 		}
 	}
 

@@ -50,4 +50,20 @@ public class BoardDao extends SqlMapConfig {
 
 		return res;
 	}
+	
+	// insert
+	public int insert(BoardDto dto) {
+		SqlSession session = null;
+		int res = 0;
+		
+		session = getSqlSessionFactory().openSession(false);
+		res = session.insert("com.my.board.insert", dto);
+		
+		if(res>0) {
+			session.commit();
+		}
+		session.close();
+		
+		return res;
+	}
 }
