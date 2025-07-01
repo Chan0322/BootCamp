@@ -35,4 +35,9 @@
 		SET MYTITLE=#{mytitle}, MYCONTENT=#{mycontent}
 		WHERE MYNO=#{myno}
 	</update>
+	
+	<delete id="mydelete" parameterType="int">
+		DELETE FROM MYBOARD
+		WHERE MYNO=#{myno}
+	</delete>
 </mapper>

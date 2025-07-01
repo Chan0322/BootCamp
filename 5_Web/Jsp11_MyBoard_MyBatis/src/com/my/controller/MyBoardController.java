@@ -107,6 +107,18 @@ public class MyBoardController extends HttpServlet {
 			}
 			
 			
+		}else if(command.equals("delete")) {
+			int myno = Integer.parseInt(request.getParameter("myno"));
+			
+			int res = dao.delete(myno);
+			
+			if(res>0) {
+				System.out.println("delete 성공!");
+				response.sendRedirect("index.html");
+			}else {
+				System.out.println("delete 실패ㅜ");
+				response.sendRedirect("index.html");
+			}
 		}
 	}
 

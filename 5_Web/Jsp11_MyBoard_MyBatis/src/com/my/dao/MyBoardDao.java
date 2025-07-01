@@ -71,4 +71,20 @@ public class MyBoardDao extends SqlMapConfig {
 		
 		return res;
 	}
+	
+	// 글 삭제
+	public int delete(int myno) {
+		SqlSession session = null;
+		int res = 0;
+		
+		try {
+			session = getSqlSessionFactory().openSession(true);
+			res = session.delete(namespace+".mydelete", myno);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		return res;
+	}
 }

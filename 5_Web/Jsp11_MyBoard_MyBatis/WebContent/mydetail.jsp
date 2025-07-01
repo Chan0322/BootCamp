@@ -33,6 +33,8 @@
 		<tr>
 			<td colspan="2">
 				<input type="button" value="수정" onclick="location.href='myboard?command=updateform&myno=${dto.myno }'">
+				<input type="button" value="삭제" onclick="location.href='myboard?command=delete&myno=${dto.myno }'">
+				<!-- 삭제 버튼 클릭 -> 컨트롤러에서 요청을 받아 dao를 통해 해당 게시글 삭제 진행. index.html로 이동 -->
 			</td>
 		</tr>
 	</table>
