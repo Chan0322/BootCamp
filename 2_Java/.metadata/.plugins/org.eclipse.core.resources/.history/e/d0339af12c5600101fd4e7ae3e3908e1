@@ -1,17 +1,9 @@
 package com.test01;
 
-import java.util.List;
-
 public class study_oper {
 
 	public static void main(String[] args) {
 
-		//식과 연산자
-		//식 : a + b
-		//연산자 : +
-		//피연산자 : a, b
-		
-		
 		// 산술연산자
 		int a = 5 + 6;		// 결과 : 11
 		int b = 10 - 5;		// 결과 : 5
@@ -81,29 +73,7 @@ public class study_oper {
 		// 삼항 연산자
 		int score = 80;
 		String result = (score>=70) ? "합격! 축하합니다." : "불합격ㅠ 재시험 대상";
-		System.out.println(result);	// 합격
-		
-		
-		// switch 연산자 - 자바 14부터 사용가능!!!
-//		int user = 1;
-//		String pass = switch(user) {
-//		case 1 -> "회원";
-//		case 2 -> "비회원";
-//		default -> "정보없음";
-//		};
-		// 결과 : 회원
-		
-		
-		// 화살표 연산자
-		List<Integer> scores = List.of(55, 66, 77, 88, 99);
-		scores.forEach(eng -> System.out.println("점수: "+eng));
-		
-		
-		// instanceof
-		Object obj = "Hi";
-		if(obj instanceof String) {
-			System.out.println("문자열");
-		}
+		System.out.println(result);
 	}
 
 }

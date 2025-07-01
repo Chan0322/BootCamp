@@ -6,12 +6,6 @@ public class study_oper {
 
 	public static void main(String[] args) {
 
-		//식과 연산자
-		//식 : a + b
-		//연산자 : +
-		//피연산자 : a, b
-		
-		
 		// 산술연산자
 		int a = 5 + 6;		// 결과 : 11
 		int b = 10 - 5;		// 결과 : 5
