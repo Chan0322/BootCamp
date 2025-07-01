@@ -1,6 +1,8 @@
 package com.board.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -62,6 +64,46 @@ public class BoardDao extends SqlMapConfig {
 		if(res>0) {
 			session.commit();
 		}
+		session.close();
+		
+		return res;
+	}
+	
+	public int mulDel(String[] seq) {
+		SqlSession session = null;
+		int res = 0;
+		
+		Map<String, String[]> map = new HashMap<>();
+		map.put("seq", seq);
+		
+		session = getSqlSessionFactory().openSession(false);
+		res = session.delete("com.my.board.muldel", map);
+		
+		if(res == seq.length) {
+			session.commit();
+		}else {
+			session.rollback();
+		}
+	
+		session.close();
+		
+		return 0;
+	}
+	
+	//delete
+	public int delete(int seq) {
+		SqlSession session = null;
+		int res = 0;
+		
+		session = getSqlSessionFactory().openSession(false);
+		res = session.delete("com.my.board.delete", seq);
+		
+		if(res>0) {
+			session.commit();
+		}else {
+			session.rollback();
+		}
+		
 		session.close();
 		
 		return res;

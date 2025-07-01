@@ -24,4 +24,19 @@
 		INSERT INTO BOARD
 		VALUES(SEQ_BOARD.NEXTVAL, #{writer}, #{title}, #{content}, SYSDATE)
 	</insert>
+	
+	<delete id="muldel">
+		DELETE
+		FROM BOARD
+		WHERE SEQ IN
+		<foreach collection="seq" item="seq" open="(" separator="," close=")">
+			#{seq}
+		</foreach>
+	</delete>
+	
+	<delete id="delete">
+		DELETE
+		FROM BOARD
+		WHERE SEQ=#{seq}
+	</delete>
 </mapper>

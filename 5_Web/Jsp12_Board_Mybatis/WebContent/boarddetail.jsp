@@ -28,6 +28,8 @@
 		<tr>
 			<td colspan="2">
 				<input type="button" value="수정" onclick="location.href='board?command=updateform&seq=${dto.seq}'">
+				<input type="button" value="삭제" onclick="location.href='board?command=delete&seq=${dto.seq}'">
+				<!-- 삭제 버튼 클릭! db에서 해당 게시글 삭제 -->
 			</td>
 		</tr>
 	</table>

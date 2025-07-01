@@ -102,6 +102,35 @@ public class BoardController extends HttpServlet {
 				System.out.println("insert 실패!");
 				response.sendRedirect("board?command=list");
 			}
+			
+			
+		}else if(command.equals("muldel")) {
+			String[] seq = request.getParameterValues("chk");
+			
+			int res = dao.mulDel(seq);
+			
+			if(res == seq.length) {
+				System.out.println("삭제 성공!");
+				response.sendRedirect("board?command=list");
+			}else {
+				System.out.println("삭제 실패!");
+				response.sendRedirect("board?command=list");
+			}
+			
+			
+		}else if(command.equals("delete")) {
+			int seq = Integer.parseInt(request.getParameter("seq"));
+			
+			int res = dao.delete(seq);
+			
+			if(res>0) {
+				System.out.println("삭제 성공!");
+				response.sendRedirect("board?command=list");
+			}else {
+				System.out.println("삭제 실패!");
+				response.sendRedirect("board?command=list");
+			}
+			
 		}
 	}
 
