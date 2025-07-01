@@ -1,0 +1,56 @@
+package com.test01;
+
+public class study_oper {
+
+	public static void main(String[] args) {
+
+		// 산술연산자
+		int a = 5 + 6;		// 결과 : 11
+		int b = 10 - 5;		// 결과 : 5
+		int c = 2 * 3;		// 결과 : 6
+		int d = 7 / 2;		// 결과 : 3
+		int e = 7 % 2;		// 결과 : 1
+		System.out.println(a+","+b+","+c+","+d+","+e);
+		
+		
+		// 직접 접근 연산자
+		int f = (5+2)*3;	// 결과 : 21
+		System.out.println(f);
+		
+		
+		// 단항 연산자
+		// 1) 부호연산자
+		int g = (+1) + (-7);	// 결과 : -6
+		System.out.println(g);
+		/////////////////////////////
+		// 2) 부정연산자
+		boolean h = true;
+		boolean i = false;
+		System.out.println(!h);	// 결과 false
+		System.out.println(!i);	// 결과 true
+		///////////////////////////////////////
+		// 3) 증강 연산자
+		int j = 10;
+		System.out.println(++j);	//결과 : 11 / 전위 => 증감 후 출력
+		System.out.println(j++);	//결과 : 11 / 후위 => 출력 후 증감
+		System.out.println(--j);	//결과 : 11
+		System.out.println(j--);	//결과 : 11
+		
+		
+		// 대입 연산자
+		int k = 10;	// 결과 : 10
+		System.out.println(k += 2);		// 결과 : 12   (k = k + 2)
+		System.out.println(k -= 1);		// 결과 : 11
+		System.out.println(k *= 2);		// 결과 : 22
+		System.out.println(k /= 2);		// 결과 : 11
+		
+		
+		// 비교 연산자
+		int l = 10;
+		int m = 11;
+		boolean b1 = a==b;
+		boolean b2 = a!=b;
+		
+	}
+
+}
