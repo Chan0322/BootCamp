@@ -33,4 +33,21 @@ public class BoardDao extends SqlMapConfig {
 		
 		return res;
 	}
+	
+	//update
+	public int update(BoardDto dto) {
+		SqlSession session = null;
+		int res = 0;
+		
+		session = getSqlSessionFactory().openSession(false);
+		res = session.update("com.my.board.update", dto);
+		
+		if(res>0) {
+			session.commit();
+		}
+		
+		session.close();
+
+		return res;
+	}
 }

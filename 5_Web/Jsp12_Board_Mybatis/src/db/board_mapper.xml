@@ -13,4 +13,10 @@
 		FROM BOARD
 		WHERE SEQ=#{seq}
 	</select>
+	
+	<update id="update" parameterType="BoardDto">
+		UPDATE BOARD
+		SET TITLE=#{title}, CONTENT=#{content}
+		WHERE SEQ=#{seq}
+	</update>
 </mapper>
