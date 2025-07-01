@@ -33,7 +33,6 @@
     <fullyQualifiedTypeName name="com.test.dto.BikeDto"/>
     <fullyQualifiedTypeName name="java.io.PrintWriter"/>
     <fullyQualifiedTypeName name="com.test.dao.BikeDao"/>
-    <fullyQualifiedTypeName name="java.util.Date"/>
     <fullyQualifiedTypeName name="com.my.dao.MyBoardDao"/>
     <fullyQualifiedTypeName name="javax.swing.event.ListDataListener"/>
     <fullyQualifiedTypeName name="org.apache.ibatis.io.Resources"/>
@@ -42,4 +41,6 @@
     <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
     <fullyQualifiedTypeName name="com.my.dto.MyBoardDto"/>
     <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSession"/>
+    <fullyQualifiedTypeName name="java.lang.Exception"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
 </qualifiedTypeNameHistroy>

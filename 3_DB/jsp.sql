@@ -215,3 +215,9 @@ SELECT * FROM BIKE_TB;
 DELETE FROM BIKE_TB;
 
 SELECT * FROM MYBOARD;
+
+
+
+----------------------------------------
+-- Jsp12_Board_Mybatis
+SELECT * FROM BOARD;
