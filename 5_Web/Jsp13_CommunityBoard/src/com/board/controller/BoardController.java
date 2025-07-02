@@ -3,6 +3,7 @@ package com.board.controller;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,7 +35,34 @@ public class BoardController extends HttpServlet {
 		if(command.equals("list")) {
 			List<BoardDto> list = bdao.selectAll();
 			
-			response.sendRedirect("boardlist.jsp");
+			request.setAttribute("list", list);
+			RequestDispatcher dis = request.getRequestDispatcher("boardlist.jsp");
+			dis.forward(request, response);
+			
+			
+		}else if(command.equals("writeform")) {
+			response.sendRedirect("boardwrite.jsp");
+			
+			
+		}else if(command.equals("write")) {
+			String name = request.getParameter("name");
+			String title = request.getParameter("title");
+			String content = request.getParameter("content");
+			
+			BoardDto dto = new BoardDto();
+			dto.setName(name);
+			dto.setTitle(title);
+			dto.setContent(content);
+			
+			int res = bdao.insert(dto);
+			
+			if(res>0) {
+				System.out.println("글 작성 성공");
+				response.sendRedirect("board?command=list");
+			}else {
+				System.out.println("글 작성 실패......");
+				response.sendRedirect("board?command=list");
+			}
 		}
 	}
 
