@@ -90,4 +90,26 @@ public class BoardDao extends SqlMapConfig {
 		}
 		return res;
 	}
+	
+	// 글 삭제
+	public int delete(int no) {
+		SqlSession session = null;
+		int res = 0;
+		
+		try {
+			session = getSqlSessionFactory().openSession(false);
+			res = session.delete(namespace+"delete", no);
+			
+			if(res>0) {
+				session.commit();
+			}else {
+				session.rollback();
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
 }

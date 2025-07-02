@@ -24,4 +24,9 @@
 		SET TITLE=#{title}, CONTENT=#{content}
 		WHERE NO=#{no}
 	</update>
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM COMMUNITYBOARD
+		WHERE NO=#{no}
+	</delete>
 </mapper>

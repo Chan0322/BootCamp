@@ -108,6 +108,18 @@ public class BoardController extends HttpServlet {
 			}
 			
 			
+		}else if(command.equals("delete")) {
+			int no = Integer.parseInt(request.getParameter("no"));
+			
+			int res = bdao.delete(no);
+			
+			if(res>0) {
+				System.out.println("글 삭제 성공!!!");
+				response.sendRedirect("board?command=list");
+			}else {
+				System.out.println("글 삭제 실패ㅠㅠ");
+				response.sendRedirect("board?command=list");
+			}
 		}
 	}
 
