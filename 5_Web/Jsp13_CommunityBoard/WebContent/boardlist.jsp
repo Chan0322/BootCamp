@@ -7,6 +7,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+	table{
+		text-align:center;
+	}
+</style>
 </head>
 <body>
 	<h3>${dto.name }님 환영합니다!</h3>
