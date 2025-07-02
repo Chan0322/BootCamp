@@ -74,6 +74,40 @@ public class BoardController extends HttpServlet {
 			RequestDispatcher dis = request.getRequestDispatcher("boarddetail.jsp");
 			dis.forward(request, response);
 			
+			
+		}else if(command.equals("updateform")) {
+			int no = Integer.parseInt(request.getParameter("no"));
+			
+			BoardDto dto = bdao.selectOne(no);
+			
+			request.setAttribute("dto", dto);
+			RequestDispatcher dis = request.getRequestDispatcher("boardupdate.jsp");
+			dis.forward(request, response);
+			
+			
+		}else if(command.equals("update")) {
+			int no = Integer.parseInt(request.getParameter("no"));
+			String name = request.getParameter("name");
+			String title = request.getParameter("title");
+			String content = request.getParameter("content");
+			
+			BoardDto dto = new BoardDto();
+			dto.setNo(no);
+			dto.setName(name);
+			dto.setTitle(title);
+			dto.setContent(content);
+			
+			int res = bdao.update(dto);
+			
+			if(res>0) {
+				System.out.println("업데이트 성공!!!");
+				response.sendRedirect("board?command=list");
+			}else {
+				System.out.println("업데이트 실패. 다시 시도해주세요ㅠ");
+				response.sendRedirect("board?command=updateform&no="+no);
+			}
+			
+			
 		}
 	}
 

@@ -18,4 +18,10 @@
 		FROM COMMUNITYBOARD
 		WHERE NO=#{no}
 	</select>
+	
+	<update id="update" parameterType="BoardDto">
+		UPDATE COMMUNITYBOARD
+		SET TITLE=#{title}, CONTENT=#{content}
+		WHERE NO=#{no}
+	</update>
 </mapper>
