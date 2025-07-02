@@ -50,4 +50,22 @@ public class BoardDao extends SqlMapConfig {
 		
 		return res;
 	}
+	
+	// 글 상세 조회
+	public BoardDto selectOne(int no) {
+		SqlSession session = null;
+		BoardDto res = null;
+		
+		try {
+			session = getSqlSessionFactory().openSession(true);
+			res = session.selectOne(namespace+"selectOne", no);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		
+		return res;
+	}
 }

@@ -25,7 +25,7 @@
 			<tr>
 				<td>${bDto.no }</td>
 				<td>${bDto.name }</td>
-				<td>${bDto.title }</td>
+				<td><a href="board?command=detail&no=${bDto.no }">${bDto.title }</a></td>
 				<td><fmt:formatDate value="${bDto.regdate }" pattern="yy년MM월dd일hh시mm분ss초"/></td>
 			</tr>
 		</c:forEach>

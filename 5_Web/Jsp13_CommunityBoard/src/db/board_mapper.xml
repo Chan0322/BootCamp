@@ -12,4 +12,10 @@
 		INSERT INTO COMMUNITYBOARD
 		VALUES(SEQ_CB.NEXTVAL, #{name}, #{title}, #{content}, SYSDATE)
 	</insert>
+	
+	<select id="selectOne" resultType="BoardDto" parameterType="int">
+		SELECT *
+		FROM COMMUNITYBOARD
+		WHERE NO=#{no}
+	</select>
 </mapper>

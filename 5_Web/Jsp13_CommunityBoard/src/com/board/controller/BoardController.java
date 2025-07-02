@@ -63,6 +63,17 @@ public class BoardController extends HttpServlet {
 				System.out.println("글 작성 실패......");
 				response.sendRedirect("board?command=list");
 			}
+			
+			
+		}else if(command.equals("detail")) {
+			int no = Integer.parseInt(request.getParameter("no"));
+			
+			BoardDto dto = bdao.selectOne(no);
+			
+			request.setAttribute("dto", dto);
+			RequestDispatcher dis = request.getRequestDispatcher("boarddetail.jsp");
+			dis.forward(request, response);
+			
 		}
 	}
 
