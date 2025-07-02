@@ -31,4 +31,10 @@
 		SET ENABLED='N'
 		WHERE NO=#{no}
 	</update>
+	
+	<update id="update" parameterType="MemberDto">
+		UPDATE COMMUNITYMEMBER
+		SET PW=#{pw}, NAME=#{name}, PHONE=#{phone}
+		WHERE NO=#{no}
+	</update>
 </mapper>

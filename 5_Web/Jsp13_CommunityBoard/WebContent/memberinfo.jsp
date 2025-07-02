@@ -32,6 +32,7 @@
 		<tr>
 			<td colspan="2">
 				<input type="button" value="탈퇴하기" onclick="location.href='member?command=deletemem&no=${dto.no}'">
+				<input type="button" value="정보수정" onclick="location.href='member?command=updatememform&no=${dto.no}'">
 				<input type="button" value="이전으로" onclick="history.back();">
 			</td>
 		</tr>

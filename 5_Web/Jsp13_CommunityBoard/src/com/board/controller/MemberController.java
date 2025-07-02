@@ -110,6 +110,32 @@ public class MemberController extends HttpServlet {
 				System.out.println("탈퇴 실패! 도망칠 수 없어요...");
 				response.sendRedirect("member?command=userinfo&no="+no);
 			}
+			
+			
+		}else if(command.equals("updatememform")) {
+			response.sendRedirect("memberupdate.jsp");
+			
+		}else if(command.equals("updatemem")) {
+			int no = Integer.parseInt(request.getParameter("no"));
+			String pw = request.getParameter("pw");
+			String name = request.getParameter("name");
+			String phone = request.getParameter("phone");
+			
+			MemberDto dto = new MemberDto();
+			dto.setNo(no);
+			dto.setPw(pw);
+			dto.setName(name);
+			dto.setPhone(phone);
+			
+			int res = mdao.update(dto);
+			
+			if(res>0) {
+				System.out.println("회원정보 수정 성공!");
+				response.sendRedirect("index.html");
+			}else {
+				System.out.println("회원정보 수정 실패ㅠㅠ");
+				response.sendRedirect("index.html");
+			}
 		}
 	}
 
