@@ -43,4 +43,63 @@ public class MemberDao extends SqlMapConfig{
 		
 		return res;
 	}
+	
+	// 로그인
+	public MemberDto login(MemberDto dto) {
+		SqlSession session = null;
+		MemberDto res = null;
+		
+		try {
+			session = getSqlSessionFactory().openSession(true);
+			res = session.selectOne(namespace+"loginmem", dto);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		
+		return res;
+	}
+	
+	//회원 정보
+	public MemberDto selectMember(int no) {
+		SqlSession session = null;
+		MemberDto res = null;
+		
+		try {
+			session = getSqlSessionFactory().openSession(true);
+			res = session.selectOne(namespace+"selectmem", no);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		
+		return res;
+	}
+	
+	//회원 탈퇴
+	// enable 값만 변경하여 임시 탈퇴 처리
+	public int deleteMember(int no) {
+		SqlSession session = null;
+		int res = 0;
+		
+		try {
+			session = getSqlSessionFactory().openSession(false);
+			res = session.update(namespace+"deletemem", no);
+			
+			if(res>0) {
+				session.commit();
+			}else {
+				session.rollback();
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		
+		return res;
+	}
 }

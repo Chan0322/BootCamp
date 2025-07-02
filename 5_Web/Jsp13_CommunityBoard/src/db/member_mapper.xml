@@ -13,4 +13,22 @@
 		INSERT INTO COMMUNITYMEMBER
 		VALUES(SEQ_CM.NEXTVAL, #{id}, #{pw}, #{name}, #{phone}, 'Y')
 	</insert>
+	
+	<select id="loginmem" resultType="MemberDto">
+		SELECT *
+		FROM COMMUNITYMEMBER
+		WHERE ID=#{id} AND PW=#{pw} AND ENABLED='Y'
+	</select>
+	
+	<select id="selectmem" resultType="MemberDto" parameterType="int">
+		SELECT *
+		FROM COMMUNITYMEMBER
+		WHERE NO=#{no}
+	</select>
+	
+	<update id="deletemem" parameterType="int">
+		UPDATE COMMUNITYMEMBER
+		SET ENABLED='N'
+		WHERE NO=#{no}
+	</update>
 </mapper>
