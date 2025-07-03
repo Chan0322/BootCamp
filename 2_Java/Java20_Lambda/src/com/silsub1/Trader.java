@@ -24,7 +24,7 @@ public class Trader {
 
 	@Override
 	public String toString() {
-		return "Trader [name=" + name + ", city=" + city + "]";
+		return "[이름: " + name + ", 도시: " + city + "] ";
 	}
 	
 	
