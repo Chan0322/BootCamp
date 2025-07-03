@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>K-Digital Training</title>
+  <link rel="stylesheet" href="../css/feedPageStyle.css" />
+  <script src="../js/feedPageJs.js"></script>
+</head>
+<body>
+  <header id="header">
+    <div class="top1">
+      <div class="top_logo">
+        <a href="#" class="logo" aria-label="홈으로">
+          <img src="../src/logo_mlp.png" alt="MLP 로고">
+        </a>
+      </div>
+      <div class="searchBar">
+        <input type="search" placeholder="관심있는 주제, 키워드로 검색해보세요!" />
+        <button class="search_btn" aria-label="검색">
+          🔍
+        </button>
+      </div>
+      <div class="manageItem">
+        <button class="add_feed_btn" aria-label="피드 작성">➕</button>
+        <button class="alarm_btn" aria-label="알림">🔔</button>
+        <button class="profile_btn" aria-label="프로필">
+          <img src="../src/profile_basic.svg" alt="프로필 사진">
+        </button>
+      </div>
+    </div>
+    <nav class="cateList" aria-label="카테고리 메뉴">
+      <button class="cateBtn" aria-haspopup="true" aria-expanded="false">
+        🗒️ 카테고리
+      </button>
+      <ul class="category-menu">
+        <li><a href="#">피드</a></li>
+        <li><a href="#">지식콘텐츠</a></li>
+        <li><a href="#">캠퍼스</a></li>
+        <li><a href="#">나의학습</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="body">
+    <aside id="leftItem">
+      <section class="myProfile" aria-label="내 프로필 정보">
+        <div class="profileTop">
+          <img src="../src/profile_basic.svg" alt="내 프로필 사진">
+          <div class="myProfileInfo">
+            <h3>이동찬</h3>
+            <p>[현대이지웰] Java 풀스택 개발자 아카데미<br>5회차 · K-디지털</p>
+          </div>
+        </div>
+        <div class="profileBottom">
+          <div class="manageProfile">
+            <span>팔로워 0 | 팔로잉 0</span>
+            <button class="editProfile" aria-label="프로필 수정">프로필 수정</button>
+          </div>
+        </div>
+      </section>
+
+      <nav class="feedCategory" aria-label="피드 카테고리">
+        <ul>
+          <li>전체 피드</li>
+          <li>📢 알려드립니다!</li>
+          <li>우리회사 피드</li>
+          <li>팔로잉 피드</li>
+          <li>캠퍼스 피드</li>
+          <li>내가 작성한 피드</li>
+          <li>저장한 피드</li>
+        </ul>
+      </nav>
+
+      <section class="friend" aria-label="친구 추천">
+        <div class="friend_top">
+          <strong>친구 추천</strong>
+          <button aria-label="이전 친구">◀️</button>
+          <button aria-label="다음 친구">▶️</button>
+        </div>
+        <div class="friend_bottom">
+          <div class="addFriend" aria-label="추천 친구 1"></div>
+          <div class="addFriend" aria-label="추천 친구 2"></div>
+        </div>
+      </section>
+    </aside>
+
+    <section id="rightItem">
+      <div class="feedGroup">
+        <div class="feedTop">
+          <strong>전체 피드</strong>
+          <button class="createFeed" aria-label="피드 작성">➕ 피드작성</button>
+        </div>
+        <div class="feedSearch">
+          <div class="searchInput">
+            <input type="search" placeholder="검색어를 입력해주세요!" />
+            <button class="search_input_btn" aria-label="검색">🔍</button>
+          </div>
+          <div class="feedSort">
+            <select name="orderFeed" aria-label="정렬 옵션">
+              <option value="latest">최신순</option>
+              <option value="manyView">조회순</option>
+              <option value="good">좋아요순</option>
+              <option value="comment">댓글순</option>
+            </select>
+          </div>
+          <div class="feedView" role="group" aria-label="보기 모드">
+            <button class="feedBasic" aria-label="기본 보기">📖</button>
+            <button class="feedSummary" aria-label="요약 보기">📄</button>
+            <button class="feedGallery" aria-label="갤러리 보기">🖼️</button>
+          </div>
+        </div>
+        <div class="feedList">
+          <div class="feedContent"><img src="../src/feedSample1.png" alt="Feed 1"></div>
+          <div class="feedContent"><img src="../src/feedSample1.png" alt="Feed 2"></div>
+          <div class="feedContent"><img src="../src/feedSample1.png" alt="Feed 3"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div class="pageController">
+    <button id="bookMarkBtn" aria-label="북마크">🗃️</button>
+    <button id="goTopBtn" aria-label="맨 위로">⬆️</button>
+  </div>
+
+  <!-- 프로필 수정 팝업 -->
+  <div class="editProfilePopup" id="editProfilePopupId" role="dialog" aria-modal="true" aria-labelledby="editPro">
+    <div class="editProfileContent">
+      <h1>프로필 수정 창</h1>
+      <p>수정할 내용</p>
+      <div class="editBtns">
+        <button id="cancelEditBtn" aria-label="취소">취소</button>
+        <button id="saveEditBtn" aria-label="저장">저장</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
