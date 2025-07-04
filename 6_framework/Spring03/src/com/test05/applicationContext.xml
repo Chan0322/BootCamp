@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="kim" class="com.test05.Member">
+		<constructor-arg name="id" value="user01" />
+		<constructor-arg name="pw" value="pass01" />
+		<constructor-arg name="name" value="김창진" />
+		<constructor-arg name="phone" value="010-1111-2222" />
+	</bean>
+	<bean id="kimcj" class="com.test05.Board">
+		<property name="title" value="내이름은김창진"/>
+		<property name="content" value="안녕하세요"/>
+		<property name="writer" ref="kim"/>
+	</bean>
+
+	<bean id="lee" class="com.test05.Member">
+		<constructor-arg name="id" value="user02" />
+		<constructor-arg name="pw" value="pass02" />
+		<constructor-arg name="name" value="이창진" />
+		<constructor-arg name="phone" value="010-2222-3333" />
+	</bean>
+	<bean id="leecj" class="com.test05.Board">
+		<property name="title" value="내이름은이창진"/>
+		<property name="content" value="반가워요"/>
+		<property name="writer" ref="lee"/>
+	</bean>
+	
+	<bean id="park" class="com.test05.Member">
+		<constructor-arg name="id" value="user03" />
+		<constructor-arg name="pw" value="pass03" />
+		<constructor-arg name="name" value="박창진" />
+		<constructor-arg name="phone" value="010-3333-4444" />
+	</bean>
+	<bean id="parkcj" class="com.test05.Board">
+		<property name="title" value="내이름은박창진"/>
+		<property name="content" value="다시만나요"/>
+		<property name="writer" ref="park"/>
+	</bean>
+</beans>
