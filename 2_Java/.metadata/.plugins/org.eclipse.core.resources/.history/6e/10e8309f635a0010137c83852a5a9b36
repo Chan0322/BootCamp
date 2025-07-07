@@ -1,0 +1,17 @@
+package com.lv12.bruteForce;
+
+import java.io.BufferedReader;
+
+public class lv12_6_sugar {
+
+	public static void main(String[] args) {
+
+	}
+
+	public static void sugar() {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		
+		int n = Integer.parseInt(br.readLine());
+	}
+}
