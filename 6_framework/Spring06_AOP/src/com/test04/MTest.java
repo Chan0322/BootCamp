@@ -1,4 +1,4 @@
-package com.test03;
+package com.test04;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -6,25 +6,16 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class MTest {
 
 	public static void main(String[] args) {
-		ApplicationContext factory = new ClassPathXmlApplicationContext("com/test03/applicationContext.xml");
+		ApplicationContext factory = new ClassPathXmlApplicationContext("com/test04/applicationContext.xml");
 		
 		Person s = factory.getBean("student", Person.class);
 		Person t = factory.getBean("teacher", Person.class);
 		
 		System.out.println("[학생]");
 		s.classWork();
-		System.out.println("-------------------");
+		System.out.println("================");
 		System.out.println("[강사]");
 		t.classWork();
-		
-		System.out.println("-------------------");
-//		AOP 적용X
-//		Test test = new Test();
-//		test.classWork();
-		
-		Test test = factory.getBean("test", Test.class);
-		test.classWork();
-		test.test();
 	}
 
 }
