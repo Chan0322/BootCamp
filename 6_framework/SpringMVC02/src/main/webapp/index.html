@@ -32,13 +32,28 @@
 	
 	<hr>
 	<!-- [1] 게시판의 no, writer, title, content를 입력 받아  controller로 요청을 보낼 때 전달한다.(board.do) -->
-	<form>
+	<form action="board.do" method="post">
 		<table>
 			<tr>
 				<th>no</th>
+				<td><input type="text" name="no"></td>
+			</tr>
+			<tr>
 				<th>writer</th>
+				<td><input type="text" name="writer"></td>
+			</tr>
+			<tr>
 				<th>title</th>
+				<td><input type="text" name="title"></td>
+			</tr>
+			<tr>
 				<th>content</th>
+				<td><textarea rows="10" cols="40" name="content"></textarea></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="submit" value="확인">
+				</td>
 			</tr>
 		</table>
 	</form>

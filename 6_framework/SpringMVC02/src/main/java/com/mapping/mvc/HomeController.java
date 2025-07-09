@@ -5,11 +5,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mapping.mvc.dto.AddressDto;
+import com.mapping.mvc.dto.BoardDto;
 
 @Controller
 public class HomeController {
@@ -41,4 +43,19 @@ public class HomeController {
 	// [2] board.do 요청을 받아 처리하는 메소드 작성
 	//	- 입력받은 값은 BoardDto 객체로 받는다.
 	//	boardres.jsp 페이지로 응답하고 입력받은 데이터를 출력해 확인한다.
+	/*
+	@RequestMapping(value="/board.do", method=RequestMethod.POST)
+	public String getBoard(Model model, BoardDto dto) {
+		model.addAttribute("dto", dto);
+		
+		return "boardres";
+	}
+	*/
+	@PostMapping("board.do")
+	public String getBoard(@ModelAttribute BoardDto dto, Model model) {
+//		System.out.println("postMapping");
+		model.addAttribute("dto", dto);
+		
+		return "boardres";
+	}
 }
