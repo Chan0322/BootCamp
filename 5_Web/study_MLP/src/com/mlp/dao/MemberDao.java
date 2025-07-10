@@ -60,4 +60,35 @@ public class MemberDao extends SqlMapConfig {
 		
 		return res;
 	}
+	
+	//아이디 중복 체크
+	public String idChk(String memid) {
+		SqlSession session = null;
+		String res = null;
+		
+		session = getSqlSessionFactory().openSession(true);
+		res = session.selectOne(namespace+"idchk", memid);
+		//System.out.println(res);
+		session.close();
+		return res;
+	}
+	
+	// 회원가입
+	public int insert(MemberDto dto) {
+		SqlSession session = null;
+		int res = 0;
+		
+		session = getSqlSessionFactory().openSession(false);
+		res = session.insert(namespace+"insert", dto);
+		
+		if(res>0) {
+			session.commit();
+		}else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return res;
+	}
 }

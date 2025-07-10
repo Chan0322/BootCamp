@@ -21,4 +21,14 @@
     	WHERE MEMNO = #{memno}
 	</select>
 	
+	<select id="idchk" resultType="String">
+		SELECT MEMID
+		FROM MLPMEMBER
+		WHERE MEMID=#{memid}
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO MLPMEMBER
+		VALUES(SEQ_MLPMEMBER.NEXTVAL, #{memgroup}, #{memdepart}, #{memname}, #{memid}, #{mempw}, #{mememail}, #{memphone}, 'Y')
+	</insert>
 </mapper>

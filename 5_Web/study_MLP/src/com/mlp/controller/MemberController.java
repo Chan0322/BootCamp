@@ -77,6 +77,48 @@ public class MemberController extends HttpServlet {
 				System.out.println("수정 실패...");
 				response.sendRedirect("feed?command=list&&memno="+memno);
 			}
+			
+		}else if(command.equals("insertmemform")) {
+			response.sendRedirect("insertmemform.jsp");
+			
+		}else if(command.equals("idchk")) {
+			String memid = request.getParameter("memid");
+			String res = mdao.idChk(memid);
+
+			boolean idnotused = true;
+			if(res != null) {
+				idnotused = false;
+			}
+			
+			response.sendRedirect("idcheck.jsp?idnotused="+idnotused);
+			
+		}else if(command.equals("insertmem")) {
+			String memgroup = request.getParameter("memgroup");
+			String memdepart = request.getParameter("memdepart");
+			String memname = request.getParameter("memname");
+			String memid = request.getParameter("memid");
+			String mempw = request.getParameter("mempw");
+			String mememail = request.getParameter("mememail");
+			String memphone = request.getParameter("memphone");
+			
+			MemberDto dto = new MemberDto();
+			dto.setMemgroup(memgroup);
+			dto.setMemdepart(memdepart);
+			dto.setMemname(memname);
+			dto.setMemid(memid);
+			dto.setMempw(mempw);
+			dto.setMememail(mememail);
+			dto.setMemphone(memphone);
+			
+			int res = mdao.insert(dto);
+			
+			if(res>0) {
+				System.out.println("회원가입 성공! 환영합니다.");
+				response.sendRedirect("index.html");
+			}else {
+				System.out.println("회원가입 실패.. 다시 시도해 주세요ㅠㅠ");
+				response.sendRedirect("index.html");
+			}
 		}
 	}
 
