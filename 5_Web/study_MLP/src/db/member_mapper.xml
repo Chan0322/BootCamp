@@ -8,4 +8,10 @@
 		FROM MLPMEMBER
 		WHERE MEMID=#{memid} AND MEMPW=#{mempw} AND MEMENABLED='Y'
 	</select>
+	
+	<update id="update">
+		UPDATE MLPMEMBER
+		SET MEMNAME=#{memname}, MEMEMAIL=#{mememail}, MEMPHONE=#{memphone}, MEMPW=#{mempw}
+		WHERE MEMNO=#{memno}
+	</update>
 </mapper>

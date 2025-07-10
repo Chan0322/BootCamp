@@ -46,6 +46,30 @@ public class MemberController extends HttpServlet {
 				System.out.println("로그인 실패..");
 				response.sendRedirect("index.html");
 			}
+			
+		}else if(command.equals("memupdate")) {
+			int memno = Integer.parseInt(request.getParameter("memno"));
+			String memname = request.getParameter("memname");
+			String mememail = request.getParameter("mememail");
+			String memphone = request.getParameter("memphone");
+			String mempw = request.getParameter("mempw");
+			
+			MemberDto dto = new MemberDto();
+			dto.setMemno(memno);
+			dto.setMemname(memname);
+			dto.setMememail(mememail);
+			dto.setMemphone(memphone);
+			dto.setMempw(mempw);
+			
+			int res = mdao.update(dto);
+			
+			if(res>0) {
+				System.out.println("프로필 수정 성공!");
+				response.sendRedirect("feed?command=list&&memno="+memno);
+			}else {
+				System.out.println("수정 실패...");
+				response.sendRedirect("feed?command=list&&memno="+memno);
+			}
 		}
 	}
 

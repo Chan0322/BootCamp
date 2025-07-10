@@ -149,7 +149,9 @@
   <!-- 프로필 수정 팝업 -->
 	<div class="editProfilePopup" id="editProfilePopupId" role="dialog" aria-modal="true" aria-labelledby="editPro">
 	  <div class="editProfileContent">
-	    <form>
+	    <form action="member" method="post">
+	    <input type="hidden" name="command" value="memupdate">
+	    <input type="hidden" name="memno" value="${dto.memno }">
 	      <h1>프로필 수정</h1>
 	
 	      <section id="editHeader">
