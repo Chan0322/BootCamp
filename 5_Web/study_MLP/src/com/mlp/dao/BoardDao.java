@@ -21,4 +21,22 @@ public class BoardDao extends SqlMapConfig{
 		
 		return res;
 	}
+	
+	public int insert(BoardDto dto) {
+		SqlSession session = null;
+		int res = 0;
+		
+		session = getSqlSessionFactory().openSession(false);
+		res = session.insert(namespace+"insert", dto);
+		
+		if(res>0) {
+			session.commit();
+		}else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return res;
+	}
 }

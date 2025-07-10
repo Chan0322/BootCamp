@@ -480,3 +480,32 @@ body {
 #saveEditBtn:hover {
   background: #005dc1;
 }
+
+
+/* 피드 작성 팝업 */
+.createFeedPopup {
+  display: none;
+  position: fixed;
+  top: 20%;
+  left: 35%;
+  width: 30%;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 20px;
+  z-index: 999;
+}
+
+.createFeedPopup.show {
+  display: block;
+}
+
+.createFeedContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.editBtns {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}

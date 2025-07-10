@@ -7,4 +7,9 @@
 		SELECT *
 		FROM MLPFEED
 	</select>
+	
+	<insert id="insert">
+		INSERT INTO MLPFEED
+		VALUES(SEQ_MLPFEED.NEXTVAL, #{feedtitle}, #{feedcontent}, #{memno}, #{memgroup}, #{memdepart}, #{memname}, SYSDATE)
+	</insert>
 </mapper>
