@@ -92,4 +92,17 @@ public class HomeController {
 			return "redirect:updateform.do?myno="+myno;
 		}
 	}
+	
+	@RequestMapping("/delete.do")
+	public String delete(int myno) {
+		logger.info("DELETE");
+		
+		int res = service.delete(myno);
+		
+		if(res>0) {
+			return "redirect:list.do";
+		}else {
+			return "redirect:detail.do?myno="+myno;
+		}
+	}
 }

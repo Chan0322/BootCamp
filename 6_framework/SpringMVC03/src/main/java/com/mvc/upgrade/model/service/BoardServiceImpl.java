@@ -36,7 +36,7 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public int delete(int myno) {
-		return 0;
+		return dao.delete(myno);
 	}
 
 }

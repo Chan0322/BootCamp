@@ -33,4 +33,10 @@
 		SET MYTITLE=#{mytitle}, MYCONTENT=#{mycontent}
 		WHERE MYNO=#{myno}
 	</update>
+	
+	<delete id="delete">
+		DELETE
+		FROM MYBOARD
+		WHERE MYNO=#{myno}
+	</delete>
 </mapper>
