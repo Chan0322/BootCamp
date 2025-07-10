@@ -34,7 +34,7 @@
 					<tr>
 						<td>${dto.myno }</td>
 						<td>${dto.myname }</td>
-						<td>${dto.mytitle }</td>
+						<td><a href="detail.do?myno=${dto.myno }">${dto.mytitle }</a></td>
 						<td>${dto.mydate }</td>
 					</tr>
 				</c:forEach>

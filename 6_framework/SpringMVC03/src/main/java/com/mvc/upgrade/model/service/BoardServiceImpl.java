@@ -21,7 +21,7 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public BoardDto selectOne(int myno) {
-		return null;
+		return dao.selectOne(myno);
 	}
 
 	@Override

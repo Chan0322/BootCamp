@@ -32,4 +32,14 @@ public class HomeController {
 		return "mvclist";
 	}
 	
+	@RequestMapping("/detail.do")
+	public String detail(int myno, Model model) {
+		logger.info("SELECT ONE");
+		BoardDto res = service.selectOne(myno);
+		
+		model.addAttribute("dto", res);
+		
+		return "mvcdetail";
+	}
+	
 }

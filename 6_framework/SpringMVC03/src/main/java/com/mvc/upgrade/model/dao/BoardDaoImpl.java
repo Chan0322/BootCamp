@@ -31,7 +31,20 @@ public class BoardDaoImpl implements BoardDao {
 
 	@Override
 	public BoardDto selectOne(int myno) {
-		return null;
+		//namespace : myboard
+		//id: selectOne
+		//SELECT * FROM MYBOARD WHERE MYNO=#{myno}
+		
+		// dao, mapper 작성
+		BoardDto dto = null;
+		
+		try {
+			dto = sqlSession.selectOne("myboard.selectOne", myno);
+		}catch (Exception e) {
+			System.out.println("[error] select one");
+			e.printStackTrace();
+		}
+		return dto;
 	}
 
 	@Override

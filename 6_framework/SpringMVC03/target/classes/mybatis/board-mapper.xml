@@ -8,4 +8,18 @@
 		FROM MYBOARD
 		ORDER BY MYNO DESC
 	</select>
+	
+	<select id="selectOne" resultMap="boardMap">
+		SELECT *
+		FROM MYBOARD
+		WHERE MYNO=#{myno}
+	</select>
+	
+	<resultMap id="boardMap" type="boardDto">
+		<result property="myno" column="MYNO"/>
+		<result property="myname" column="MYNAME" />
+		<result property="mytitle" column="MYTITLE" />
+		<result property="mycontent" column="MYCONTENT" />
+		<result property="mydate" column="MYDATE" />
+	</resultMap>
 </mapper>
