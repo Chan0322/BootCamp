@@ -23,7 +23,7 @@
 		</tr>
 		<tr>
 			<td colspan="2" align="right">
-				<input type="button" value="수정" onclick="location.href='updateform.do'">
+				<input type="button" value="수정" onclick="location.href='updateform.do?myno=${dto.myno}'">
 			</td>
 		</tr>
 	</table>

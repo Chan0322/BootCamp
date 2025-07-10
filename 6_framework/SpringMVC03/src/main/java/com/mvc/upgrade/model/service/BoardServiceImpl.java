@@ -31,7 +31,7 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public int update(BoardDto dto) {
-		return 0;
+		return dao.update(dto);
 	}
 
 	@Override

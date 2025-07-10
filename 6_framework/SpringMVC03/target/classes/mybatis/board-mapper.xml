@@ -27,4 +27,10 @@
 		INSERT INTO MYBOARD
 		VALUES(SEQ_MY.NEXTVAL, #{myname}, #{mytitle}, #{mycontent}, SYSDATE)
 	</insert>
+	
+	<update id="update">
+		UPDATE MYBOARD
+		SET MYTITLE=#{mytitle}, MYCONTENT=#{mycontent}
+		WHERE MYNO=#{myno}
+	</update>
 </mapper>

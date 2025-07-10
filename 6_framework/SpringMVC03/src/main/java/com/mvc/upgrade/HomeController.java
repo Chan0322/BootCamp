@@ -64,4 +64,32 @@ public class HomeController {
 			return "redirect:insertform.do";
 		}
 	}
+	
+	@RequestMapping("/updateform.do")
+	public String updateform(int myno, Model model) {
+		logger.info("UPDATE FORM");
+		
+		BoardDto res = service.selectOne(myno);
+		model.addAttribute("dto", res);
+		
+		return "mvcupdate";
+	}
+	
+	@RequestMapping("/update.do")
+	public String update(int myno, String mytitle, String mycontent) {
+		logger.info("UPDATE");
+		
+		BoardDto dto = new BoardDto();
+		dto.setMyno(myno);
+		dto.setMytitle(mytitle);
+		dto.setMycontent(mycontent);
+		
+		int res = service.update(dto);
+		
+		if(res>0) {
+			return "redirect:list.do";
+		}else {
+			return "redirect:updateform.do?myno="+myno;
+		}
+	}
 }
