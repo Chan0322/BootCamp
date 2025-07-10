@@ -13,6 +13,7 @@ import com.mvc.upgrade.model.dto.BoardDto;
 import com.mvc.upgrade.model.service.BoardService;
 
 @Controller
+//@RequestMapping("/myboard")   여기서 이렇게 하면 더 디테일하게 나눌 수 있다.
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
@@ -42,4 +43,25 @@ public class HomeController {
 		return "mvcdetail";
 	}
 	
+	@RequestMapping("/insertform.do")
+	public String insertForm() {
+		logger.info("INSERT FORM");
+		return "mvcinsert";
+	}
+	
+	@RequestMapping("/insert.do")
+	public String insert(BoardDto dto) {
+		logger.info("INSERT");
+//		System.out.println(dto.getMyname());
+//		System.out.println(dto.getMytitle());
+//		System.out.println(dto.getMycontent());
+		int res = service.insert(dto);
+		
+		if(res>0) {
+			//핸들러 매핑
+			return "redirect:list.do";
+		}else {
+			return "redirect:insertform.do";
+		}
+	}
 }

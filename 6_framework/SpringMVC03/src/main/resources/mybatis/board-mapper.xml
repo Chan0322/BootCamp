@@ -22,4 +22,9 @@
 		<result property="mycontent" column="MYCONTENT" />
 		<result property="mydate" column="MYDATE" />
 	</resultMap>
+	
+	<insert id="insert" parameterType="boardDto">
+		INSERT INTO MYBOARD
+		VALUES(SEQ_MY.NEXTVAL, #{myname}, #{mytitle}, #{mycontent}, SYSDATE)
+	</insert>
 </mapper>

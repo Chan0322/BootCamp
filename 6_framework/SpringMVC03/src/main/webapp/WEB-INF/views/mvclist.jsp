@@ -40,6 +40,12 @@
 				</c:forEach>
 			</c:otherwise>
 		</c:choose>
+		<tr>
+			<td colspan="4" align="right">
+				<input type="button" value="글작성" onclick="location.href='insertform.do'"/>
+				<!-- 해당 버튼을 클릭하면 요청을 잘 처리하여 mvcinsert.jsp로 응답하는 내용을 구현! -->
+			</td>
+		</tr>
 	</table>
 </body>
 </html>

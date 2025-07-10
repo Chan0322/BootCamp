@@ -49,7 +49,15 @@ public class BoardDaoImpl implements BoardDao {
 
 	@Override
 	public int insert(BoardDto dto) {
-		return 0;
+		int res = 0;
+		
+		try {
+			res = sqlSession.insert("myboard.insert", dto);
+		}catch (Exception e) {
+			System.out.println("[error] insert");
+			e.printStackTrace();
+		}
+		return res;
 	}
 
 	@Override

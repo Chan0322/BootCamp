@@ -21,6 +21,11 @@
 			<th>Content</th>
 			<td><textarea rows="10" cols="40" readonly="readonly">${dto.mycontent }</textarea></td>
 		</tr>
+		<tr>
+			<td colspan="2" align="right">
+				<input type="button" value="수정" onclick="location.href='updateform.do'">
+			</td>
+		</tr>
 	</table>
 </body>
 </html>
