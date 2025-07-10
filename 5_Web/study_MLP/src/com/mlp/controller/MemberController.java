@@ -65,7 +65,14 @@ public class MemberController extends HttpServlet {
 			
 			if(res>0) {
 				System.out.println("프로필 수정 성공!");
-				response.sendRedirect("feed?command=list&&memno="+memno);
+				
+				// 수정된 사용자 정보 다시 조회
+			    MemberDto refreshedDto = mdao.selectOneByMemno(memno);
+			    if (refreshedDto != null) {
+			        session.setAttribute("dto", refreshedDto);
+			    }
+				
+				response.sendRedirect("feed?command=list");
 			}else {
 				System.out.println("수정 실패...");
 				response.sendRedirect("feed?command=list&&memno="+memno);

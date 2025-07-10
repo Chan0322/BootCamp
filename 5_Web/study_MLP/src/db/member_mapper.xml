@@ -14,4 +14,11 @@
 		SET MEMNAME=#{memname}, MEMEMAIL=#{mememail}, MEMPHONE=#{memphone}, MEMPW=#{mempw}
 		WHERE MEMNO=#{memno}
 	</update>
+	
+	<select id="selectOneByMemno" resultType="MemberDto">
+    	SELECT *
+    	FROM MLPMEMBER
+    	WHERE MEMNO = #{memno}
+	</select>
+	
 </mapper>

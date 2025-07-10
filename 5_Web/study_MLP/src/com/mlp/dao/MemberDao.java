@@ -23,6 +23,21 @@ public class MemberDao extends SqlMapConfig {
 		return res;
 	}
 	
+	public MemberDto selectOneByMemno(int memno) {
+	    SqlSession session = null;
+	    MemberDto res = null;
+	    try {
+	        session = getSqlSessionFactory().openSession(true);
+	        res = session.selectOne(namespace + "selectOneByMemno", memno);
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    } finally {
+	        session.close();
+	    }
+	    return res;
+	}
+
+	
 	//수정
 	public int update(MemberDto dto) {
 		SqlSession session = null;
