@@ -7,6 +7,7 @@
 	
 	<typeAliases>
 		<typeAlias type="com.mlp.dto.MemberDto" alias="MemberDto"/>
+		<typeAlias type="com.mlp.dto.BoardDto" alias="BoardDto"/>
 	</typeAliases>
 	
 	<environments default="development">
@@ -23,5 +24,6 @@
 	
 	<mappers>
 		<mapper resource="db/member_mapper.xml"/>
+		<mapper resource="db/feed_mapper.xml"/>
 	</mappers>
 </configuration>

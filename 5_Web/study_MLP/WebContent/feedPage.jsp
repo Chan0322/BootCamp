@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -113,9 +115,28 @@
           </div>
         </div>
         <div class="feedList">
-          <div class="feedContent"><img src="../src/feedSample1.png" alt="Feed 1"></div>
-          <div class="feedContent"><img src="../src/feedSample1.png" alt="Feed 2"></div>
-          <div class="feedContent"><img src="../src/feedSample1.png" alt="Feed 3"></div>
+        <c:forEach var="bDto" items="${list }">
+        <table class="feedTable" style="border: solid 1px white; border-radius: 2.5%">
+          	<tr>
+          		<td>
+          			<p>${bDto.memname }</p>
+          			<span>${bDto.memdepart } * ${bDto.memgroup }</span>
+          		</td>
+          	</tr>
+          	<tr>
+          		<td><span>${bDto.regdate }</span></td>
+          	</tr>
+          	<tr>
+          		<th>${bDto.feedtitle }</th>
+          	</tr>
+          	<tr>
+          		<td>
+          			<textarea rows="20" cols="80" readonly="readonly">${bDto.feedcontent }</textarea>
+          		</td>
+          	</tr>
+        </table>
+        <hr>
+        </c:forEach>
         </div>
       </div>
     </section>
@@ -126,15 +147,66 @@
   </div>
 
   <!-- 프로필 수정 팝업 -->
-  <div class="editProfilePopup" id="editProfilePopupId" role="dialog" aria-modal="true" aria-labelledby="editPro">
-    <div class="editProfileContent">
-      <h1>프로필 수정 창</h1>
-      <p>수정할 내용</p>
-      <div class="editBtns">
-        <button id="cancelEditBtn" aria-label="취소">취소</button>
-        <button id="saveEditBtn" aria-label="저장">저장</button>
-      </div>
-    </div>
-  </div>
+	<div class="editProfilePopup" id="editProfilePopupId" role="dialog" aria-modal="true" aria-labelledby="editPro">
+	  <div class="editProfileContent">
+	    <form>
+	      <h1>프로필 수정</h1>
+	
+	      <section id="editHeader">
+	        <div class="profile-pic-container">
+	          <img id="profilePreview" src="../src/profile_basic.svg" alt="프로필 사진">
+	          <input type="file" name="profileImage" accept=".jpg,.jpeg,.png,.gif" title="클릭하여 사진을 선택하세요">
+	          <p class="file-note">jpg, png, gif | 최대 5MB</p>
+	        </div>
+	        <div class="profile-info">
+	          <input type="text" name="memname" value="${dto.memname}" placeholder="이름을 입력하세요">
+	          <input type="text" name="memintro" placeholder="소개글을 입력하세요">
+	          <button type="button" class="keyword-btn">추천 키워드</button>
+	        </div>
+	      </section>
+	
+	      <section id="editContent">
+	        <table>
+	          <tr>
+	            <th>부서</th>
+	            <td>${dto.memdepart}</td>
+	          </tr>
+	          <tr>
+	            <th>회사</th>
+	            <td>${dto.memgroup}</td>
+	          </tr>
+	          <tr>
+	            <th>이메일</th>
+	            <td>
+	              <input type="text" name="mememail" value="${dto.mememail}" placeholder="example@company.com">
+	            </td>
+	          </tr>
+	          <tr>
+	            <th>전화번호</th>
+	            <td>
+	              <input type="text" name="memphone" value="${dto.memphone}" placeholder="010-1234-5678">
+	            </td>
+	          </tr>
+	          <tr>
+	            <th>사번</th>
+	            <td>${dto.memno}</td>
+	          </tr>
+	          <tr>
+	            <th>비밀번호 변경</th>
+	            <td>
+	              <input type="text" name="mempw" value="${dto.mempw}" placeholder="새 비밀번호 입력">
+	            </td>
+	          </tr>
+	        </table>
+	      </section>
+	
+	      <div class="editBtns">
+	        <button id="cancelEditBtn" aria-label="취소" type="button">취소</button>
+	        <button id="saveEditBtn" aria-label="저장" type="submit">저장</button>
+	      </div>
+	    </form>
+	  </div>
+	</div>
+
 </body>
 </html>
