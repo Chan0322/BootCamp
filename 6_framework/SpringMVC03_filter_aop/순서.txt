@@ -1,0 +1,19 @@
+SpringMVC03
+1. pom.xml : ojdbc, mybatis, mybatis-spring, commons-dbcp, spring-orm
+2. web.xml
+3. /WEB-INF/spring/sqls/sql.txt
+4. DTO, DAO, SERVICE, CONTROLLER
+5. src/main/resources/mybatis/board-mapper.xml
+6. /WEB-INF/spring/sqls/config.xml
+7. servlet-context.xml, applicationContext.xml
+
+_filter
+-- 여러 개의 필터들이 연쇄적으로 존재할 수 도 있다. => 필터 체인
+8. com/mvc/upgrade/common/filter/LogFilter.java ( impl javax.servlet.Filter )
+9. web.xml : filter 추가
+
+_aop
+10. pom.xml : aspectjweaver, aspectjrt
+11. com/mvc/upgrade/common/aop/LogAop.java
+12. WEB-INF/spring/appServlet/aop-context.xml
+13. web.xml
