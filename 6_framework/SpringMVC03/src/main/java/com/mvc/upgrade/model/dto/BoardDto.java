@@ -2,53 +2,23 @@ package com.mvc.upgrade.model.dto;
 
 import java.util.Date;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+// 매개변수 없는 기본생성자, 필드 모두를 포함하는 생성자, @RequiredArgsConstructor: final 필드만 포함된 생성자, @Data: toString / equals / hashcode / getter / setter 모두 통합된 묶음
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class BoardDto {
 	private int myno;
 	private String myname;
 	private String mytitle;
 	private String mycontent;
 	private Date mydate;
-	
-	public BoardDto() {}
-	public BoardDto(int myno, String myname, String mytitle, String mycontent, Date mydate) {
-		super();
-		this.myno = myno;
-		this.myname = myname;
-		this.mytitle = mytitle;
-		this.mycontent = mycontent;
-		this.mydate = mydate;
-	}
-	
-	public int getMyno() {
-		return myno;
-	}
-	public void setMyno(int myno) {
-		this.myno = myno;
-	}
-	public String getMyname() {
-		return myname;
-	}
-	public void setMyname(String myname) {
-		this.myname = myname;
-	}
-	public String getMytitle() {
-		return mytitle;
-	}
-	public void setMytitle(String mytitle) {
-		this.mytitle = mytitle;
-	}
-	public String getMycontent() {
-		return mycontent;
-	}
-	public void setMycontent(String mycontent) {
-		this.mycontent = mycontent;
-	}
-	public Date getMydate() {
-		return mydate;
-	}
-	public void setMydate(Date mydate) {
-		this.mydate = mydate;
-	}
-	
 	
 }
