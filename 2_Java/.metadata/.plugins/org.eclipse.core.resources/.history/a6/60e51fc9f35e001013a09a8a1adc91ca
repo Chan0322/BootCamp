@@ -1,0 +1,54 @@
+package com_lv14_SetAndMap;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.StringTokenizer;
+
+public class lv14_4_IAmAPokemonMasterDaSomLee {
+
+	public static void main(String[] args) throws IOException {
+		IAmAPokemonMasterDaSomLee();
+	}
+
+	public static void IAmAPokemonMasterDaSomLee() throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		int n = Integer.parseInt(st.nextToken());	// 포켓몬 n마리 입력
+		int m = Integer.parseInt(st.nextToken());	//찾고싶은 포켓몬 수
+		
+		Map<String, String> dictionary = new HashMap<>();   // 포켓몬 도감 저장할 맵. key : 번호, value : 이름
+		
+		// 포켓몬 도감 입력
+		for(int i=0; i<n; i++) {
+			dictionary.put((i+1)+"", br.readLine());
+		}
+		
+		// 찾고싶은 포켓몬 입력
+		String[] findPokemon = new String[m];
+		for(int i=0; i<m; i++) {
+			findPokemon[i] = br.readLine();
+		}
+		
+		// 키 값으로도 찾을 수 있도록, 키 값을 리스트로 저장
+		List<String> pokemonNum = new ArrayList<>(dictionary.keySet());
+		
+		// 포켓몬 도감 조회
+		for(int i=0; i<findPokemon.length; i++) {
+			if(dictionary.containsKey(pokemonNum.get(i))) {
+				// 포켓몬 번호로 찾는다면
+				findPokemon[i] = dictionary.get(pokemonNum.get(i));
+			}else if(dictionary.containsValue(findPokemon[i])) {
+				findPokemon[i] = pokemonNum.get(i);
+			}
+		}
+	}
+}
