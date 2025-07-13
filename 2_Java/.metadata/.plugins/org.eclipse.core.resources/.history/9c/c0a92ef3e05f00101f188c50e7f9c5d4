@@ -127,7 +127,8 @@ public class test {
 		        }
 	            System.out.println("a=" + a + " b=" + b);
 		    }
-		}			// 결과 : a+b == 5가 되면 다음 a로 넘어간다.
+		}
+
 	}	
 
 }
