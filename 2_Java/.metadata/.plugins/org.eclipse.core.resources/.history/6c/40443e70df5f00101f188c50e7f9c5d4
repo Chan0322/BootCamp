@@ -106,8 +106,8 @@ public class test {
 		
 		for (int a=1; a<=10; a++) {
 		    if (a == 5) {
-		        System.out.println("a = 5 => 종료");		// 결과
-		        break;									// a = 1, a = 2, a = 3, a = 4, a = 5 => 종료
+		        System.out.println("a = 5, 종료");
+		        break;
 		    }
 		    System.out.print("a = " + a + ", ");
 		}
