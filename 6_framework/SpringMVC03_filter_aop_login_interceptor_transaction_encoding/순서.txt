@@ -1,0 +1,48 @@
+SpringMVC03
+1. pom.xml : ojdbc, mybatis, mybatis-spring, commons-dbcp, spring-orm
+2. web.xml
+3. /WEB-INF/spring/sqls/sql.txt
+4. DTO, DAO, SERVICE, CONTROLLER
+5. src/main/resources/mybatis/board-mapper.xml
+6. /WEB-INF/spring/sqls/config.xml
+7. servlet-context.xml, applicationContext.xml
+
+_filter
+-- 여러 개의 필터들이 연쇄적으로 존재할 수 도 있다. => 필터 체인
+8. com/mvc/upgrade/common/filter/LogFilter.java ( impl javax.servlet.Filter )
+9. web.xml : filter 추가
+
+_aop
+10. pom.xml : aspectjweaver, aspectjrt
+11. com/mvc/upgrade/common/aop/LogAop.java
+12. WEB-INF/spring/appServlet/aop-context.xml
+13. web.xml
+
+_login
+14. pom.xml : jackson-core, jackson-databind, jackson-annotation
+15. WEB-INF/spring/sqls/sql.txt
+16. dto, dao, service, controller
+17. src/main/resources/mybatis/member-mapper.xml
+18. WEB-INF/spring/sqls/config.xml
+
+
+// 인터셉터 추가. 필터랑 비슷. 필터와 다른 위치. 필터는 Dispatcher Servlet 앞에, 인터셉터는 Dispatcher Servlet 뒤에, 컨트롤러 앞에 온다. 요청과 응답 사이에서 가로채서 제어한다. 응답이 맘에 안든다? 되돌려버림.
+_interceptor
+20. com/mvc/upgrade/common/interceptor/LoginInterceptor
+21. servlet-context.xml
+
+
+_ transaction
+22. (Board) dao, service, controller
+23. index.html
+24. com/mvc/upgrade/common/interceptor/LoginInterceptor
+25. servlet-context.xml : tx
+26. applicationContext.xml : transactionManager
+
+
+// 회원가입 시, 패스워드를 적절히 바꿔 보안을 높이자
+_encoding
+27. pom.xml : spring-security-web								5.8.16 사용했음
+28. WEB-INF/spring/appServlet/security-context.xml			(Spring Bean config 파일) 
+29. web.xml : security-context 추가
+30. dao, service, controller : 회원가입(insert)
