@@ -12,4 +12,9 @@
 		INSERT INTO MLPFEED
 		VALUES(SEQ_MLPFEED.NEXTVAL, #{feedtitle}, #{feedcontent}, #{memno}, #{memgroup}, #{memdepart}, #{memname}, SYSDATE)
 	</insert>
+	
+	<select id="selectOne" resultType="BoardDto">
+		SELECT * FROM MLPFEED
+		WHERE FEEDNO=#{feedno}
+	</select>
 </mapper>

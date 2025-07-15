@@ -53,11 +53,11 @@
     <fullyQualifiedTypeName name="com.mlp.dao.BoardDao"/>
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="java.util.Date"/>
-    <fullyQualifiedTypeName name="com.mlp.dto.BoardDto"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="com.mlp.dao.SqlMapConfig"/>
-    <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
     <fullyQualifiedTypeName name="com.mlp.dto.MemberDto"/>
     <fullyQualifiedTypeName name="com.mlp.dao.MemberDao"/>
     <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSession"/>
+    <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
+    <fullyQualifiedTypeName name="com.mlp.dto.BoardDto"/>
 </qualifiedTypeNameHistroy>

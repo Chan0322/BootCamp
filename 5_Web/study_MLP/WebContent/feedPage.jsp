@@ -2,8 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -114,43 +112,32 @@
 					</div>
 				</div>
 				<div class="feedList">
-					<c:forEach var="bDto" items="${list}">
+					<c:forEach var="bDto" items="${list }">
 						<table class="feedTable"
-							style="border: 1px solid white; border-radius: 2.5%">
+							style="border: solid 1px white; border-radius: 2.5%">
 							<tr>
 								<td>
-									<p>${bDto.memname}</p> <span>${bDto.memdepart} *
-										${bDto.memgroup}</span>
+									<p>
+										${bDto.memname }
+										<button onclick="location.href='feed?command=updateform&feedno=${bDto.feedno}'">📝</button>
+									</p>
+									<span>${bDto.memdepart } * ${bDto.memgroup }</span>
 								</td>
 							</tr>
 							<tr>
-								<td><span>${bDto.regdate}</span></td>
+								<td><span>${bDto.regdate }</span></td>
 							</tr>
 							<tr>
-								<th>${bDto.feedtitle}</th>
+								<th>${bDto.feedtitle }</th>
 							</tr>
 							<tr>
-								<td><textarea rows="20" cols="80" readonly>${bDto.feedcontent}</textarea>
-								</td>
-							</tr>
-							<tr>
-								<td style="text-align: right;">
-									<!-- 수정 버튼: data-* 속성으로 bDto 전부 태깅 -->
-									<button type="button" class="editFeedBtn"
-										data-feedno="${bDto.feedno}" data-memno="${bDto.memno}"
-										data-memgroup="${bDto.memgroup}"
-										data-memdepart="${bDto.memdepart}"
-										data-memname="${bDto.memname}" data-regdate="${bDto.regdate}"
-										data-feedtitle='${fn:escapeXml(bDto.feedtitle)}'
-										data-feedcontent='${fn:escapeXml(bDto.feedcontent)}'>
-										수정</button>
+								<td><textarea rows="20" cols="80" readonly="readonly">${bDto.feedcontent }</textarea>
 								</td>
 							</tr>
 						</table>
 						<hr>
 					</c:forEach>
 				</div>
-
 			</div>
 		</section>
 	</main>
@@ -225,28 +212,24 @@
 	</div>
 
 	<!-- 피드 작성 팝업 창 -->
-	<div class="createFeedPopup" id="createFeedPopupId" role="dialog"
-		aria-modal="true">
+	<div class="createFeedPopup" id="createFeedPopupId" role="dialog" aria-modal="true">
 		<div class="createFeedContent">
 			<form action="feed" method="post">
-				<input type="hidden" name="command" value="insertFeed"> <input
-					type="hidden" name="memno" value="${dto.memno }"> <input
-					type="hidden" name="memgroup" value="${dto.memgroup }"> <input
-					type="hidden" name="memdepart" value="${dto.memdepart }"> <input
-					type="hidden" name="memname" value="${dto.memname }">
+				<input type="hidden" name="command" value="insertFeed">
+				<input type="hidden" name="memno" value="${dto.memno }">
+				<input type="hidden" name="memgroup" value="${dto.memgroup }">
+				<input type="hidden" name="memdepart" value="${dto.memdepart }">
+				<input type="hidden" name="memname" value="${dto.memname }">
 				<h1>피드 작성</h1>
 				<table>
 					<tr>
-						<td><input type="text" name="feedtitle"
-							placeholder="피드 제목을 입력하세요" required></td>
+						<td><input type="text" name="feedtitle" placeholder="피드 제목을 입력하세요" required></td>
 					</tr>
 					<tr>
-						<td><input type="text" name="keyword"
-							placeholder="키워드를 선택하세요"></td>
+						<td><input type="text" name="keyword" placeholder="키워드를 선택하세요"></td>
 					</tr>
 					<tr>
-						<td><textarea name="feedcontent" rows="5"
-								placeholder="내용을 입력하세요" required></textarea></td>
+						<td><textarea name="feedcontent" rows="5" placeholder="내용을 입력하세요" required></textarea></td>
 					</tr>
 					<tr>
 						<td>
@@ -257,45 +240,6 @@
 						</td>
 					</tr>
 				</table>
-			</form>
-		</div>
-	</div>
-
-	<!-- 피드 수정 팝업 -->
-	<div class="editFeedPopup" id="editFeedPopup" role="dialog"
-		aria-modal="true" style="display: none;">
-		<div class="editFeedContent">
-			<h2>피드 수정</h2>
-			<form id="editFeedForm" action="feed" method="post">
-				<input type="hidden" name="command" value="updateFeed" /> <input
-					type="hidden" id="edit-feedno" name="feedno" value="" /> <input
-					type="hidden" id="edit-memno" name="memno" value="" /> <input
-					type="hidden" id="edit-memgroup" name="memgroup" value="" /> <input
-					type="hidden" id="edit-memdepart" name="memdepart" value="" /> <input
-					type="hidden" id="edit-memname" name="memname" value="" />
-
-				<table>
-					<tr>
-						<th>등록일</th>
-						<td><input type="text" id="edit-regdate" name="regdate"
-							readonly /></td>
-					</tr>
-					<tr>
-						<th>제목</th>
-						<td><input type="text" id="edit-feedtitle" name="feedtitle"
-							required /></td>
-					</tr>
-					<tr>
-						<th>내용</th>
-						<td><textarea id="edit-feedcontent" name="feedcontent"
-								rows="5" required></textarea></td>
-					</tr>
-				</table>
-
-				<div class="editBtns">
-					<button type="button" id="cancelEditFeed">취소</button>
-					<button type="submit" id="saveEditFeed">수정</button>
-				</div>
 			</form>
 		</div>
 	</div>

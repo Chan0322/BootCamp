@@ -73,6 +73,15 @@ public class FeedController extends HttpServlet {
 				System.out.println("작성 실패...");
 				response.sendRedirect("feed?command=list");
 			}
+			
+		}else if(command.equals("updateform")) {
+			int feedno = Integer.parseInt(request.getParameter("feedno"));
+			System.out.println(feedno);
+			BoardDto res = bdao.selectOne(feedno);
+			
+			request.setAttribute("dto", res);
+			RequestDispatcher dis = request.getRequestDispatcher("updatefeedform.jsp");
+			dis.forward(request, response);
 		}
 	}
 

@@ -39,4 +39,18 @@ public class BoardDao extends SqlMapConfig{
 		
 		return res;
 	}
+	
+	public BoardDto selectOne(int feedno) {
+		SqlSession session = null;
+		BoardDto res = null;
+		
+		session = getSqlSessionFactory().openSession(true);
+		res = session.selectOne(namespace+"selectOne", feedno);
+		
+		System.out.println(res.getFeedno());
+		
+		session.close();
+		
+		return res;
+	}
 }
