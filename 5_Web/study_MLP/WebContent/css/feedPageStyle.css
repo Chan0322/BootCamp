@@ -509,3 +509,20 @@ body {
   display: flex;
   justify-content: space-between;
 }
+
+
+.editFeedPopup {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.editFeedPopup .editFeedContent {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+}
