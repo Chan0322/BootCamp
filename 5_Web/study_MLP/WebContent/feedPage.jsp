@@ -98,7 +98,7 @@
 						<button class="search_input_btn" aria-label="검색">🔍</button>
 					</div>
 					<div class="feedSort">
-						<select name="orderFeed" aria-label="정렬 옵션" id="olderFeed" onchange="onSortChange()">
+						<select name="orderFeed" aria-label="정렬 옵션" id="orderFeed" onchange="onSortChange()">
 							<option value="latest">최신순</option>
 							<option value="oldest">오래된순</option>
 							<option value="titlesort">제목순</option>

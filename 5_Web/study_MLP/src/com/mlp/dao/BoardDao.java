@@ -10,16 +10,12 @@ import com.mlp.dto.BoardDto;
 public class BoardDao extends SqlMapConfig{
 	String namespace="com.mlp.board.";
 	
-	public List<BoardDto> selectAll(){
-		SqlSession session = null;
+	public List<BoardDto> selectAll(String order){
 		List<BoardDto> res = new ArrayList<>();
 		
-		session = getSqlSessionFactory().openSession(true);
-		res = session.selectList(namespace+"selectAll");
-		
-		session.close();
-		
-		return res;
+		try (SqlSession session = getSqlSessionFactory().openSession(true)){
+			return session.selectList(namespace+"selectAll", order);
+		}
 	}
 	
 	public int insert(BoardDto dto) {

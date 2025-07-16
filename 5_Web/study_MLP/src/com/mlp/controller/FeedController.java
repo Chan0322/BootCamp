@@ -35,8 +35,15 @@ public class FeedController extends HttpServlet {
 		BoardDao bdao = new BoardDao();
 		
 		if(command.equals("list")) {
-			List<BoardDto> list = bdao.selectAll();
+			// 정렬 위한 order 파라미터 읽음
+			String order = request.getParameter("order");
+			if(order == null) {
+				order = "latest";
+			}
+			
+			List<BoardDto> list = bdao.selectAll(order);
 			request.setAttribute("list", list);
+			request.setAttribute("order", order);
 			RequestDispatcher dis = request.getRequestDispatcher("feedPage.jsp");
 			dis.forward(request, response);
 			

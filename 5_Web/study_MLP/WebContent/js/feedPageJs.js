@@ -1,3 +1,9 @@
+// 피드 정렬
+function onSortChange() {
+	const order = document.getElementById('orderFeed').value;
+	window.location.href = 'feed?command=list&order='+encodeURIComponent(order);
+}
+
 document.addEventListener('DOMContentLoaded', function() {   // html 로드 후 실행
 	const upBtn = document.getElementById('goTopBtn');
 
@@ -16,21 +22,21 @@ document.addEventListener('DOMContentLoaded', function() {   // html 로드 후 
 		});
 	});
 
-/*
-	const newFeedBtn = document.querySelector('.createFeed');
-	const feedList = document.querySelector('.feedList');
-
-	newFeedBtn.addEventListener('click', function() {
-		const newFeedHtml = `
-            <div class="feedContent">
-                <img src="../src/feedSample1.png" alt="New Feed">
-            </div>
-        `;
-
-		// 피드 추가 -> 기존 목록 끝에 새 피드를 넣는다.
-		feedList.insertAdjacentHTML('beforeend', newFeedHtml);
-	});
-*/
+	/*
+		const newFeedBtn = document.querySelector('.createFeed');
+		const feedList = document.querySelector('.feedList');
+	
+		newFeedBtn.addEventListener('click', function() {
+			const newFeedHtml = `
+				<div class="feedContent">
+					<img src="../src/feedSample1.png" alt="New Feed">
+				</div>
+			`;
+	
+			// 피드 추가 -> 기존 목록 끝에 새 피드를 넣는다.
+			feedList.insertAdjacentHTML('beforeend', newFeedHtml);
+		});
+	*/
 	// 프로필 수정 팝업
 	const editBtn = document.querySelector('.editProfile');
 	const popup = document.getElementById('editProfilePopupId');
@@ -66,4 +72,9 @@ document.addEventListener('DOMContentLoaded', function() {   // html 로드 후 
 		feedPopup.classList.remove('show');
 	});
 
+
+	// 피드 정렬 => 페이지 로드 시 order 파라미터 읽고 반영
+	const params = new URLSearchParams(window.location.search);
+	const current = params.get('order') || 'latest';
+	document.getElementById('orderFeed').value = current;
 });
