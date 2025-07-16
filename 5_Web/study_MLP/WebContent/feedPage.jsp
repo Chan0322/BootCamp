@@ -94,8 +94,8 @@
 				</div>
 				<div class="feedSearch">
 					<div class="searchInput">
-						<input type="search" placeholder="검색어를 입력해주세요!" />
-						<button class="search_input_btn" aria-label="검색">🔍</button>
+						<input type="search" id="searchInput" name="keyword" placeholder="검색어를 입력해주세요!" value="${param.keyword != null ? param.keyword : ''}"/>
+						<button type="button" class="search_input_btn" aria-label="검색" onclick="onSearch()">🔍</button>
 					</div>
 					<div class="feedSort">
 						<select name="orderFeed" aria-label="정렬 옵션" id="orderFeed" onchange="onSortChange()">

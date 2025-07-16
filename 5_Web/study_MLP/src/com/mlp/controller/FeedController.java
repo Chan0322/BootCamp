@@ -41,9 +41,17 @@ public class FeedController extends HttpServlet {
 				order = "latest";
 			}
 			
-			List<BoardDto> list = bdao.selectAll(order);
+			// 검색
+			String keyword = request.getParameter("keyword");
+			if(keyword == null) {
+				keyword = "";
+			}
+			
+			List<BoardDto> list = bdao.selectAll(order, keyword);
 			request.setAttribute("list", list);
 			request.setAttribute("order", order);
+			request.setAttribute("keyword", keyword);
+			
 			RequestDispatcher dis = request.getRequestDispatcher("feedPage.jsp");
 			dis.forward(request, response);
 			

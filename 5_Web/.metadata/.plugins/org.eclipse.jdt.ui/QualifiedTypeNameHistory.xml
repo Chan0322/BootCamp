@@ -35,7 +35,6 @@
     <fullyQualifiedTypeName name="com.my.dao.SqlMapConfig"/>
     <fullyQualifiedTypeName name="com.my.dto.MyBoardDto"/>
     <fullyQualifiedTypeName name="java.util.Map"/>
-    <fullyQualifiedTypeName name="java.util.HashMap"/>
     <fullyQualifiedTypeName name="com.board.dao.MemberDao"/>
     <fullyQualifiedTypeName name="com.board.dao.Member_SqlMapConfig"/>
     <fullyQualifiedTypeName name="com.board.dto.MemberDto"/>
@@ -60,4 +59,5 @@
     <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSession"/>
     <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
     <fullyQualifiedTypeName name="com.mlp.dto.BoardDto"/>
+    <fullyQualifiedTypeName name="java.util.HashMap"/>
 </qualifiedTypeNameHistroy>

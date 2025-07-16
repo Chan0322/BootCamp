@@ -1,7 +1,18 @@
 // 피드 정렬
+
 function onSortChange() {
 	const order = document.getElementById('orderFeed').value;
-	window.location.href = 'feed?command=list&order='+encodeURIComponent(order);
+	const keyword = document.getElementById('searchInput').value.trim();
+	let url = `feed?command=list&order=${encodeURIComponent(order)}`;
+	if (keyword) {
+		url += `&keyword=${encodeURIComponent(keyword)}`;
+	}
+	window.location.href = url;
+}
+
+function onSearch() {
+	// 정렬 유지하며 검색
+	onSortChange();
 }
 
 document.addEventListener('DOMContentLoaded', function() {   // html 로드 후 실행
@@ -74,7 +85,13 @@ document.addEventListener('DOMContentLoaded', function() {   // html 로드 후 
 
 
 	// 피드 정렬 => 페이지 로드 시 order 파라미터 읽고 반영
+	// 피드 검색 추가
 	const params = new URLSearchParams(window.location.search);
-	const current = params.get('order') || 'latest';
-	document.getElementById('orderFeed').value = current;
+
+	const currentOrder = params.get('order') || 'latest';
+	document.getElementById('orderFeed').value = currentOrder;
+
+	const currentKeyword = params.get('keyword') || '';
+	document.getElementById('searchInput').value = currentKeyword;
+
 });

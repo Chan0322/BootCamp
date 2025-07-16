@@ -1,7 +1,8 @@
 package com.mlp.dao;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -10,11 +11,13 @@ import com.mlp.dto.BoardDto;
 public class BoardDao extends SqlMapConfig{
 	String namespace="com.mlp.board.";
 	
-	public List<BoardDto> selectAll(String order){
-		List<BoardDto> res = new ArrayList<>();
+	public List<BoardDto> selectAll(String order, String keyword){
+		Map<String, Object> params = new HashMap<>();
+		params.put("order", order);
+		params.put("keyword", keyword);
 		
 		try (SqlSession session = getSqlSessionFactory().openSession(true)){
-			return session.selectList(namespace+"selectAll", order);
+			return session.selectList(namespace+"selectAll", params);
 		}
 	}
 	
