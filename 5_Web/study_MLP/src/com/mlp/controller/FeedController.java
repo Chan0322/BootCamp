@@ -82,6 +82,38 @@ public class FeedController extends HttpServlet {
 			request.setAttribute("dto", res);
 			RequestDispatcher dis = request.getRequestDispatcher("updatefeedform.jsp");
 			dis.forward(request, response);
+			
+		}else if(command.equals("update")) {
+			int feedno = Integer.parseInt(request.getParameter("feedno"));
+			String feedtitle = request.getParameter("feedtitle");
+			String feedcontent = request.getParameter("feedcontent");
+			BoardDto dto = new BoardDto();
+			dto.setFeedno(feedno);
+			dto.setFeedtitle(feedtitle);
+			dto.setFeedcontent(feedcontent);
+			
+			int res = bdao.update(dto);
+			
+			if(res>0) {
+				System.out.println("수정 성공");
+				response.sendRedirect("feed?command=list");
+			}else {
+				System.out.println("수정 실패..");
+				response.sendRedirect("feed?command=list");
+			}
+			
+		}else if(command.equals("deletefeed")) {
+			int feedno = Integer.parseInt(request.getParameter("feedno"));
+			
+			int res = bdao.delete(feedno);
+			
+			if(res>0) {
+				System.out.println("삭제 성공");
+				response.sendRedirect("feed?command=list");
+			}else {
+				System.out.println("삭제 실패");
+				response.sendRedirect("feed?command=list");
+			}
 		}
 	}
 

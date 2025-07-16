@@ -98,11 +98,10 @@
 						<button class="search_input_btn" aria-label="검색">🔍</button>
 					</div>
 					<div class="feedSort">
-						<select name="orderFeed" aria-label="정렬 옵션">
+						<select name="orderFeed" aria-label="정렬 옵션" id="olderFeed" onchange="onSortChange()">
 							<option value="latest">최신순</option>
-							<option value="manyView">조회순</option>
-							<option value="good">좋아요순</option>
-							<option value="comment">댓글순</option>
+							<option value="oldest">오래된순</option>
+							<option value="titlesort">제목순</option>
 						</select>
 					</div>
 					<div class="feedView" role="group" aria-label="보기 모드">
@@ -119,7 +118,8 @@
 								<td>
 									<p>
 										${bDto.memname }
-										<button onclick="location.href='feed?command=updateform&feedno=${bDto.feedno}'">📝</button>
+										<button onclick="location.href='feed?command=updateform&feedno=${bDto.feedno}'" style="float:right;">📝</button>
+										<button onclick="location.href='feed?command=deletefeed&feedno=${bDto.feedno}'" style="float:right;">🗑️</button>
 									</p>
 									<span>${bDto.memdepart } * ${bDto.memgroup }</span>
 								</td>

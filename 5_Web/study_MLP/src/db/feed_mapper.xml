@@ -17,4 +17,15 @@
 		SELECT * FROM MLPFEED
 		WHERE FEEDNO=#{feedno}
 	</select>
+	
+	<update id="update">
+		UPDATE MLPFEED
+		SET FEEDTITLE=#{feedtitle}, FEEDCONTENT=#{feedcontent}
+		WHERE FEEDNO=#{feedno}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM MLPFEED
+		WHERE FEEDNO=#{feedno}
+	</delete>
 </mapper>
