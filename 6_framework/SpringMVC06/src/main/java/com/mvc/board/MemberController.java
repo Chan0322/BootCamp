@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +21,9 @@ public class MemberController {
 	@Autowired
 	private MemberService service;
 	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
+	
 	@RequestMapping("/loginform.do")
 	public String loginForm() {
 		return "memlogin";
@@ -32,8 +36,10 @@ public class MemberController {
 		
 		boolean chk = false;
 		if(res != null) {
-			chk = true;
-			session.setAttribute("login", res);
+			if(passwordEncoder.matches(dto.getMempw(), res.getMempw())) {
+				chk = true;
+				session.setAttribute("login", res);
+			}
 		}
 		Map<String, Boolean> map = new HashMap<String, Boolean>();
 		map.put("chk", chk);
@@ -47,7 +53,13 @@ public class MemberController {
 	
 	@RequestMapping("/register.do")
 	public String insertMem(MemberDto dto) {
+		
+		String encode = passwordEncoder.encode(dto.getMempw());
+		dto.setMempw(encode);
+		
 		int res = service.insert(dto);
+		
+		
 		if(res>0) {
 			return "redirect:loginform.do";
 		}else {

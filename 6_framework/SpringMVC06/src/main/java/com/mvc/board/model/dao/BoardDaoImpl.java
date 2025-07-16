@@ -21,7 +21,6 @@ public class BoardDaoImpl implements BoardDao {
 		
 		try {
 			list = sqlSession.selectList("board.selectAll");
-			System.out.println(list.size());
 		}catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -44,19 +43,41 @@ public class BoardDaoImpl implements BoardDao {
 
 	@Override
 	public int insert(BoardDto dto) {
-		return 0;
+		int res = 0;
+		
+		try {
+			res = sqlSession.insert("board.insert", dto);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return res;
 	}
 
 	@Override
 	public int update(BoardDto dto) {
 		int res = 0;
 		
-		return 0;
+		try {
+			res = sqlSession.update("board.update", dto);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return res;
 	}
 
 	@Override
 	public int delete(int testno) {
-		return 0;
+		int res = 0;
+		
+		try {
+			res = sqlSession.delete("board.delete", testno);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return res;
 	}
 
 }

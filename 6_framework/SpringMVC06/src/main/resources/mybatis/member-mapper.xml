@@ -5,7 +5,7 @@
 <mapper namespace="member">
 	<select id="login" resultType="memberDto">
 		SELECT * FROM TESTMEMBER
-		WHERE MEMID=#{memid} AND MEMPW=#{mempw}
+		WHERE MEMID=#{memid}
 	</select>
 	
 	<insert id="insert">

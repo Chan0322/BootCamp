@@ -15,4 +15,5 @@ public class BoardDto {
 	private String testtitle;
 	private String testcontent;
 	private Date testdate;
+	private int memno;
 }

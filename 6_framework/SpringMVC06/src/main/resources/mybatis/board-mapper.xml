@@ -14,4 +14,20 @@
 		FROM TESTBOARD
 		WHERE TESTNO=#{testno}
 	</select>
+	
+	<update id="update">
+		UPDATE TESTBOARD
+		SET TESTTITLE=#{testtitle}, TESTCONTENT=#{testcontent}
+		WHERE TESTNO=#{testno}
+	</update>
+	
+	<insert id="insert">
+		INSERT INTO TESTBOARD
+		VALUES(SEQ_TB.NEXTVAL, #{testname}, #{testtitle}, #{testcontent}, SYSDATE, #{memno})
+	</insert>
+	
+	<delete id="delete">
+		DELETE FROM TESTBOARD
+		WHERE TESTNO=#{testno}
+	</delete>
 </mapper>

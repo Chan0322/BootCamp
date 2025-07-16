@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<h3>${login.memname }님 환영합니다.</h3>
 	<h1>전체 게시글</h1>
 	<table>
 		<tr>
@@ -24,6 +25,11 @@
 				<td>${dto.testdate }</td>
 			</tr>
 		</c:forEach>
+		<tr>
+			<td colspan="4" align="right">
+				<button onclick="location.href='insertform.do'">작성</button>
+			</td>
+		</tr>
 	</table>
 </body>
 </html>

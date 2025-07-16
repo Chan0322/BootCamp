@@ -31,8 +31,8 @@
 		</tr>
 		<tr>
 			<td colspan="2">
-				<input type="button" value="수정" onclick="location.href=updateform.do?testno=${dto.testno}">
-				<!--<input type="button" value="삭제" onclick="location.href=delete.do?testno=${dto.testno}">-->
+				<input type="button" value="수정" onclick="location.href='updateform.do?testno=${dto.testno}&memno=${dto.memno }'">
+				<input type="button" value="삭제" onclick="location.href='delete.do?testno=${dto.testno}&memno=${dto.memno }'">
 			</td>
 		</tr>
 	</table>
