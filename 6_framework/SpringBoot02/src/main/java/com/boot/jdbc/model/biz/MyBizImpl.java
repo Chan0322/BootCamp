@@ -41,7 +41,7 @@ public class MyBizImpl implements MyBiz {
 
 	@Override
 	public int delete(int myno) {
-		return 0;
+		return mapper.delete(myno);
 	}
 
 }

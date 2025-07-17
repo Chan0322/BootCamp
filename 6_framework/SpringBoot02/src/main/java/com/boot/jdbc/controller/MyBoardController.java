@@ -90,4 +90,18 @@ public class MyBoardController {
 			return "redirect:/myboard/updateform?myno="+dto.getMyno();
 		}
 	}
+	
+	@GetMapping("/delete")
+	public String delete(int myno) {
+		System.out.println("[delete]");
+		int res = biz.delete(myno);
+		
+		if(res>0) {
+			System.out.println("delete 성공");
+			return "redirect:/myboard/list";
+		}else {
+			System.out.println("delete 실패");
+			return "redirect:/myboard/detail?myno="+myno;
+		}
+	}
 }

@@ -24,6 +24,7 @@
 		<tr>
 			<td colspan="2">
 				<input type="button" value="수정" onclick="location.href='/myboard/updateform?myno=${dto.myno}'">
+				<input type="button" value="삭제" onclick="location.href='/myboard/delete?myno=${dto.myno}'">
 			</td>
 		</tr>
 	</table>
