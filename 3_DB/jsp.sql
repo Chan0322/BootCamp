@@ -395,3 +395,8 @@ CREATE TABLE TESTMEMBER(
 );
 INSERT INTO TESTMEMBER VALUES(SEQ_TM.NEXTVAL, 'ADMIN', '1234', '관리자');
 SELECT * FROM TESTMEMBER;
+
+
+-----------------------------------------------------
+-- spring boot02
+-- myboard 사용
