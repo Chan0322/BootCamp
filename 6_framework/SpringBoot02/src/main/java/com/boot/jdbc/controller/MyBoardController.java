@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.boot.jdbc.model.biz.MyBiz;
@@ -38,4 +40,54 @@ public class MyBoardController {
 		return "myboarddetail";
 	}
 	
+	@GetMapping("/insertform")
+	public String insertForm() {
+		System.out.println("[insertForm]");
+		return "myboardinsert";
+	}
+	
+	@PostMapping("/insert")
+	public String insert(MyDto dto) {
+		System.out.println("[insert]");
+		int res = biz.insert(dto);
+		
+		if(res>0) {
+			System.out.println("insert 성공");
+			return "redirect:/myboard/list";
+		}else {
+			System.out.println("insert 실패");
+			return "redirect:/myboard/insertform";
+		}
+	}
+	
+	//[1]
+	// '/board/updateform' 요청을 처리하는 메소드 추가
+	// 수정하려는 게시글 하나를 db로부터 select 후
+	// myboardupdate.jsp로 응답
+	@GetMapping("/updateform")
+	public String updateForm(int myno, Model model) {
+		System.out.println("[updateForm]");
+		MyDto res = biz.selectOne(myno);
+		model.addAttribute("dto", res);
+		return "myboardupdate";
+	}
+	
+	// [2]
+	// '/board/update' 요청을 처리하는 메소드 추가
+	// myboardupdate.jsp 페이지에서 입력된 수정할 내용을 통해 db 업데이트 진행
+	// UPDATE MYBOARD SET MYTITLE=#{mytitle}, MYCONTENT=#{mycontent} WHERE MYNO=#{myno}
+	// 성공 시 list 페이지로, 실패 시 update 페이지로 응답.
+	@PostMapping("/update")
+	public String update(MyDto dto) {
+		System.out.println("[update]");
+		int res = biz.update(dto);
+		
+		if(res>0) {
+			System.out.println("update 성공");
+			return "redirect:/myboard/list";
+		}else {
+			System.out.println("update 실패");
+			return "redirect:/myboard/updateform?myno="+dto.getMyno();
+		}
+	}
 }

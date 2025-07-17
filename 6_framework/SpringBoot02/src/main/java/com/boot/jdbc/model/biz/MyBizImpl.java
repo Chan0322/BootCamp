@@ -31,12 +31,12 @@ public class MyBizImpl implements MyBiz {
 
 	@Override
 	public int insert(MyDto dto) {
-		return 0;
+		return mapper.insert(dto);
 	}
 
 	@Override
 	public int update(MyDto dto) {
-		return 0;
+		return mapper.update(dto);
 	}
 
 	@Override
