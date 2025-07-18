@@ -5,7 +5,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller
 @SpringBootApplication
 public class SpringBoot02Application {
 
@@ -13,9 +12,4 @@ public class SpringBoot02Application {
 		SpringApplication.run(SpringBoot02Application.class, args);
 	}
 
-	@RequestMapping("/")
-	public String root() {
-		System.out.println("root");
-		return "index";
-	}
 }
