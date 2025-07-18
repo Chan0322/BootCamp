@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>expression</h1>
+	<p th:text="'hello, '+${name}">Hello, $name</p>
+	<p th:text="|Hello, ${name}|">Hello, $name</p>
+	<hr>
+	<p th:text="${dto.subject}">dto.subject</p>
+	<p th:text="${dto.seq}">dto.seq</p>
+	
+	<div th:object="${dto}">
+		<p th:text="*{subject}">subject</p>
+		<p th:text="*{seq}">seq</p>
+	</div>
+	
+	<form th:object="${dto}">
+		<input type="text" th:field="*{subject}">
+		<input type="text" th:field="*{seq}">
+	</form>
+</body>
+</html>
