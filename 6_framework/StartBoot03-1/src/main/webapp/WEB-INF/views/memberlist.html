@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Member List</h1>
+	<div>
+		<table>
+			<tr>
+				<th>Memberno</th>
+				<th>Membername</th>
+				<th>Memberid</th>
+				<th>Memberpw</th>
+				<th></th>
+			</tr>
+			<tr th:if="${list.size()==0}">
+				<td colspan="4">-----회원이 존재하지 않습니다.</td>
+			</tr>
+			<tr th:unless="${list.size==0}" th:each="dto:${list}">
+				<td th:text="${dto.memberno}"></td>
+				<td th:text="${dto.membername}"></td>
+				<td th:text="${dto.memberid}"></td>
+				<td th:text="${dto.memberpw}"></td>
+				<td>
+					<input type="button" value="회원수정" th:onclick="|location.href='/member/updateform?memberno=${dto.memberno}'|">
+					<input type="button" value="회원탈퇴" th:onclick="|location.href='/member/delete?memberno=${dto.memberno}'|">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="4" align="right">
+					<input type="button" value="회원추가" onclick="location.href='/member/insertform'">
+				</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
