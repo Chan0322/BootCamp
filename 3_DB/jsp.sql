@@ -400,3 +400,13 @@ SELECT * FROM TESTMEMBER;
 -----------------------------------------------------
 -- spring boot02
 -- myboard 사용
+
+---------------------------------------------
+DROP TABLE MYBOARD;
+CREATE TABLE MYBOARD(
+	MYNO NUMBER PRIMARY KEY,
+	MYNAME VARCHAR2(300) NOT NULL,
+	MYTITLE VARCHAR2(1000) NOT NULL,
+	MYCONTENT VARCHAR2(4000) NOT NULL,
+	MYDATE DATE NOT NULL
+);

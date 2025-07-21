@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>JPA list</h1>
+	<div>
+		<table>
+			<tr>
+				<th>Myno</th>
+				<th>Myname</th>
+				<th>Mytitle</th>
+				<th>Mydate</th>
+			</tr>
+			<tr th:if="${list.size()==0}">
+				<td colspan="4">----작성된 글이 존재하지 않습니다----</td>
+			</tr>
+			<tr th:unless="${list.size()==0}" th:each="dto:${list}">
+				<td th:text="${dto.myno}"></td>
+				<td th:text="${dto.myname}"></td>
+				<!-- <td><a th:href="@{/board/detail(myno=${dto.myno})}" th:text="${dto.mytitle}"></a></td>  -->
+				<td><a th:href="|@{/board/detail}?myno=${dto.myno}|" th:text="${dto.mytitle}"></a></td>
+				<td th:text="${dto.mydate}"></td>
+			</tr>
+			<tr>
+				<td colspan="4" align="right">
+					<!-- 상대 경로로 인해 현재 board/list 이므로 board로 적으면 안댐. /board로 작성하면 최상위 루트부터 시작해 정상적으로 가능..  -->
+					<input type="button" value="글작성" onclick="location.href='/board/insertform'">
+				</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
