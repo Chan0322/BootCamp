@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mlp.comment">
+	<select id="selectFeedCommentAll" resultType="CommentDto">
+		SELECT * FROM MLPCOMMENT
+		WHERE FEEDNO=#{feedno}
+		ORDER BY REGDATE ASC
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO MLPCOMMENT
+		VALUES(SEQ_MLPCOMMENT.NEXTVAL, #{feedno}, #{writer}, #{content}, SYSDATE)
+	</insert>
+</mapper>
