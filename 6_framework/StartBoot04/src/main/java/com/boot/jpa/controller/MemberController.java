@@ -29,6 +29,25 @@ public class MemberController {
 		return "memberlist";
 	}
 	
+	@GetMapping("/test")
+	public String selectAll() {
+		List<MemberEntity> res = dao.selectAll();
+		
+		MemberEntity dto = res.get(0);
+		System.out.println(dto.getMemberid());
+		System.out.println(dto.getMemberpw());
+		System.out.println(dto.getMembername());
+		System.out.println(dto.getMemberno());
+		
+		dto = dao.findByMemberidAndMemberpw("admin", "1234");
+		System.out.println(dto.getMemberid());
+		System.out.println(dto.getMemberpw());
+		System.out.println(dto.getMembername());
+		System.out.println(dto.getMemberno());
+		
+		return "index";
+	}
+	
 	@GetMapping("/insertform")
 	public String insertForm() {
 		System.out.println("[insertForm]");
