@@ -135,6 +135,26 @@
 								</td>
 							</tr>
 						</table>
+						
+						<!-- 댓글 작성 -->
+						<div class="commentSection">
+							<form action="feed" method="post">
+								<input type="hidden" name="command" value="insertComment">
+								<input type="hidden" name="feedno" value="${bDto.feedno }">
+								<input type="hidden" name="writer" value="${dto.memname }">
+								<textarea name="content" placeholder="댓글 입력"></textarea>
+								<input type="submit" value="작성">
+							</form>
+							
+							<!-- 댓긇 출력 -->
+							<c:forEach var="comment" items="${bDto.commentlist }">
+								<div class="commentItem">
+									<b>${comment.writer }</b> (${comment.regdate })
+									<br>
+									<p>${comment.content }</p>
+								</div>
+							</c:forEach>
+						</div>
 						<hr>
 					</c:forEach>
 				</div>

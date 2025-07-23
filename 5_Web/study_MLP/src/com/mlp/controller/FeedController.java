@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.mlp.dao.BoardDao;
+import com.mlp.dao.CommentDao;
 import com.mlp.dao.MemberDao;
 import com.mlp.dto.BoardDto;
+import com.mlp.dto.CommentDto;
 import com.mlp.dto.MemberDto;
 
 @WebServlet("/feed")
@@ -33,6 +35,7 @@ public class FeedController extends HttpServlet {
 		String command = request.getParameter("command");
 		
 		BoardDao bdao = new BoardDao();
+		CommentDao comDao = new CommentDao();
 		
 		if(command.equals("list")) {
 			// 정렬 위한 order 파라미터 읽음
@@ -48,6 +51,13 @@ public class FeedController extends HttpServlet {
 			}
 			
 			List<BoardDto> list = bdao.selectAll(order, keyword);
+			
+			// 각 게시글의 댓글 리스트 담기
+			for(BoardDto dto : list) {
+				List<CommentDto> comments = comDao.selectFeedCommentAll(dto.getFeedno());
+				dto.setCommentlist(comments);
+			}
+			
 			request.setAttribute("list", list);
 			request.setAttribute("order", order);
 			request.setAttribute("keyword", keyword);
@@ -129,6 +139,19 @@ public class FeedController extends HttpServlet {
 				System.out.println("삭제 실패");
 				response.sendRedirect("feed?command=list");
 			}
+			
+		}else if(command.equals("insertComment")) {
+			int feedno = Integer.parseInt(request.getParameter("feedno"));
+			String writer = request.getParameter("writer");
+			String content = request.getParameter("content");
+			
+			CommentDto dto = new CommentDto();
+			dto.setFeedno(feedno);
+			dto.setWriter(writer);
+			dto.setContent(content);
+			
+			comDao.insert(dto);
+			response.sendRedirect("feed?command=list");
 		}
 	}
 

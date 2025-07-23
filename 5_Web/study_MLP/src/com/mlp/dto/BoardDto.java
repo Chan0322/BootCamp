@@ -1,6 +1,7 @@
 package com.mlp.dto;
 
 import java.util.Date;
+import java.util.List;
 
 public class BoardDto {
 	private int feedno;
@@ -11,6 +12,16 @@ public class BoardDto {
 	private String memdepart;
 	private String memname;
 	private Date regdate;
+	
+	private List<CommentDto> commentlist;
+	
+	public List<CommentDto> getCommentlist(){
+		return commentlist;
+	}
+	public void setCommentlist(List<CommentDto> commentlist){
+		this.commentlist = commentlist;
+	}
+	
 	public BoardDto() {
 		super();
 		// TODO Auto-generated constructor stub
