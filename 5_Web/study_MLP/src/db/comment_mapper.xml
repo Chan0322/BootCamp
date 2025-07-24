@@ -13,4 +13,9 @@
 		INSERT INTO MLPCOMMENT
 		VALUES(SEQ_MLPCOMMENT.NEXTVAL, #{feedno}, #{writer}, #{content}, SYSDATE)
 	</insert>
+	
+	<delete id="delete">
+		DELETE FROM MLPCOMMENT
+		WHERE COMMENTNO=#{commentno}
+	</delete>
 </mapper>

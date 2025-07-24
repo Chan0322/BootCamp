@@ -152,6 +152,7 @@
 									<b>${comment.writer }</b> (${comment.regdate })
 									<br>
 									<p>${comment.content }</p>
+									<input type="button" value="삭제" onclick="location.href='feed?command=deleteComment&commentno=${comment.commentno}'">
 								</div>
 							</c:forEach>
 						</div>

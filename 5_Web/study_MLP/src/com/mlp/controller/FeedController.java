@@ -152,6 +152,18 @@ public class FeedController extends HttpServlet {
 			
 			comDao.insert(dto);
 			response.sendRedirect("feed?command=list");
+			
+		}else if(command.equals("deleteComment")) {
+			int commentno = Integer.parseInt(request.getParameter("commentno"));
+			int res = comDao.delete(commentno);
+			
+			if(res>0) {
+				System.out.println("댓글 삭제 성공!");
+				response.sendRedirect("feed?command=list");
+			}else {
+				System.out.println("댓글 삭제 실패ㅜㅜ");
+				response.sendRedirect("feed?command=list");
+			}
 		}
 	}
 

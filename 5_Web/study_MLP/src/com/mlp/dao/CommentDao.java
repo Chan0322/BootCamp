@@ -33,9 +33,24 @@ public class CommentDao extends SqlMapConfig {
 		}else {
 			session.rollback();
 		}
-		
+		session.close();
 		return res;
 	}
 	
+	public int delete(int commentno) {
+		SqlSession session = null;
+		int res = 0;
+		
+		session = getSqlSessionFactory().openSession(false);
+		res = session.delete(namespace+"delete", commentno);
+		
+		if(res>0) {
+			session.commit();
+		}else {
+			session.rollback();
+		}
+		session.close();
+		return res;
+	}
 	
 }
