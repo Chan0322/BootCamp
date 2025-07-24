@@ -53,4 +53,31 @@ public class CommentDao extends SqlMapConfig {
 		return res;
 	}
 	
+	public CommentDto selectOne(int commentno) {
+		SqlSession session = null;
+		CommentDto res = null;
+		
+		session = getSqlSessionFactory().openSession(true);
+		res = session.selectOne(namespace+"select", commentno);
+		
+		session.close();
+		
+		return res;
+	}
+	
+	public int update(CommentDto dto) {
+		SqlSession session = null;
+		int res = 0;
+		
+		session = getSqlSessionFactory().openSession(false);
+		res = session.update(namespace+"update", dto);
+		
+		if(res>0) {
+			session.commit();
+		}else {
+			session.rollback();
+		}
+		session.close();
+		return res;
+	}
 }

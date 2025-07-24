@@ -164,6 +164,32 @@ public class FeedController extends HttpServlet {
 				System.out.println("댓글 삭제 실패ㅜㅜ");
 				response.sendRedirect("feed?command=list");
 			}
+			
+		}else if(command.equals("updateCommentForm")) {
+			int commentno = Integer.parseInt(request.getParameter("commentno"));
+			CommentDto dto = comDao.selectOne(commentno);
+			
+			request.setAttribute("dto", dto);
+			RequestDispatcher dis = request.getRequestDispatcher("updateComment.jsp");
+			dis.forward(request, response);
+			
+		}else if(command.equals("commentUpdate")) {
+			int commentno = Integer.parseInt(request.getParameter("commentno"));
+			String content = request.getParameter("content");
+			
+			CommentDto dto = new CommentDto();
+			dto.setCommentno(commentno);
+			dto.setContent(content);
+			
+			int res = comDao.update(dto);
+			
+			if(res>0) {
+				System.out.println("댓글 수정 성공!");
+				response.sendRedirect("feed?command=list");
+			}else {
+				System.out.println("댓글 수정 실패ㅜㅜ");
+				response.sendRedirect("feed?command=list");
+			}
 		}
 	}
 

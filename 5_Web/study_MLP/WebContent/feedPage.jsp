@@ -151,7 +151,8 @@
 								<div class="commentItem">
 									<b>${comment.writer }</b> (${comment.regdate })
 									<br>
-									<p>${comment.content }</p>
+									<pre>${comment.content }</pre>
+									<input type="button" value="수정" onclick="location.href='feed?command=updateCommentForm&commentno=${comment.commentno}'">
 									<input type="button" value="삭제" onclick="location.href='feed?command=deleteComment&commentno=${comment.commentno}'">
 								</div>
 							</c:forEach>

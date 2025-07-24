@@ -18,4 +18,15 @@
 		DELETE FROM MLPCOMMENT
 		WHERE COMMENTNO=#{commentno}
 	</delete>
+	
+	<select id="select" resultType="CommentDto">
+		SELECT * FROM MLPCOMMENT
+		WHERE COMMENTNO=#{commentno}
+	</select>
+	
+	<update id="update">
+		UPDATE MLPCOMMENT
+		SET CONTENT=#{content}
+		WHERE COMMENTNO=#{commentno}
+	</update>
 </mapper>
