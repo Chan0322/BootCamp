@@ -15,7 +15,7 @@
 		<div class="top1">
 			<div class="top_logo">
 				<a href="#" class="logo" aria-label="홈으로"> <img
-					src="../src/logo_mlp.png" alt="MLP 로고">
+					src="./src/logo_mlp.png" alt="MLP 로고">
 				</a>
 			</div>
 			<div class="searchBar">
@@ -26,7 +26,7 @@
 				<button class="add_feed_btn" aria-label="피드 작성">➕</button>
 				<button class="alarm_btn" aria-label="알림">🔔</button>
 				<button class="profile_btn" aria-label="프로필">
-					<img src="../src/profile_basic.svg" alt="프로필 사진">
+					<img src="./src/profile_basic.svg" alt="프로필 사진">
 				</button>
 			</div>
 		</div>
@@ -46,7 +46,7 @@
 		<aside id="leftItem">
 			<section class="myProfile" aria-label="내 프로필 정보">
 				<div class="profileTop">
-					<img src="../src/profile_basic.svg" alt="내 프로필 사진">
+					<img src="./src/profile_basic.svg" alt="내 프로필 사진">
 					<div class="myProfileInfo">
 						<h3>${dto.memname }</h3>
 						<p>${dto.memdepart }</p>

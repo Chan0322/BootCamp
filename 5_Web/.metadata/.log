@@ -4006,3 +4006,6 @@ java.io.FileNotFoundException: /org/eclipse/persistence/jaxb/eclipselink_oxm_2_5
 
 !ENTRY org.eclipse.lsp4e 1 0 2025-07-24 09:08:45.645
 !MESSAGE [Info]	[lspserver] Using Typescript version (bundled) 4.6.4 from path "C:\Users\ehdck\OneDrive\Desktop\eclipse\plugins\org.eclipse.wildwebdeveloper_0.5.22.202205250019\node_modules\typescript\lib\tsserver.js"
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-07-24 17:18:31.296
+!MESSAGE [Info]	ESLint server running in node v16.14.2
