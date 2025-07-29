@@ -146,6 +146,13 @@ public class FeedController extends HttpServlet {
 			String content = request.getParameter("content");
 			
 			CommentDto dto = new CommentDto();
+			
+			// null이면 일반 댓글, null이 아니면 대댓글
+			String parentParam = request.getParameter("parentcommentno");
+			if(parentParam!=null && !parentParam.trim().equals("")) {
+				dto.setParentcommentno(Integer.parseInt(parentParam));
+			}
+			
 			dto.setFeedno(feedno);
 			dto.setWriter(writer);
 			dto.setContent(content);
