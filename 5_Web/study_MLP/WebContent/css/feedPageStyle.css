@@ -554,6 +554,16 @@ body {
   padding: 10px;
   margin-top: 10px;
   border-top: 1px solid #ddd;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.replyItem {
+	margin-left: 30px;
+	margin-top: 10px;
+	padding-left: 10px;
+	border-left: 2px solid #ccc;
+	color: #555;
 }
 
 .commentItem b {

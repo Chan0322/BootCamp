@@ -11,7 +11,7 @@
 	
 	<insert id="insert">
 		INSERT INTO MLPCOMMENT
-		VALUES(SEQ_MLPCOMMENT.NEXTVAL, #{feedno}, #{writer}, #{content}, SYSDATE)
+		VALUES(SEQ_MLPCOMMENT.NEXTVAL, #{feedno}, #{writer}, #{content}, SYSDATE, #{parentcommentno})
 	</insert>
 	
 	<delete id="delete">

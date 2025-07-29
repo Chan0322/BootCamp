@@ -94,11 +94,15 @@
 				</div>
 				<div class="feedSearch">
 					<div class="searchInput">
-						<input type="search" id="searchInput" name="keyword" placeholder="검색어를 입력해주세요!" value="${param.keyword != null ? param.keyword : ''}"/>
-						<button type="button" class="search_input_btn" aria-label="검색" onclick="onSearch()">🔍</button>
+						<input type="search" id="searchInput" name="keyword"
+							placeholder="검색어를 입력해주세요!"
+							value="${param.keyword != null ? param.keyword : ''}" />
+						<button type="button" class="search_input_btn" aria-label="검색"
+							onclick="onSearch()">🔍</button>
 					</div>
 					<div class="feedSort">
-						<select name="orderFeed" aria-label="정렬 옵션" id="orderFeed" onchange="onSortChange()">
+						<select name="orderFeed" aria-label="정렬 옵션" id="orderFeed"
+							onchange="onSortChange()">
 							<option value="latest">최신순</option>
 							<option value="oldest">오래된순</option>
 							<option value="titlesort">제목순</option>
@@ -118,10 +122,13 @@
 								<td>
 									<p>
 										${bDto.memname }
-										<button onclick="location.href='feed?command=updateform&feedno=${bDto.feedno}'" style="float:right;">📝</button>
-										<button onclick="location.href='feed?command=deletefeed&feedno=${bDto.feedno}'" style="float:right;">🗑️</button>
-									</p>
-									<span>${bDto.memdepart } * ${bDto.memgroup }</span>
+										<button
+											onclick="location.href='feed?command=updateform&feedno=${bDto.feedno}'"
+											style="float: right;">📝</button>
+										<button
+											onclick="location.href='feed?command=deletefeed&feedno=${bDto.feedno}'"
+											style="float: right;">🗑️</button>
+									</p> <span>${bDto.memdepart } * ${bDto.memgroup }</span>
 								</td>
 							</tr>
 							<tr>
@@ -135,7 +142,7 @@
 								</td>
 							</tr>
 						</table>
-						
+
 						<!-- 댓글 작성 -->
 						<div class="commentSection">
 							<form action="feed" method="post">
@@ -145,15 +152,42 @@
 								<textarea name="content" placeholder="댓글 입력"></textarea>
 								<input type="submit" value="작성">
 							</form>
-							
+
 							<!-- 댓긇 출력 -->
 							<c:forEach var="comment" items="${bDto.commentlist }">
 								<div class="commentItem">
-									<b>${comment.writer }</b> (${comment.regdate })
-									<br>
+									<b>${comment.writer }</b> (${comment.regdate }) <br>
 									<pre>${comment.content }</pre>
-									<input type="button" value="수정" onclick="location.href='feed?command=updateCommentForm&commentno=${comment.commentno}'">
-									<input type="button" value="삭제" onclick="location.href='feed?command=deleteComment&commentno=${comment.commentno}'">
+									<div class="commentActions" style="margin-top: 5px;">
+										<input type="button" value="수정"
+											onclick="location.href='feed?command=updateCommentForm&commentno=${comment.commentno}'">
+										<input type="button" value="삭제"
+											onclick="location.href='feed?command=deleteComment&commentno=${comment.commentno}'">
+									</div>
+									
+									<!-- 대댓글 출력 -->
+									<c:forEach var="reply" items="${bDto.commentlist }">
+										<c:if test="${reply.parentcommentno == comment.commentno }">
+											<div class="replyItem">
+												<b>${reply.writer }</b> - ${reply.regdate }
+												<pre>${reply.content }</pre>
+											</div>
+										</c:if>
+									</c:forEach>
+
+									<!-- 대댓글 작성 -->
+									<div class="replyForm"
+										style="margin-left: 30px; margin-top: 10px;">
+										<form action="feed" method="post">
+											<input type="hidden" name="command" value="insertComment">
+											<input type="hidden" name="feedno" value="${bDto.feedno}">
+											<input type="hidden" name="writer" value="${dto.memname}">
+											<input type="hidden" name="parentcommentno" value="${comment.commentno}">
+											<textarea name="content" placeholder="대댓글 입력" rows="3" cols="60"></textarea>
+											<input type="submit" value="작성">
+										</form>
+									</div>
+
 								</div>
 							</c:forEach>
 						</div>
@@ -234,24 +268,28 @@
 	</div>
 
 	<!-- 피드 작성 팝업 창 -->
-	<div class="createFeedPopup" id="createFeedPopupId" role="dialog" aria-modal="true">
+	<div class="createFeedPopup" id="createFeedPopupId" role="dialog"
+		aria-modal="true">
 		<div class="createFeedContent">
 			<form action="feed" method="post">
-				<input type="hidden" name="command" value="insertFeed">
-				<input type="hidden" name="memno" value="${dto.memno }">
-				<input type="hidden" name="memgroup" value="${dto.memgroup }">
-				<input type="hidden" name="memdepart" value="${dto.memdepart }">
-				<input type="hidden" name="memname" value="${dto.memname }">
+				<input type="hidden" name="command" value="insertFeed"> <input
+					type="hidden" name="memno" value="${dto.memno }"> <input
+					type="hidden" name="memgroup" value="${dto.memgroup }"> <input
+					type="hidden" name="memdepart" value="${dto.memdepart }"> <input
+					type="hidden" name="memname" value="${dto.memname }">
 				<h1>피드 작성</h1>
 				<table>
 					<tr>
-						<td><input type="text" name="feedtitle" placeholder="피드 제목을 입력하세요" required></td>
+						<td><input type="text" name="feedtitle"
+							placeholder="피드 제목을 입력하세요" required></td>
 					</tr>
 					<tr>
-						<td><input type="text" name="keyword" placeholder="키워드를 선택하세요"></td>
+						<td><input type="text" name="keyword"
+							placeholder="키워드를 선택하세요"></td>
 					</tr>
 					<tr>
-						<td><textarea name="feedcontent" rows="5" placeholder="내용을 입력하세요" required></textarea></td>
+						<td><textarea name="feedcontent" rows="5"
+								placeholder="내용을 입력하세요" required></textarea></td>
 					</tr>
 					<tr>
 						<td>
