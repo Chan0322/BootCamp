@@ -4,6 +4,7 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
@@ -27,5 +28,12 @@ public class GreetingController {
         Post[] posts = restTemplate.getForObject(
                 "https://jsonplaceholder.typicode.com/posts", Post[].class);
         return posts;
+    }
+
+    @GetMapping("/posts/{id}")
+    public Post post(@PathVariable String id) {
+        Post post = restTemplate.getForObject(
+                "https://jsonplaceholder.typicode.com/posts/"+id, Post.class);
+        return post;
     }
 }
