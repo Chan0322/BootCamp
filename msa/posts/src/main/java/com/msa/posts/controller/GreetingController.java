@@ -1,5 +1,7 @@
 package com.msa.posts.controller;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,9 +33,16 @@ public class GreetingController {
     }
 
     @GetMapping("/posts/{id}")
-    public Post post(@PathVariable String id) {
+    public Map post(@PathVariable String id) {
         Post post = restTemplate.getForObject(
                 "https://jsonplaceholder.typicode.com/posts/"+id, Post.class);
-        return post;
+        // postId에 comments 정보를 같이 리턴하는 구조...
+        Comment[] comments = restTemplate.getForObject(
+                "http://localhost:8082/comments/"+id, Comment[].class);
+        Map result = new HashMap();
+        result.put("post", post);
+        result.put("comments", comments);
+
+        return result;
     }
 }
