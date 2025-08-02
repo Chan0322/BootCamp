@@ -1,0 +1,13 @@
+package com.lv16_StackQueDeck;
+
+public class lv16_8_JosephusProblem {
+
+	public static void main(String[] args) {
+		JosephusProblem();
+	}
+	
+	public static void JosephusProblem() {
+		
+	}
+
+}

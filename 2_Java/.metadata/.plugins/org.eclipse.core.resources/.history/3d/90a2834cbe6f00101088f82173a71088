@@ -1,0 +1,29 @@
+package com.lv16_StackQueDeck;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.ArrayDeque;
+import java.util.Deque;
+
+public class lv16_7_Card2 {
+
+	public static void main(String[] args) {
+
+	}
+
+	public static void Card2() throws NumberFormatException, IOException {
+		// 규칙 : 홀수번째 일 때 맨 위의 카드 제거. 짝수번째일 때 맨 위의 카드 맨 밑으로...
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		
+		int n = Integer.parseInt(br.readLine());
+		
+		// 큐
+		Deque<Integer> q = new ArrayDeque<>();
+		
+	}
+}

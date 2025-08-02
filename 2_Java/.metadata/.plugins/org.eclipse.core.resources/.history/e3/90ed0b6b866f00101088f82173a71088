@@ -1,0 +1,58 @@
+package com.lv16_StackQueDeck;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.StringTokenizer;
+
+public class lv16_6_Queue2 {
+
+	public static void main(String[] args) throws NumberFormatException, IOException {
+		Queue2();
+	}
+
+	public static void Queue2() throws NumberFormatException, IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		
+		// 명령 수
+		int n = Integer.parseInt(br.readLine());
+		
+		// 큐
+		Deque<Integer> q = new ArrayDeque<>();
+		
+		// n 번 반복
+		for(int i=0; i<n; i++) {
+			StringTokenizer st = new StringTokenizer(br.readLine());
+			
+			String command = st.nextToken();
+			
+			switch (command) {
+			case "push":
+				q.offer(Integer.parseInt(st.nextToken()));
+				break;
+			case "pop":
+				System.out.println(q.isEmpty() ? -1 : q.pop());
+				break;
+			case "size":
+				System.out.println(q.size());
+				break;
+			case "empty":
+				System.out.println(q.isEmpty() ? 1 : 0);
+				break;
+			case "front":
+				System.out.println(q.isEmpty() ? -1 : q.peek());
+				break;
+			case "back":
+				System.out.println(q.isEmpty() ? -1 : q.peekLast());
+				break;
+			}
+		}
+		bw.close();
+		br.close();
+	}
+}
