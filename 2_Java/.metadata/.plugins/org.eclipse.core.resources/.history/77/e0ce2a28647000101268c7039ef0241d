@@ -1,0 +1,76 @@
+package com.lv16_StackQueDeck;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.StringTokenizer;
+
+public class lv16_11_QueueStack {
+
+	public static void main(String[] args) throws NumberFormatException, IOException {
+		QueueStack();
+	}
+
+	public static void QueueStack() throws NumberFormatException, IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		
+		// 자료구조의 개수
+		int n = Integer.parseInt(br.readLine());
+		
+		// 입력
+		// 자료구조의 타입
+		int[] A = new int[n];
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		for(int i=0; i<n; i++) {
+			A[i] = Integer.parseInt(st.nextToken());
+		}
+		// 초기 값.
+		int[] B = new int[n];
+		st = new StringTokenizer(br.readLine());
+		for(int i=0; i<n; i++) {
+			B[i] = Integer.parseInt(st.nextToken());
+		}
+		
+		// 삽입할 수열의 길이
+		int M = Integer.parseInt(br.readLine());
+		// 삽입할 수열
+		int[] C = new int[M];
+		st = new StringTokenizer(br.readLine());
+		for(int i=0; i<M; i++) {
+			C[i] = Integer.parseInt(st.nextToken());
+		}
+		
+		//큐스택 배열
+		Deque<Integer>[] qs = new ArrayDeque[n];
+		// 초기화
+		for(int i=0; i<n; i++) {
+			qs[i] = new ArrayDeque<>();
+			qs[i].add(B[i]);
+		}
+		
+		// 수열 삽입
+		for(int i=0; i<C.length; i++) {
+			int tmp = 0;
+			for(int j=0; j<n; j++) {
+				if(A[j] == 0 ) {
+					// 큐인 경우
+					qs[j].addLast(C[i]);
+					tmp = qs[j].removeFirst();
+				}else {
+					// 스택인 경우
+					qs[j].addLast(C[i]);
+					tmp = qs[j].removeLast();
+				}
+			}
+			bw.write(tmp+" ");
+		}
+		
+		bw.close();
+		br.close();
+	}
+}
