@@ -1,0 +1,10 @@
+package com.lv18.advancedLevel;
+
+public class lv18_2_SayHelloGomGom {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
