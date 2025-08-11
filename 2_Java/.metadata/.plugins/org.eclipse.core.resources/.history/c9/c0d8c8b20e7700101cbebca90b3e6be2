@@ -2,12 +2,12 @@ package com.study;
 
 public class study {
 
-	public static void main(String[] args) {	
+	public static void main(String[] args) {
+		
+
+
 	
-		// 생성자를 통한 객체 생성
-		Car myCar = new Car("Red", "Automatic", "Gasoline");
-	
-	}
+	Car myCar = new Car("Red", "Automatic", "Gasoline");
 }
 
 	
