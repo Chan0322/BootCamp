@@ -3,14 +3,14 @@ package com.study;
 public class study {
 
 	public static void main(String[] args) {	
-		// new 연산자로 객체 생성 시, 생성자 호출!
-		House h1 = new House();
-		House h2 = new House("고급형");
+	
+		// 생성자를 통한 객체 생성
+		Car myCar = new Car("Red", "Automatic", "Gasoline");
+	
 	}
 }
 
-//생성자를 통한 객체 생성
-//		Car myCar = new Car("Red", "Automatic", "Gasoline");
+	
 	
 ////// 레퍼런스 변수
 ////Person hong;
