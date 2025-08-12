@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import Footer from "./components/Footer.jsx";
+import Main from "./components/Main";
 
 //function Header() {}
 // html을 리턴하는 함수 => 컴포넌트
@@ -17,6 +18,7 @@ function App() {
   return (
     <>
       <Header />
+      <Main />
       <Footer />
     </>
   );
