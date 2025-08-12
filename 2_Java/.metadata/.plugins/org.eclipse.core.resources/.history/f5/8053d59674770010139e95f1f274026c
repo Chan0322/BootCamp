@@ -8,7 +8,7 @@ public class study {
 //		House h2 = new House("고급형");
 //	}
 
-	public static class Cat{
+	public class Cat{
 		String name;
 		
 		public Cat(String name) {

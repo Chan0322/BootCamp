@@ -2,28 +2,25 @@ package com.study;
 
 public class study {
 
-//	public static void main(String[] args) {	
-//		// new 연산자로 객체 생성 시, 생성자 호출!
-//		House h1 = new House();
-//		House h2 = new House("고급형");
-//	}
+	public static void main(String[] args) {	
+		// new 연산자로 객체 생성 시, 생성자 호출!
+		House h1 = new House();
+		House h2 = new House("고급형");
+	}
 
-	public static class Cat{
+	public class Cat{
 		String name;
 		
 		public Cat(String name) {
 			this.name=name;
 		}
 	}
-	public static void main(String[] args)	{
-		Cat cat1 = new Cat("나비");
-		Cat cat2 = new Cat("루루");
-		
-		// cat1이 루루를 가리키게 됨. 나비는 더 이상 접근 불가능해짐.
-		// => 가비지(garbage)
-		cat1 = cat2;
-	}
+	Cat cat1 = new Cat("나비");
+	Cat cat2 = new Cat("루루");
 	
+	// cat1이 루루를 가리키게 됨. 나비는 더 이상 접근 불가능해짐.
+	// => 가비지(garbage)
+	cat1 = cat2;
 	
 	
 //	public class TV {

@@ -1,0 +1,10 @@
+package com.study;
+
+public class Book {
+	// 생성자 없음
+	// => 컴파일러가 생성자 자동 생성.
+}
+
+public static void main(String[] args) {
+	Book book = new Book();
+}
