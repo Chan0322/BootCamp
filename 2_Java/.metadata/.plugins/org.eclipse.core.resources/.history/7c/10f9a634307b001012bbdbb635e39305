@@ -1,0 +1,10 @@
+package com.lv19.Recursion;
+
+public class lv19_7_Hanoi {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
