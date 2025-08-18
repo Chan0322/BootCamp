@@ -1,0 +1,43 @@
+package com.study;
+
+public class MTest {
+
+	public static void main(String[] args) {
+		
+		// 2차원 객체 배열
+		Person[][] pArr = new Person[2][3];
+		pArr[0][0] = new Person("홍길동", 20);
+		pArr[0][1] = new Person("김길동", 21);
+		pArr[0][2] = new Person("최길동", 22);
+		pArr[1][0] = new Person("김민수", 10);
+		pArr[1][1] = new Person("이민수", 11);
+		pArr[1][2] = new Person("최민수", 12);
+		
+		
+		
+		
+//		// 타입이 명확할 경우 중괄호만 사용 가능
+//		Person[] pArr = {
+//				new Person("홍길동", 20),
+//				new Person("김철수", 15),
+//				new Person("김민수", 17)
+//		};
+//		
+		// 향상된 for 이용한 객체배열 순회
+		for(Person p : pArr) {
+			System.out.println(p);
+		}
+		
+//		// for문을 이용한 객체 배열 순회
+//		for(int i=0; i<pArr.length; i++) {
+//			System.out.println(pArr[i]);
+//		}
+		
+		
+		
+//		// 인덱스 번호를 이용한 객체 접근 가능.
+//		System.out.println(pArr[0].toString());
+//		// 결과 : 홍길동 (20살)
+	}
+
+}
