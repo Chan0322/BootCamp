@@ -1,0 +1,31 @@
+package com.study;
+
+class Per{
+	int age;
+}
+
+public class Human {
+	static void humanAge(Per p) {
+		p.age = 25;	// 같은 객체를 참조 => 원본 값도 변경
+	}
+	
+	public static void main(String[] args) {
+		Person p2 = new Per();
+		p2.age = 15;
+		humanAge(p2);
+		System.out.println(p2.age);
+	}
+}
+
+
+//static int humanAge(int age) {
+//age = 25;  // 매개변수의 값만 변경한다.
+//return age;
+//}
+//
+//public static void main(String[] args) {
+//int age = 15;
+//humanAge(age);
+//System.out.println(age);	// 원본 값 15
+//System.out.println(humanAge(age));	// 매개변수의 값 25
+//}
