@@ -8,11 +8,6 @@ public class Human {
 		// 새로운 배열 할당으로 원본에 영향 X
 	}
 	
-	static int humanAge(int age) {
-		age = 25;  // 매개변수의 값만 변경한다.
-		return age;
-		}
-	
 	public static void main(String[] args) {
 		int age[] = {10, 15, 20};	// 원본 배열
 		// 호출 전 배열
@@ -21,15 +16,22 @@ public class Human {
      // 호출 후 배열 상태 출력
         System.out.println("호출 후 배열: " + Arrays.toString(age));
         //원본 배열은 변경되지 않고 호출 전과 동일
-        
-        int huAge = 15;
-        humanAge(age);
-        System.out.println(age);	// 원본 값 15
-        System.out.println(humanAge(huAge));	// 매개변수의 값 25
 
 	}
 }
 
+
+//static int humanAge(int age) {
+//age = 25;  // 매개변수의 값만 변경한다.
+//return age;
+//}
+//
+//public static void main(String[] args) {
+//int age = 15;
+//humanAge(age);
+//System.out.println(age);	// 원본 값 15
+//System.out.println(humanAge(age));	// 매개변수의 값 25
+//}
 
 
 //static void humanAge(Per p) {
