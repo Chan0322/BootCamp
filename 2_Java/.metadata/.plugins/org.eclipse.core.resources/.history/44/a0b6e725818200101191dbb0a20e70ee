@@ -43,6 +43,15 @@ public class Human {
 }
 
 
+
+
+//
+//public static void main(String[] args) {
+
+//}
+
+
+
 //static void ageArr(int[] arr) {
 //arr[0] = 25;	// 같은 배열을 참조하므로 원본도 함께 변경
 //}

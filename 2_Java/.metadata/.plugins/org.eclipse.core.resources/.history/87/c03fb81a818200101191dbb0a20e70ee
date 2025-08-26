@@ -2,10 +2,6 @@ package com.study;
 
 import java.util.Arrays;
 
-class Per{
-	int age;
-}
-
 public class Human {
 	static void newAgeArr(int[] arr) {
 		arr = new int[] {20,25,30};
@@ -15,10 +11,6 @@ public class Human {
 	static int humanAge(int age) {
 		age = 25;  // 매개변수의 값만 변경한다.
 		return age;
-		}
-	
-	static void humanAge2(Per p) {
-		p.age = 25;	// 같은 객체를 참조 => 원본 값도 변경
 		}
 	
 	public static void main(String[] args) {
@@ -35,13 +27,25 @@ public class Human {
         System.out.println(age);	// 원본 값 15
         System.out.println(humanAge(huAge));	// 매개변수의 값 25
 
-        Per p2 = new Per();
-        p2.age = 15;
-        humanAge2(p2);
-        System.out.println(p2.age);
 	}
 }
 
+
+
+//static void humanAge(Per p) {
+//p.age = 25;	// 같은 객체를 참조 => 원본 값도 변경
+//}
+//
+//public static void main(String[] args) {
+//Per p2 = new Per();
+//p2.age = 15;
+//humanAge(p2);
+//System.out.println(p2.age);
+//}
+
+//class Per{
+//	int age;
+//}
 
 //static void ageArr(int[] arr) {
 //arr[0] = 25;	// 같은 배열을 참조하므로 원본도 함께 변경
