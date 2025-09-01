@@ -17,25 +17,26 @@ body {
 .layout_middle_mypage {
   display: flex;
   justify-content: flex-start;
-  gap: 32px;
-  padding: 16px;
+  gap: 2rem;
+  padding: 1rem;
   flex: 1;
 }
 
-/*왼쪽 메뉴*/
+/*rem = 희망 px 값 / html의 폰트 사이트 px값 */
+/*vw = 희망 px 값 / 뷰포트 너비 px * 100 */
 .side_mypage {
-  width: 200px;
-  padding: 40px;
+  width: clamp(120px, 20vw, 200px);
+  padding: 2.5rem;
 }
 
 .side_mypage > div {
-  font-size: 18px;
+  font-size: clamp(1.4rem, 1.2vw, 1.125rem);
   line-height: 1.5;
-  margin-bottom: 40px;
+  margin-bottom: 2.5rem;
 }
 
 .side_mypage > div b {
-  font-size: 20px;
+  font-size: clamp(1.425rem, 1.4vw, 1.25rem);
 }
 
 /*메뉴*/
@@ -46,28 +47,28 @@ body {
 }
 
 .side_mypage nav > ul > li {
-  margin-bottom: 32px;
+  margin-bottom: 2rem;
 }
 
 .side_mypage nav > ul > li > b {
   display: block;
-  font-size: 15px;
+  font-size: clamp(0.875rem, 1vw, 0.9375rem);
   font-weight: 700;
-  margin-bottom: 5px;
+  margin-bottom: 0.3rem;
 }
 
 .side_mypage nav ul ul li {
-  margin-bottom: 6px;
-  margin-left: 5px;
+  margin-bottom: 0.375rem;
+  margin-left: 0.3rem;
 }
 
 .side_mypage nav ul ul li a {
   display: block;
-  font-size: 14px;
+  font-size: clamp(0.8125rem, 0.9vw, 0.875rem);
   color: gray;
   text-decoration: none;
-  padding: 4px 0;
-  border-radius: 4px;
+  padding: 0.25rem 0;
+  border-radius: 0.25rem;
   transition: color 0.2s;
 }
 
