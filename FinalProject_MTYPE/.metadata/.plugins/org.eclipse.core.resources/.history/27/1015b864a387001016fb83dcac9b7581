@@ -1,0 +1,23 @@
+package com.lcpk.mtype.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.stereotype.Service;
+import java.util.concurrent.TimeUnit;
+
+@Service
+public class RedisTestService {
+
+    @Autowired
+    private RedisTemplate<String, Object> redisTemplate;
+
+    public void testConnection() {
+        try {
+            redisTemplate.opsForValue().set("testKey", "Redis 연결 성공!", 5, TimeUnit.MINUTES);
+            String value = (String) redisTemplate.opsForValue().get("testKey");
+            System.out.println("✅ Redis 연결 정상, 값: " + value);
+        } catch (Exception e) {
+            System.out.println("❌ Redis 연결 실패: " + e.getMessage());
+        }
+    }
+}

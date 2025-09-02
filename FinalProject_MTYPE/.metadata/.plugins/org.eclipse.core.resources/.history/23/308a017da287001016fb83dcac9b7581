@@ -1,0 +1,5 @@
+package com.lcpk.mtype.service;
+
+public class RedisTestService {
+
+}
