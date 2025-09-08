@@ -1,0 +1,28 @@
+package com.lcpk.mtype.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class TestController {
+
+	@GetMapping("/user/mypage")
+	public String userMp() {
+		return "user-mypage";
+	}
+	
+	@GetMapping("/user/detail")
+	public String userDetail() {
+		return "user-detail";
+	}
+	
+	@GetMapping("/user/recent")
+	public String userRecent() {
+		return "user-recent-view-product";
+	}
+	
+	@GetMapping("/user/point")
+	public String userPoint() {
+		return "user-point-history";
+	}
+}
