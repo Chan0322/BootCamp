@@ -1,0 +1,10 @@
+const kakaoUrl = "https://kauth.kakao.com/oauth/authorize";
+const kakaoClientId = "a8494562c83664af411ac675d25a6062";
+const kakaoRedirectUrl = "http://localhost:8888/oauth/kakao/redirect";
+
+function kakaoLogin() {
+	const auth_uri = `${kakaoUrl}?client_id=${kakaoClientId}&redirect_uri=${kakaoRedirectUrl}&response_type=code`;
+	window.location.href = auth_uri;
+}
+
+document.getElementById('kakao-login-btn').addEventListener('click', kakaoLogin);

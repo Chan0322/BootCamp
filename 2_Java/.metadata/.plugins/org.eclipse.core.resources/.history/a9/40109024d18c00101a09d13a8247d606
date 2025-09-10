@@ -1,0 +1,65 @@
+package com.lv20.BackTracking;
+
+import java.util.Scanner;
+
+public class lv20_8_StartAndLink {
+	static int N;
+	static int[][] S;
+	static boolean[] visited;
+	static int min = Integer.MAX_VALUE;
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		N = sc.nextInt();
+		S = new int[N][N];
+		visited = new boolean[N];
+
+		// 능력치 입력
+		for (int i = 0; i < N; i++) {
+			for (int j = 0; j < N; j++) {
+				S[i][j] = sc.nextInt();
+			}
+		}
+
+		// N명 중 N/2명을 선택하는 조합 생성
+		dfs(0, 0);
+
+		System.out.println(min);
+	}
+
+	// 백트래킹으로 조합 생성
+	static void dfs(int depth, int start) {
+		if (depth == N / 2) {
+			calculate();
+			return;
+		}
+
+		for (int i = start; i < N; i++) {
+			if (!visited[i]) {
+				visited[i] = true;
+				dfs(depth + 1, i + 1);
+				visited[i] = false;
+			}
+		}
+	}
+
+	// 두 팀의 능력치 계산
+	static void calculate() {
+		int startSum = 0;
+		int linkSum = 0;
+
+		for (int i = 0; i < N; i++) {
+			for (int j = 0; j < N; j++) {
+				if (visited[i] && visited[j]) {
+					startSum += S[i][j];
+				} else if (!visited[i] && !visited[j]) {
+					linkSum += S[i][j];
+				}
+			}
+		}
+
+		int diff = Math.abs(startSum - linkSum);
+		min = Math.min(min, diff);
+	}
+
+}

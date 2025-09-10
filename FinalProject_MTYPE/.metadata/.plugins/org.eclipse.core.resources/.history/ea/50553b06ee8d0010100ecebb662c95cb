@@ -1,0 +1,14 @@
+package com.lcpk.mtype.controller;
+
+import org.springframework.stereotype.Controller;
+
+import com.lcpk.mtype.service.KakaoService;
+
+@Controller
+public class UserController {
+	private final KakaoService userService;
+	
+	public UserController(KakaoService userService) {
+		this.userService = userService;
+	}
+}

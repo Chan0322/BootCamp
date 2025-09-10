@@ -1,0 +1,5 @@
+package com.lcpk.mtype.repository;
+
+public class UserRepository {
+
+}

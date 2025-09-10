@@ -1,0 +1,5 @@
+package com.lcpk.mtype.config.jwt;
+
+public class JwtTokenProvider {
+
+}

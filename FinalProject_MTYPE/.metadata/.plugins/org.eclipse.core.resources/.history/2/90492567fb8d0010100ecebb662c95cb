@@ -1,0 +1,34 @@
+package com.lcpk.mtype.config.jwt;
+
+import java.nio.charset.StandardCharsets;
+import java.security.Key;
+import java.util.Date;
+
+import org.springframework.beans.factory.annotation.Value;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
+
+public class JwtTokenProvider {
+	// JWT 생성 및 관리
+	
+	private final Key key;
+	private final long tokenValidityInMilliseconds;
+	
+	public JwtTokenProvider(@Value("${jwt.secret}") String secretKey) {
+		this.key = Keys.hmacShaKeyFor(secretKey.getBytes(StandardCharsets.UTF_8));
+		this.tokenValidityInMilliseconds = 1000L*60*60*24;	// 24시간 유효시간
+	}
+	
+	public String createToken(Long kakaoUserId) {
+		Date now = new Date();	// 현재시간
+		Date validity = new Date(now.getTime() + this.tokenValidityInMilliseconds); // 유효시간
+		
+		return Jwts.builder()
+				.setSubject(String.valueOf(kakaoUserId))
+				.setIssuedAt(now)
+				.setExpiration(validity)
+				.signWith(key, SignatureAlgorithm.HS256)
+				.compact();
+	}
+}
